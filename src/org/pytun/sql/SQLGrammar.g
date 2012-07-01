@@ -38,7 +38,6 @@ tokens {
   
   TABLE_LIST;
   EXPR_LIST;
-  PREDICATE_LIST;
 }
 
 @parser::header {
@@ -72,6 +71,41 @@ select_statement
       ^(SELECT_STMT expression_list identifier_list where_clause?)
   ;
 
+update_statement
+  :
+  UPDATE identifier SET assignment_list where_clause?
+    ->
+      ^(UPDATE_STMT identifier assignment_list where_clause?)
+  ;
+
+insert_statement
+  :
+  INSERT INTO identifier LPAREN identifier_list RPAREN VALUES LPAREN expression_list RPAREN
+   ->
+    ^(INSERT_STMT  identifier identifier_list expression_list)
+  ;
+
+delete_statement
+  :
+  DELETE FROM identifier where_clause?
+    -> ^(DELETE_STMT identifier where_clause?)
+  ;
+
+create_statement
+  :
+  CREATE
+  ;
+
+drop_statement
+  :
+  DROP
+  ;
+
+alter_statement
+  :
+  ALTER
+  ;
+
 expression_list
   :
   expr (',' expr)*
@@ -85,19 +119,19 @@ identifier_list
 
 where_clause
   :
-  WHERE predicate_list
+  WHERE disjunction
     ->
-      ^(PREDICATE_LIST predicate_list)
+      ^(WHERE disjunction)
   ;
 
-predicate_list
+disjunction
   :
-  andExpr (OR^ andExpr)*
+  conjunction (OR^ disjunction)*
   ;
 
-andExpr
+conjunction
   :
-  predicate (AND^ predicate)*
+  predicate (AND^ conjunction)*
   ;
 
 predicate
@@ -161,13 +195,6 @@ identifier
   IDENTIFIER
   ;
 
-update_statement
-  :
-  UPDATE identifier SET assignment_list where_clause?
-    ->
-      ^(UPDATE identifier assignment_list where_clause?)
-  ;
-
 assignment_list
   : assignment (',' assignment)* -> ^(UPDATE_ASSIGNMENTS assignment+)
   ;
@@ -176,32 +203,6 @@ assignment
   : identifier EQ expr -> ^(EQ identifier expr)
   ;
 
-insert_statement
-  :
-  INSERT INTO identifier LPAREN identifier_list RPAREN VALUES LPAREN expression_list RPAREN
-   ->
-    ^(INSERT ^(INTO identifier) identifier_list expression_list)
-  ;
-
-delete_statement
-  :
-  DELETE FROM identifier where_clause?
-  ;
-
-create_statement
-  :
-  CREATE
-  ;
-
-drop_statement
-  :
-  DROP
-  ;
-
-alter_statement
-  :
-  ALTER
-  ;
 
 /* statement keywords (case insensitive).*/
 /* boolean operators */

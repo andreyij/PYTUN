@@ -2,8 +2,11 @@ package org.pytun.test;
 
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.CommonTree;
+import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.pytun.sql.Query;
 import org.pytun.sql.SQLGrammarLexer;
 import org.pytun.sql.SQLGrammarParser;
+import org.pytun.sql.SQLTree;
 
 public class Main {
 	public void printSQLTree(String SQLQuery) {
@@ -15,8 +18,12 @@ public class Main {
 		try {
 			SQLGrammarParser.query_return ret = parser.query();
 			CommonTree tree = (CommonTree) ret.getTree();
-			//System.out.println(tree.toStringTree());
-			printTree(tree, 0);
+			if (tree == null){
+				throw new Exception("Tree is null!");
+			}
+			SQLTree st = new SQLTree(new CommonTreeNodeStream(tree));
+			Query q = st.query().n; 
+			System.out.println("Tree is: "+q.getClass());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -34,9 +41,8 @@ public class Main {
 			for ( int i = 0; i < indent; i++ )
 				sb = sb.append("__");
 			
-			System.out.println(sb.toString() + t.getText());
+			System.out.println(sb.toString() + t.getText() + " (type: " + t.getType() + ")");
 			for ( int i = 0; i < t.getChildCount(); i++ ) {
-				//System.out.println(sb.toString() + t.getChild(i).toString());
 				printTree((CommonTree)t.getChild(i), indent+1);
 			}
 		}
