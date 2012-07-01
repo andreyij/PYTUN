@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<project name="Pytun">
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+	<property name="dist" location="dist" />
+	<property name="lib" location="lib" />
+	<property name="grammarFolder" location="${src}/org/pytun/sql" />
+
+	<path id="tests.classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement location="${src}" />
+	</path>
+
+	<target name="init" description="environment setup">
+		<mkdir dir="${build}" />
+		<mkdir dir="${dist}" />
+	</target>
+
+	<target name="clean" description="cleanup">
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+
+	<target name="main" description="Main file" />
+
+	<target name="compileTest" description="Compile Test" depends="grammar">
+		<javac srcdir="${src}" destdir="${build}">
+			<classpath refid="tests.classpath" />
+		</javac>
+	</target>
+
+	<target name="runTest" description="Run Test" depends="compileTest">
+		<java classname="org.pytun.test.Main" fork="true">
+			<classpath refid="tests.classpath" />
+			<classpath>
+				<pathelement location="${build}" />
+			</classpath>
+			<arg value="select i from t;" />
+			<arg value="select i+1 from t where i = 1;" />
+			<arg value="select i*1.2+j-1*k/j FROM t,u where i+2 =1 and a =3 or b = 2+1+j;" />
+			<arg value="update t set i = 1, j=i + 2 * k where j = 2;" />
+			<arg value="insert into t(i,j, k) VALUES(i+1, i*3, 1.12);" />
+			<!--<arg value="select a+date'2010-01-01' FROM t,u where i+2 =1 or k = 1 and j = 1 and a =3 or b = 2+1+j;" />-->
+		</java>
+	</target>
+
+	<target name="grammar" description="Compile grammars" depends="init">
+		<java classname="org.antlr.Tool">
+			<classpath path="${lib}/antlr-3.4-complete.jar" />
+			<arg value="${grammarFolder}\SQLGrammar.g" />
+		</java>
+		<java classname="org.antlr.Tool">
+			<classpath path="${lib}/antlr-3.4-complete.jar" />
+			<arg value="${grammarFolder}\SQLTree.g" />
+		</java>
+	</target>
+
+	<target name="compile" description="compile">
+	</target>
+</project>
