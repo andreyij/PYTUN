@@ -1,97 +1,127 @@
 package org.pytun.storage.catalog;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import java.io.InputStreamReader;
+import java.io.Writer;
+import java.util.ArrayList;
 
 public class Catalog {
-	private Map<String, Table> tables;
+	private ArrayList<Table> tables;
 	private String database;
 
 	public Catalog(String database) {
 		this.database = database;
+		tables = new ArrayList<Table>();
 	}
+	
+	public boolean loadFromFile() {
+		return loadFromFile(database + File.separator + "catalog");
+	}
+	
+	public boolean loadFromFile(String file) {
 
-	public Table findTable(String name) {
-		if (tables == null) {
+		tables.clear();
+		
+		try {
+			// open a file ... fuck you, java
+			FileInputStream fstream = new FileInputStream(file);
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+			
+			// read line by line
+			String line = null;
+			while ((line = br.readLine()) != null) {
+				Table t = new Table(line);
+				tables.add(t);
+			}
+			
+			in.close();
+		} catch (Exception e) {
+			System.out.println("Catalog file '" + file + "' could not be loaded: " + e.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public boolean saveToFile() {
+		return saveToFile(database + File.separator + "catalog");
+	}
+	
+	public boolean saveToFile(String file) {
+		
+		try {
+			// open a file
+			File f = new File(file);
+			(new File(f.getParent())).mkdirs();
+			Writer out = new BufferedWriter(new FileWriter(f));
+			
+			//  write serialized tables
+			for (Table t: tables) {
+				out.write(t.toString() + "\n");
+			}
+
+			out.close();
+		} catch (Exception e) {
+			System.out.println("Catalog file '" + file + "' could not be saved: " + e.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public String getDatabase() {
+		return database;
+	}
+	
+	public void addTable(Table t) {
+		tables.add(t);
+	}
+	
+	public boolean removeTable(int idx) {
+		if (idx < 0 || idx >= tables.size()) {
+			return false;
+		}
+		
+		tables.remove(idx);
+		return true;
+	}
+	
+	public boolean removeTable(String name) {
+		Table t = getTable(name);
+
+		if (t != null) {
+			tables.remove(t);
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public int getTableCount() {
+		return tables.size();
+	}
+	
+	public Table getTable(int idx) {
+		if (idx < 0 || idx >= tables.size()) {
 			return null;
 		}
-		if (tables.containsKey(name)) {
-			return tables.get(name);
-		}
-		return null;
+		
+		return tables.get(idx);
 	}
-
-	public void createTable(Table table) {
-
-	}
-
-	public void init() throws Exception {
-		String catalogPath = "database" + File.pathSeparator + database;
-		File f = new File(catalogPath);
-		boolean exists = f.exists();
-		if (!exists) {
-			/* Probably this is the first run. Just create it */
-			FileWriter fw = new FileWriter(f);
-			fw.write("<database></database>");
-			fw.flush();
-			fw.close();
-		}
-		initTables(f);
-	}
-
-	private void initTables(File catalog) throws Exception {
-		tables = new HashMap<String, Table>();
-
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document doc = db.parse(catalog);
-		doc.getDocumentElement().normalize();
-
-		NodeList tableList = doc.getElementsByTagName("table");
-		for (int i = 0; i < tableList.getLength(); i++) {
-			Node tableNode = tableList.item(i);
-			Table t = tableFromCatalog(tableNode);
-			if (t != null){
-				tables.put(t.getName(), t);
+	
+	public Table getTable(String name) {
+		for (Table t: tables) {
+			if (t.getName().equals(name)) {
+				return t;
 			}
 		}
+		
+		return null;
 	}
-	
-	private Table tableFromCatalog(Node xmlTable) throws Exception{
-		/*
-		 * XML table description has the following DOM
-		 * <table>
-		 * 	<name>table name</name>
-		 * 	<columns>
-		 * 		<column>
-		 * 			<name></name>
-		 * 			<type></type>
-		 * 		</column>
-		 * 	</columns>
-		 * </table>
-		 * 
-		 * This structure should be extended to support a lot more info
-		 * (in fact, it should not use XML at all!)  
-		 */
-		Table t = new Table();
-		if (xmlTable.getNodeType()==Node.ELEMENT_NODE){
-			Element e = (Element)xmlTable;
-			NodeList bogusList = e.getElementsByTagName("name");
-			Element nameEl = (Element)bogusList.item(0);
-			t.setName(nameEl.getChildNodes().item(0).getNodeValue().trim());
-			
-		}
-		return t;
-	}
-	
 }

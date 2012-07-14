@@ -3,10 +3,14 @@ package org.pytun.test;
 import org.antlr.runtime.*;
 import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
+import org.pytun.common.ColumnType;
 import org.pytun.sql.Query;
 import org.pytun.sql.SQLGrammarLexer;
 import org.pytun.sql.SQLGrammarParser;
 import org.pytun.sql.SQLTree;
+import org.pytun.storage.catalog.Catalog;
+import org.pytun.storage.catalog.Column;
+import org.pytun.storage.catalog.Table;
 
 public class Main {
 	public void printSQLTree(String SQLQuery) {
@@ -51,8 +55,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		Main m = new Main();
-		for (int i = 0; i < args.length; i++) {
-			m.printSQLTree(args[i]);
-		}
+		m.printSQLTree("SELECT a FROM x;");
 	}
 }
