@@ -1,5 +1,6 @@
 package org.pytun.storage.common;
 
+import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.util.Vector;
 
@@ -8,10 +9,11 @@ import org.pytun.util.ByteBuffer;
 
 public class Page {
 	
-	private int 				pageID;
+	public  int 				pageID;
 	private int 				nrSlots;
 	private BitArray			bitSet;
 	private Vector<Record>		records;
+	private boolean				isDirty;
 	
 	public Page (DataInputStream buffer) throws Exception
 	{
@@ -37,6 +39,8 @@ public class Page {
 				this.records.add(new Record (pageID, i));
 			}
 		}
+		
+		isDirty = false;
 	}
 	
 	public Record readRecordAt (int index) throws Exception
@@ -67,6 +71,7 @@ public class Page {
 		
 		this.records.set(index, rec);
 		bitSet.setBitAt(index);
+		isDirty = true;
 	}
 	
 	public void writeToBuffer (byte[] buffer)
@@ -96,5 +101,23 @@ public class Page {
 			off += recSize;
 		}
 		
+	}
+	
+	public static Page readFromBuffer (byte[] buffer) throws Exception
+	{
+		ByteArrayInputStream byteStream = new ByteArrayInputStream(buffer);
+		DataInputStream din = new DataInputStream(byteStream);
+		
+		return new Page (din);
+	}
+	
+	public boolean isDirty ()
+	{
+		return isDirty;
+	}
+	
+	public void setDirty ()
+	{
+		isDirty = true;
 	}
 }
