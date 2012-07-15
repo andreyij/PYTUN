@@ -8,9 +8,27 @@ import org.pytun.storage.catalog.Catalog;
 public class SqlConsole {
 
 	private static boolean exited = false;
+	private static boolean showPlan = false;
+	private static boolean showAsl = false;
 	
 	public static void Exit() {
 		exited = true;
+	}
+	
+	public static boolean isShowPlan() {
+		return showPlan;
+	}
+
+	public static void setShowPlan(boolean showPlan) {
+		SqlConsole.showPlan = showPlan;
+	}
+
+	public static boolean isShowAsl() {
+		return showAsl;
+	}
+
+	public static void setShowAsl(boolean showAsl) {
+		SqlConsole.showAsl = showAsl;
 	}
 	
 	public static String getAuthors() {

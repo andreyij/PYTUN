@@ -4,5 +4,6 @@ public enum ColumnType {
 	INTEGER,
 	DOUBLE,
 	STRING,
-	DATETIME
+	DATETIME,
+	BOOLEAN
 }

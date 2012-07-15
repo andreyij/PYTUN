@@ -40,6 +40,10 @@ public class InternalCommand {
 			showSchema();
 		} else if (("tables").startsWith(cmd)) {
 			showTables();
+		} else if (("plan").startsWith(cmd)) {
+			setShowPlan();
+		} else if (("asl").startsWith(cmd)) {
+			setShowAsl();
 		} else {
 			System.out.println("Invalid internal command: " + cmd);
 		}
@@ -49,12 +53,14 @@ public class InternalCommand {
 		
 		if (tokens.length == 1) {
 			System.out.println("List of internal commands:");
-			System.out.println("  ?help					- show this help screen");
-			System.out.println("  ?help sql				- show SQL command list");
-			System.out.println("  ?help sql <command>	- show syntax of a specific sql command");
-			System.out.println("  ?tables				- show table list");
-			System.out.println("  ?schema <table>		- show schema information for table");
-			System.out.println("  ?exit					- quit application");
+			System.out.println("  ?help                 - show this help screen");
+			System.out.println("  ?help sql             - show SQL command list");
+			System.out.println("  ?help sql <command>   - show syntax of a specific sql command");
+			System.out.println("  ?tables               - show table list");
+			System.out.println("  ?schema <table>       - show schema information for table");
+			System.out.println("  ?plan <on/off>        - show or hide plan information for executed queries");
+			System.out.println("  ?asl <on/off>         - show or hide ASL code for executed queries");
+			System.out.println("  ?exit                 - quit application");
 			
 		} else if (tokens.length == 2) {
 			if (tokens[1].equals("sql")) {
@@ -119,12 +125,52 @@ public class InternalCommand {
 			return;
 		}
 		
-		System.out.println("Table '" + t.getName() + "' fields:");
+		System.out.println("Table '" + t.getName() + "' columns:");
 		for (int i = 0; i < t.getColumnCount(); i ++) {
 			Column c = t.getColumn(i);
 			System.out.println(
 					"  " + String.format("%-12s", c.getName()) + " " + c.getType().toString()
 					+ (c.getType() == ColumnType.STRING ? "(" + c.getPrecision() + ")" : ""));
+		}
+	}
+	
+	private void setShowPlan() {
+		
+		if (tokens.length < 2) {
+			System.out.println("Please specify ON or OFF!");
+			return;
+		}
+		
+		String opt = tokens[1].toLowerCase();
+		
+		if (opt.equals("on")) {
+			SqlConsole.setShowPlan(true);
+			System.out.println("Plan dump is ON ...");
+		} else if (opt.equals("off")) {
+			SqlConsole.setShowPlan(false);
+			System.out.println("Plan dump is OFF ...");
+		} else {
+			System.out.println("Please specify ON or OFF!");
+		}
+	}
+	
+	private void setShowAsl() {
+		
+		if (tokens.length < 2) {
+			System.out.println("Please specify ON or OFF!");
+			return;
+		}
+		
+		String opt = tokens[1].toLowerCase();
+		
+		if (opt.equals("on")) {
+			SqlConsole.setShowAsl(true);
+			System.out.println("ASL dump is ON ...");
+		} else if (opt.equals("off")) {
+			SqlConsole.setShowAsl(false);
+			System.out.println("ASL dump is OFF ...");
+		} else {
+			System.out.println("Please specify ON or OFF!");
 		}
 	}
 }
