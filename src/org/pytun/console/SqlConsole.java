@@ -37,6 +37,7 @@ public class SqlConsole {
 	public static void printWelcome() {
 		System.out.println("PYTUN v0.1.0");
 		System.out.println("Educational RDBMS written by " + getAuthors());
+		System.out.println("Type '?help' if you feel lost!");
 		System.out.println("");
 	}
 	
