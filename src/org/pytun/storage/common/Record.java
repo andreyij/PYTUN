@@ -2,7 +2,6 @@ package org.pytun.storage.common;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.util.Vector;
 
 import org.pytun.util.ByteBuffer;
