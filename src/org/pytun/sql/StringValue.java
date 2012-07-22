@@ -18,4 +18,9 @@ public class StringValue extends Value {
 		this.value = value;
 	}
 
+	@Override
+	public void print(int indent) {
+		printTabs(indent);
+		System.out.println(value);
+	}
 }

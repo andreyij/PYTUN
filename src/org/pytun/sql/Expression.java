@@ -1,6 +1,7 @@
 package org.pytun.sql;
 
 import org.antlr.runtime.tree.CommonTree;
+import org.antlr.runtime.tree.TreeWizard.Visitor;
 
 public class Expression extends Node {
 	protected Node left;
@@ -31,5 +32,26 @@ public class Expression extends Node {
 	public void setRight(Node right) {
 		this.right = right;
 	}
+	
+	@Override
+	protected void setupAST(){
+		if(left != null){
+			left.setParent(this);
+			left.setStatement(this.getStatement());
+			left.setupAST();
+		}
+		if (right != null){
+			right.setParent(this);
+			right.setStatement(this.getStatement());
+			right.setupAST();			
+		}
+	}
 
+	@Override
+	public Node visit(Visitor v) {
+		left = left.visit(v);
+		right = right.visit(v);
+		return this;
+	}
+	
 }

@@ -33,11 +33,13 @@ tokens {
   UPDATE_STMT;
   DELETE_STMT;
   INSERT_STMT;
+  CREATE_STMT;
   
   UPDATE_ASSIGNMENTS;
   
   TABLE_LIST;
   EXPR_LIST;
+  COLUMN_DEF_LIST;
 }
 
 @parser::header {
@@ -93,7 +95,28 @@ delete_statement
 
 create_statement
   :
-  CREATE
+  CREATE TABLE identifier LPAREN table_columns_def RPAREN
+    ->
+    ^(CREATE_STMT identifier table_columns_def)
+  ;
+
+table_columns_def
+  : table_column_def (',' table_column_def)*
+    -> ^(COLUMN_DEF_LIST table_column_def+)
+  ;
+ 
+table_column_def
+  : identifier type_specifier
+  ;
+
+type_specifier
+  : INT
+  | FLOAT
+  | CHAR LPAREN number_value RPAREN
+  | VARCHAR LPAREN number_value RPAREN
+  | DATE
+  | TIME
+  | TIMESTAMP
   ;
 
 drop_statement
@@ -233,6 +256,8 @@ WHERE : ('W'|'w')('H'|'h')('E'|'e')('R'|'r')('E'|'e');
 SET : ('S'|'s')('E'|'e')('T'|'t');
 INTO: ('I'|'i')('N'|'n')('T'|'t')('O'|'o');
 VALUES: ('V'|'v')('A'|'a')('L'|'l')('U'|'u')('E'|'e')('S'|'s');
+TABLE: ('T'|'t')('A'|'a')('B'|'b')('L'|'l')('E'|'e');
+
 /* general tokens */
 fragment
 LETTER : ('a'..'z' | 'A'..'Z') ;

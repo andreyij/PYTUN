@@ -13,6 +13,13 @@
 		<pathelement location="${src}" />
 	</path>
 
+	<path id="compile.classpath">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+		<pathelement location="${src}" />
+	</path>
+
 	<target name="init" description="environment setup">
 		<mkdir dir="${build}" />
 		<mkdir dir="${dist}" />
@@ -23,26 +30,36 @@
 		<delete dir="${dist}" />
 	</target>
 
-	<target name="main" description="Main file" />
+	<target name="main" description="Main file" depends="compile">
+		<java classname="org.pytun.console.SqlConsole" fork="true">
+			<classpath refid="compile.classpath" />
+			<classpath>
+				<pathelement location="${build}" />
+			</classpath>
+		</java>
+	</target>
 
 	<target name="compileTest" description="Compile Test" depends="grammar">
-		<javac srcdir="${src}" destdir="${build}">
+		<javac srcdir="${src}" destdir="${build}" debug="true" debuglevel="lines,vars,source">
 			<classpath refid="tests.classpath" />
 		</javac>
 	</target>
 
 	<target name="runTest" description="Run Test" depends="compileTest">
 		<java classname="org.pytun.test.Main" fork="true">
+			<jvmarg value="-Xdebug" />
 			<classpath refid="tests.classpath" />
 			<classpath>
 				<pathelement location="${build}" />
 			</classpath>
+			<arg value="create table t(i int, d date, s varchar(255));" />
+			<arg value="select i, j, k from t;" />
 			<arg value="select i from t;" />
 			<arg value="select i+1 from t where i = 1;" />
 			<arg value="select i*1.2+j-1*k/j FROM t,u where i+2 =1 and a =3 or b = 2+1+j;" />
 			<arg value="update t set i = 1, j=i + 2 * k where j = 2;" />
 			<arg value="insert into t(i,j, k) VALUES(i+1, i*3, 1.12);" />
-			<!--<arg value="select a+date'2010-01-01' FROM t,u where i+2 =1 or k = 1 and j = 1 and a =3 or b = 2+1+j;" />-->
+			<arg value="select a+date'2010-01-01' FROM t,u where i+2 =1 or k = 1 and j = 1 and a =3 or b = 2+1+j;" />
 		</java>
 	</target>
 
@@ -57,6 +74,9 @@
 		</java>
 	</target>
 
-	<target name="compile" description="compile">
+	<target name="compile" description="compile" depends="grammar">
+		<javac srcdir="${src}" destdir="${build}">
+			<classpath refid="compile.classpath" />
+		</javac>
 	</target>
 </project>

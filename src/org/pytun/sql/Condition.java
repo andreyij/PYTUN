@@ -27,4 +27,14 @@ public class Condition extends Node {
 		this.right = right;
 	}
 
+	@Override
+	protected void setupAST() {
+		left.setParent(this);
+		right.setParent(this);
+		left.setStatement(getStatement());
+		right.setStatement(getStatement());
+		left.setupAST();
+		right.setupAST();
+	}
+
 }

@@ -24,6 +24,8 @@ public class Main {
 			SQLTree st = new SQLTree(new CommonTreeNodeStream(tree));
 			Query q = st.query().n; 
 			System.out.println("Tree is: "+q.getClass());
+			q.compile();
+			q.print(0);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,6 +53,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		Main m = new Main();
-		m.printSQLTree("SELECT a FROM x;");
+		for(String s :args){
+			m.printSQLTree(s);
+		}
 	}
 }

@@ -13,4 +13,12 @@ public class Minus extends Expression {
 		super(t, left, right);
 	}
 
+	@Override
+	public void print(int indent) {
+		printTabs(indent);
+		System.out.println("-");
+		left.print(indent + 1);
+		right.print(indent + 1);
+	}
+
 }

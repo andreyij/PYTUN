@@ -12,14 +12,7 @@ package org.pytun.sql;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.ArrayList;
-}
-
-@members{
-  // Define table scopes. The goal here is create a context in which we can perform
-  // name resolving. Since we eventually want to support subqueries, we're creating a 
-  // scope stack
-  //
-   ScopeStack stack = new ScopeStack();
+import org.pytun.common.ColumnType;
 }
 
 query returns [Query n]
@@ -51,9 +44,6 @@ select_statement returns [Query n]
   :^(SELECT_STMT e = expression_list il=identifier_list w = where_clause?)
   {
     sq.setSelectList($e.list);
-    /* create a new scope from the "FROM" clause of the select query */
-    Scope s = new Scope($il.list);
-    stack.push(s);
     sq.setFrom($il.list);
     sq.setWhere($w.n);
     $n = (Query)sq;
@@ -83,8 +73,16 @@ delete_statement returns [Query n]
   ;
 
 create_statement returns [Query n]
+@init{
+  CreateQuery q = new CreateQuery($start);
+}
   :
-  CREATE
+  ^(CREATE_STMT name=identifier columns=table_columns_def)
+	  {
+	    q.setTableName($name.n);
+	    q.setColumns($columns.list);
+	    $n =(Query)q;
+	  }
   ;
 
 drop_statement returns [Query n]
@@ -101,7 +99,7 @@ expression_list returns [List<Node> list]
 @init{
   $list = new ArrayList<Node>();
 }
-  : ^(EXPR_LIST expr+{$list.add($expr.n);});
+  : ^(EXPR_LIST (expr{$list.add($expr.n);})+);
 
 
 identifier_list returns [List<Node> list]
@@ -239,14 +237,70 @@ identifier returns [Identifier n]
 }
   :
   IDENTIFIER
+	  {
+	    $n.setName($IDENTIFIER.text);
+	  }
   ;
 
 assignment_list returns [List<Node> list]
-  :^(UPDATE_ASSIGNMENTS assignment+{$list.add($assignment.n);})
+  :^(UPDATE_ASSIGNMENTS (assignment{$list.add($assignment.n);})+)
   ;
 
 assignment returns [Node n]
   : ^(EQ identifier expr)
   ;
+
+table_columns_def returns [List<Node> list]
+@init{
+  $list = new ArrayList<Node>();
+}
+  :
+  ^(COLUMN_DEF_LIST (table_column_def{$list.add($table_column_def.n);})+)
+  ;
+
+table_column_def returns [Node n]
+@init{
+ ColumnSpecification c = new ColumnSpecification($start);
+}
+  : i=identifier t=type_specifier
+    {
+      c.setName($i.n);
+      c.setType($t.d);
+      $n = c;
+    }
+  ;
+
+type_specifier returns [DataType d]
+@init{
+  $d = new DataType($start);
+}
+  : INT {$d.setType(ColumnType.INTEGER);}
+  | FLOAT {$d.setType(ColumnType.DOUBLE);}
+  | CHAR LPAREN p=number_value RPAREN
+    {
+      $d.setType(ColumnType.STRING);
+      if (!($p.n instanceof IntegerValue)){
+        throw new org.antlr.runtime.RecognitionException();
+      }
+      IntegerValue v = (IntegerValue)$p.n;
+      $d.setPrecision(v.getValue());
+    }
+  | VARCHAR LPAREN p=number_value RPAREN
+    {
+      $d.setType(ColumnType.STRING);
+      if (!($p.n instanceof IntegerValue)){
+        throw new org.antlr.runtime.RecognitionException();
+      }
+      IntegerValue v = (IntegerValue)$p.n;
+      $d.setPrecision(v.getValue());
+    }
+  | DATE
+    {$d.setType(ColumnType.DATE);}
+  | TIME
+    {$d.setType(ColumnType.TIME);}
+  | TIMESTAMP
+    {$d.setType(ColumnType.TIMESTAMP);}
+  ;
+
 
 

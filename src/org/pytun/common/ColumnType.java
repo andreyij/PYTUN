@@ -4,6 +4,8 @@ public enum ColumnType {
 	INTEGER,
 	DOUBLE,
 	STRING,
-	DATETIME,
+	DATE,
+	TIME,
+	TIMESTAMP,
 	BOOLEAN
 }
