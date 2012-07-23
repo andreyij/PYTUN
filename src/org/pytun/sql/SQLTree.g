@@ -63,8 +63,17 @@ update_statement returns [Query n]
 
 
 insert_statement returns [Query n]
+@init{
+	InsertQuery i = new InsertQuery($start);
+}
   :
-    ^(INSERT_STMT identifier identifier_list expression_list)
+    ^(INSERT_STMT identifier il=identifier_list vl=expression_list)
+    {
+    	i.setInto($identifier.n);
+    	i.setColumns($il.list);
+    	i.setValues($vl.list);
+    	$n = i;
+    }
   ;
 
 delete_statement returns [Query n]
@@ -213,6 +222,7 @@ string_value returns [Value n]
     {
       StringValue s = new StringValue($start);
       s.setValue($STRING_LIT.text);
+      $n = (Value)s;
     }
   ;
 
@@ -274,11 +284,11 @@ type_specifier returns [DataType d]
 @init{
   $d = new DataType($start);
 }
-  : INT {$d.setType(ColumnType.INTEGER);}
-  | FLOAT {$d.setType(ColumnType.DOUBLE);}
+  : INT {$d.setColumnType(ColumnType.INTEGER);}
+  | FLOAT {$d.setColumnType(ColumnType.DOUBLE);}
   | CHAR LPAREN p=number_value RPAREN
     {
-      $d.setType(ColumnType.STRING);
+      $d.setColumnType(ColumnType.STRING);
       if (!($p.n instanceof IntegerValue)){
         throw new org.antlr.runtime.RecognitionException();
       }
@@ -287,7 +297,7 @@ type_specifier returns [DataType d]
     }
   | VARCHAR LPAREN p=number_value RPAREN
     {
-      $d.setType(ColumnType.STRING);
+      $d.setColumnType(ColumnType.STRING);
       if (!($p.n instanceof IntegerValue)){
         throw new org.antlr.runtime.RecognitionException();
       }
@@ -295,11 +305,11 @@ type_specifier returns [DataType d]
       $d.setPrecision(v.getValue());
     }
   | DATE
-    {$d.setType(ColumnType.DATE);}
+    {$d.setColumnType(ColumnType.DATE);}
   | TIME
-    {$d.setType(ColumnType.TIME);}
+    {$d.setColumnType(ColumnType.TIME);}
   | TIMESTAMP
-    {$d.setType(ColumnType.TIMESTAMP);}
+    {$d.setColumnType(ColumnType.TIMESTAMP);}
   ;
 
 

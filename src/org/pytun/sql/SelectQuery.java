@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.TreeWizard.Visitor;
+import org.pytun.sql.visitors.Visitor;
+import org.pytun.sql.Identifier.IdentifierType;
 
 public class SelectQuery extends Query {
 	private List<Node> selectList;
@@ -92,17 +93,35 @@ public class SelectQuery extends Query {
 	}
 
 	@Override
-	public Node visit(Visitor v) {
-		// TODO Auto-generated method stub
-		for (int i = 0; i < selectList.size(); i++) {
-			selectList.set(i, selectList.get(i).visit(v));
+	protected List<Identifier> getTableContext() throws Exception {
+		List<Identifier> l = new ArrayList<Identifier>();
+		for (Node n : from) {
+			if (n instanceof Identifier) {
+				((Identifier) n).setIdentifierType(IdentifierType.Table);
+				l.add((Identifier) n);
+			} else {
+				throw new Exception("Invalid note type " + n.getClass()
+						+ " in from list");
+			}
+		}
+		return l;
+	}
+
+	public Node accept(Visitor v) throws Exception {
+		if (selectList != null) {
+			int len = selectList.size();
+			for (int i = 0; i < len; i++) {
+				selectList.set(i, selectList.get(i).accept(v));
+			}
 		}
 		for (int i = 0; i < from.size(); i++) {
-			from.set(i, from.get(i).visit(v));
+			from.set(i, from.get(i).accept(v));
 		}
-		if (where != null)
-			where = where.visit(v);
-		return this;
+
+		if (where != null) {
+			where = where.accept(v);
+		}
+		return v.Visit(this);
 	}
 
 }

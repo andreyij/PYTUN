@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import org.pytun.database.Database;
-import org.pytun.storage.catalog.Catalog;
+import org.pytun.sql.SqlCompiler;
 
 public class SqlConsole {
 
@@ -89,7 +89,12 @@ public class SqlConsole {
 				InternalCommand ic = new InternalCommand(line);
 				ic.execute();
 			} else {
-				// sql statement
+				try{
+					SqlCompiler compiler = new SqlCompiler();
+					compiler.compile(line);
+				} catch (Exception e){
+					e.printStackTrace();
+				}
 			}
 
 			// blank line

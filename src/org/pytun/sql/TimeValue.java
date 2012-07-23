@@ -3,6 +3,7 @@ package org.pytun.sql;
 import java.sql.Date;
 
 import org.antlr.runtime.tree.CommonTree;
+import org.pytun.common.ColumnType;
 
 public class TimeValue extends Value {
 	private Date value;
@@ -18,6 +19,10 @@ public class TimeValue extends Value {
 
 	public void setValue(Date value) {
 		this.value = value;
+		if (type == null){
+			type = new DataType(node);
+			type.setColumnType(ColumnType.TIME);
+		}
 	}
 
 	@Override

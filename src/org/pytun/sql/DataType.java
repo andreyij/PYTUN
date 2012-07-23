@@ -4,7 +4,7 @@ import org.antlr.runtime.tree.CommonTree;
 import org.pytun.common.ColumnType;
 
 public class DataType extends Node {
-	private ColumnType type;
+	private ColumnType nodeType;
 	private int precision;
 
 	public DataType(CommonTree t) {
@@ -12,12 +12,12 @@ public class DataType extends Node {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ColumnType getType() {
-		return type;
+	public ColumnType getColumnType() {
+		return nodeType;
 	}
 
-	public void setType(ColumnType type) {
-		this.type = type;
+	public void setColumnType(ColumnType type) {
+		this.nodeType = type;
 	}
 
 	public int getPrecision() {
@@ -31,7 +31,7 @@ public class DataType extends Node {
 	@Override
 	public void print(int indent) {
 		printTabs(indent);
-		switch (type) {
+		switch (nodeType) {
 		case INTEGER:
 			System.out.println("INTEGER");
 			break;
@@ -56,4 +56,34 @@ public class DataType extends Node {
 		}
 	}
 
+	public static boolean typesCompatible(ColumnType left, ColumnType right){
+		switch (left) {
+		case INTEGER:
+		case DOUBLE:
+			if (right == ColumnType.INTEGER || right == ColumnType.DOUBLE)
+				return true;
+			return false;
+		}
+		return left == right;
+	}
+	
+	public static String typeAsText(ColumnType type){
+		switch (type) {
+		case INTEGER:
+			return "INTEGER";
+		case DOUBLE:
+			return "DOUBLE";
+		case STRING:
+			return "STRING";
+		case DATE:
+			return "DATE";
+		case TIME:
+			return "TIME";
+		case TIMESTAMP:
+			return "TIMESTAMP";
+		case BOOLEAN:
+			return "BOOLEAN";
+		}
+		return "NONE";
+	}
 }

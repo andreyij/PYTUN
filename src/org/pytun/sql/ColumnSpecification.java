@@ -5,7 +5,6 @@ import org.antlr.runtime.tree.CommonTree;
 public class ColumnSpecification extends Node {
 
 	private Identifier name;
-	private DataType type;
 
 	public ColumnSpecification(CommonTree t) {
 		super(t);
@@ -18,14 +17,6 @@ public class ColumnSpecification extends Node {
 
 	public void setName(Identifier name) {
 		this.name = name;
-	}
-
-	public DataType getType() {
-		return type;
-	}
-
-	public void setType(DataType type) {
-		this.type = type;
 	}
 
 	@Override

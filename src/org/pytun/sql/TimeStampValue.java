@@ -3,6 +3,7 @@ package org.pytun.sql;
 import java.sql.Timestamp;
 
 import org.antlr.runtime.tree.CommonTree;
+import org.pytun.common.ColumnType;
 
 public class TimeStampValue extends Value {
 	private Timestamp value;
@@ -18,6 +19,10 @@ public class TimeStampValue extends Value {
 
 	public void setValue(Timestamp value) {
 		this.value = value;
+		if (type == null){
+			type = new DataType(node);
+			type.setColumnType(ColumnType.TIMESTAMP);
+		}
 	}
 
 	@Override

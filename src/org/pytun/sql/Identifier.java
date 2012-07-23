@@ -1,6 +1,7 @@
 package org.pytun.sql;
 
 import org.antlr.runtime.tree.CommonTree;
+import org.pytun.sql.visitors.Visitor;
 import org.pytun.storage.catalog.Column;
 import org.pytun.storage.catalog.Table;
 
@@ -8,19 +9,19 @@ public class Identifier extends Node {
 	private String name;
 
 	public enum IdentifierType {
-		Table, Column
+		None, Table, Column
 	};
 
 	/*
 	 * Type of this identifier (column or table)
 	 */
-	private IdentifierType type;
+	private IdentifierType iType;
 
 	/*
 	 * the table this identifier belongs to
 	 */
 	private Table table;
-	
+
 	/*
 	 * the column this identifier maps to
 	 */
@@ -28,13 +29,22 @@ public class Identifier extends Node {
 
 	public Identifier(CommonTree t) {
 		super(t);
+		iType = IdentifierType.Column;
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void print(int indent) {
 		printTabs(indent);
-		System.out.println(name);
+		System.out.print(name);
+		if (iType == IdentifierType.Table) {
+			System.out.println(" (table ) ");
+		} else {
+			System.out.println(" (column) ");
+			if (this.column != null) {
+				this.getType().print(indent + 1);
+			}
+		}
 	}
 
 	public String getName() {
@@ -46,6 +56,24 @@ public class Identifier extends Node {
 	}
 
 	public IdentifierType getIdentifierType() {
-		return type;
+		return iType;
+	}
+
+	public void setIdentifierType(IdentifierType type) {
+		this.iType = type;
+	}
+
+	public void setColumn(Column column) {
+		this.column = column;
+	}
+
+	public Column getColumn() {
+		return column;
+	}
+	
+	@Override
+	public Node accept(Visitor v) throws Exception {
+		return v.Visit(this);
+		
 	}
 }

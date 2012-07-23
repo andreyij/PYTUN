@@ -1,6 +1,7 @@
 package org.pytun.sql;
 
 import org.antlr.runtime.tree.CommonTree;
+import org.pytun.common.ColumnType;
 
 public class IntegerValue extends Value {
 
@@ -17,6 +18,10 @@ public class IntegerValue extends Value {
 
 	public void setValue(int value) {
 		this.value = value;
+		if (type == null){
+			type = new DataType(node);
+			type.setColumnType(ColumnType.INTEGER);
+		}
 	}
 
 	@Override
