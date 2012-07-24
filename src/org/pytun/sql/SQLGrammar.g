@@ -34,6 +34,7 @@ tokens {
   DELETE_STMT;
   INSERT_STMT;
   CREATE_STMT;
+  DROP_STMT;
   
   UPDATE_ASSIGNMENTS;
   
@@ -100,6 +101,18 @@ create_statement
     ^(CREATE_STMT identifier table_columns_def)
   ;
 
+drop_statement
+  :
+  DROP TABLE identifier
+    ->
+    ^(DROP_STMT identifier)
+  ;
+
+alter_statement
+  :
+  ALTER
+  ;
+
 table_columns_def
   : table_column_def (',' table_column_def)*
     -> ^(COLUMN_DEF_LIST table_column_def+)
@@ -117,16 +130,6 @@ type_specifier
   | DATE
   | TIME
   | TIMESTAMP
-  ;
-
-drop_statement
-  :
-  DROP
-  ;
-
-alter_statement
-  :
-  ALTER
   ;
 
 expression_list

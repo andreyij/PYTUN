@@ -1,11 +1,11 @@
 package org.pytun.sql.visitors;
 
-import java.lang.reflect.Method;
-
 import org.pytun.sql.Condition;
 import org.pytun.sql.DateValue;
 import org.pytun.sql.Divide;
+import org.pytun.sql.DropQuery;
 import org.pytun.sql.Expression;
+import org.pytun.sql.InsertQuery;
 import org.pytun.sql.IntegerValue;
 import org.pytun.sql.Minus;
 import org.pytun.sql.Modulo;
@@ -25,11 +25,7 @@ import org.pytun.sql.Identifier;
 
 public class Visitor {
 
-	public Node Visit(Node n) throws Exception {
-		Method method = Visitor.class.getDeclaredMethod("Visit", n.getClass());
-		return (Node) method.invoke(this, n);
-	}
-
+	/* statements */
 	public Node Visit(SelectQuery n) throws Exception {
 		return n;
 	}
@@ -39,6 +35,14 @@ public class Visitor {
 	}
 
 	public Node Visit(UpdateQuery n) throws Exception {
+		return n;
+	}
+
+	public Node Visit(InsertQuery n) throws Exception {
+		return n;
+	}
+
+	public Node Visit(DropQuery n) throws Exception {
 		return n;
 	}
 
@@ -101,10 +105,11 @@ public class Visitor {
 	}
 
 	/* predicates */
-	public Node Visit (Condition n) throws Exception {
+	public Node Visit(Condition n) throws Exception {
 		return n;
 	}
-	public Node Visit (Predicate n) throws Exception {
+
+	public Node Visit(Predicate n) throws Exception {
 		return n;
 	}
 }

@@ -38,7 +38,7 @@ public class Identifier extends Node {
 		printTabs(indent);
 		System.out.print(name);
 		if (iType == IdentifierType.Table) {
-			System.out.println(" (table ) ");
+			System.out.println(" (table "+table.getName()+")");
 		} else {
 			System.out.println(" (column) ");
 			if (this.column != null) {
@@ -75,5 +75,13 @@ public class Identifier extends Node {
 	public Node accept(Visitor v) throws Exception {
 		return v.Visit(this);
 		
+	}
+
+	public Table getTable() {
+		return table;
+	}
+
+	public void setTable(Table table) {
+		this.table = table;
 	}
 }

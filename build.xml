@@ -52,8 +52,12 @@
 			<classpath>
 				<pathelement location="${build}" />
 			</classpath>
+			<arg value="create table tbl(i int, s varchar(255));" />
+			<arg value="drop table t;" />
+			<arg value="insert into t(i, j, s) values(1, 2, '3');" />
 			<arg value="select 1+2+3+5-2*3 + i from t where i = 5;" />
 			<!--
+			<arg value="select 1+2+3+5-2*3 + i from t where i = 5;" />
 			<arg value="select d from u;" />
 			<arg value="select asdf from u;" />
 			<arg value="create table t(i int, d date, s varchar(255));" />

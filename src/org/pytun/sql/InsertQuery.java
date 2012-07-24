@@ -79,4 +79,26 @@ public class InsertQuery extends Query {
 		this.into = into;
 	}
 
+	@Override
+	public void print(int indent) {
+		printTabs(indent);
+		System.out.println("INSERT");
+
+		printTabs(indent + 1);
+		System.out.println("TABLE");
+		into.print(indent + 2);
+
+		printTabs(indent + 1);
+		System.out.println("COLUMNS");
+		for (Node n : columns) {
+			n.print(indent + 2);
+		}
+
+		printTabs(indent + 1);
+		System.out.println("VALUES");
+		for (Node n : values) {
+			n.print(indent + 2);
+		}
+	}
+
 }

@@ -18,6 +18,8 @@ public class QueryContext {
 			if (t == null) {
 				throw new Exception("Table " + i.getName() + " not found");
 			}
+			i.setIdentifierType(IdentifierType.Table);
+			i.setTable(t);
 			tables.add(t);
 		}
 	}

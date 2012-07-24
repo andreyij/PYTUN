@@ -95,8 +95,15 @@ create_statement returns [Query n]
   ;
 
 drop_statement returns [Query n]
+@init{
+  DropQuery q = new DropQuery($start);
+}
   :
-  DROP
+    ^(DROP_STMT identifier)
+    {
+      q.setTable($identifier.n);
+      $n = q;
+    }
   ;
 
 alter_statement returns [Query n]
