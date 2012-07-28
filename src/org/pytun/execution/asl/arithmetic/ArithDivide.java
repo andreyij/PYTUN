@@ -8,11 +8,10 @@ public class ArithDivide extends ArithNode {
 		this.left = left;
 		this.right = right;
 	}
-	
+
 	@Override
-	public boolean evaluate(ExecutionEnv env) {
+	public void evaluate(ExecutionEnv env) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

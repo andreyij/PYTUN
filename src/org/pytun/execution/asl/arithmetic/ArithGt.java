@@ -5,9 +5,8 @@ import org.pytun.execution.ExecutionEnv;
 public class ArithGt extends ArithNode {
 
 	@Override
-	public boolean evaluate(ExecutionEnv env) {
+	public void evaluate(ExecutionEnv env) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

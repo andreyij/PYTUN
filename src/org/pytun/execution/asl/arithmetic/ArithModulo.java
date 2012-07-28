@@ -10,9 +10,7 @@ public class ArithModulo extends ArithNode {
 	}
 	
 	@Override
-	public boolean evaluate(ExecutionEnv env) {
-		// TODO Auto-generated method stub
-		return false;
+	public void evaluate(ExecutionEnv env) throws Exception {
 	}
 
 	@Override

@@ -7,27 +7,22 @@ import org.pytun.execution.asl.instruction.Instruction;
 public class ArithInstruction extends ArithNode {
 
 	private Instruction instruction;
-	
+
 	public ArithInstruction(Instruction ins) {
 		instruction = ins;
 	}
-	
+
 	@Override
-	public boolean evaluate(ExecutionEnv env) {
+	public void evaluate(ExecutionEnv env) throws Exception {
 		if (instruction == null) {
-			System.out.println("Exec error: null instruction in ArithInstruction node!");
-			return false;
+			throw new Exception(
+					"Exec error: null instruction in ArithInstruction node!");
 		}
-		
+
 		if (instruction instanceof Call) {
-			((Call)instruction).execute(env);
+			((Call) instruction).execute(env);
 			// TODO: retrieve value from RETURN
-		} else {
-			System.out.println("Exec error: invalid instruction in ArithInstruction node (only CALL allowed)!");
-			return false;
 		}
-		
-		return true;
 	}
 
 	@Override

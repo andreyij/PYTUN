@@ -2,7 +2,7 @@ package org.pytun.execution.asl.instruction;
 
 import org.pytun.execution.ExecutionEnv;
 
-public class ScanClose extends Instruction {
+public class DropTable extends Instruction {
 
 	@Override
 	public void execute(ExecutionEnv env) throws Exception {

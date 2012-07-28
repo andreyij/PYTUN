@@ -10,9 +10,8 @@ public class ArithPlus extends ArithNode {
 	}
 	
 	@Override
-	public boolean evaluate(ExecutionEnv env) {
+	public void evaluate(ExecutionEnv env) throws Exception {
 		// TODO Auto-generated method stub
-		return true;
 	}
 
 	@Override
