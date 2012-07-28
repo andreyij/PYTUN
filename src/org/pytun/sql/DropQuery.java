@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.antlr.runtime.tree.CommonTree;
-import org.pytun.sql.Identifier.IdentifierType;
 
 public class DropQuery extends Query {
 

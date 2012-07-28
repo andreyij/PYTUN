@@ -41,10 +41,10 @@ select_statement returns [Query n]
 @init{
   SelectQuery sq = new SelectQuery($start);
 }
-  :^(SELECT_STMT e = expression_list il=identifier_list w = where_clause?)
+  :^(SELECT_STMT e = expression_list tl=table_spec_list w = where_clause?)
   {
     sq.setSelectList($e.list);
-    sq.setFrom($il.list);
+    sq.setFrom($tl.list);
     sq.setWhere($w.n);
     $n = (Query)sq;
   }
@@ -117,6 +117,17 @@ expression_list returns [List<Node> list]
 }
   : ^(EXPR_LIST (expr{$list.add($expr.n);})+);
 
+table_spec_list returns [List<Node> list]
+@init{
+  $list = new ArrayList<Node>();
+}
+  : (t=table_spec {$list.add($t.n);})+
+  ;
+
+table_spec returns [Node n]
+  : t=identifier{$n = $t.n;}
+    (p=identifier{((Identifier)$n).setPseudonym(((Identifier)$p.n).getName());})?
+  ;
 
 identifier_list returns [List<Node> list]
 @init{
@@ -204,8 +215,18 @@ $n = null;
   ;
 
 term returns [Node n]
-  : identifier {$n = $identifier.n;}
+  : c=column_identifier {$n = $c.n;}
   | value {$n = $value.n;}
+  ;
+
+column_identifier returns [Node n]
+  : i1=identifier {$n = $i1.n;}
+    (i2=identifier
+      {$n=$i2.n;
+      Identifier i = (Identifier)$n;
+      i.setTableAlias(((Identifier)$i1.n).getName());
+      }
+     )?
   ;
 
 value returns [Value n]

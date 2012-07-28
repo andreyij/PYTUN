@@ -27,6 +27,9 @@ public class Identifier extends Node {
 	 */
 	private Column column;
 
+	private String pseudonym;
+	private String tableAlias;
+
 	public Identifier(CommonTree t) {
 		super(t);
 		iType = IdentifierType.Column;
@@ -83,5 +86,21 @@ public class Identifier extends Node {
 
 	public void setTable(Table table) {
 		this.table = table;
+	}
+
+	public String getPseudonym() {
+		return pseudonym;
+	}
+
+	public void setPseudonym(String pseudonym) {
+		this.pseudonym = pseudonym;
+	}
+
+	public String getTableAlias() {
+		return tableAlias;
+	}
+
+	public void setTableAlias(String tableAlias) {
+		this.tableAlias = tableAlias;
 	}
 }

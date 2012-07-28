@@ -69,9 +69,9 @@ sql_statement
 
 select_statement
   :
-  SELECT expression_list FROM identifier_list (where_clause)?
+  SELECT expression_list FROM table_spec_list (where_clause)?
     ->
-      ^(SELECT_STMT expression_list identifier_list where_clause?)
+      ^(SELECT_STMT expression_list table_spec_list where_clause?)
   ;
 
 update_statement
@@ -139,9 +139,19 @@ expression_list
       ^(EXPR_LIST expr+)
   ;
 
+table_spec_list
+  : table_spec (','! table_spec)*
+  ;
+
+table_spec
+  : identifier ((AS?) identifier)?
+    -> identifier (identifier)?
+  ;
+
 identifier_list
   :
-  identifier (','! identifier)*;
+  identifier (','! identifier)*
+  ;
 
 where_clause
   :
@@ -177,8 +187,13 @@ simpleExpression
 
 term
   :
-  identifier
+  column_identifier
   | value
+  ;
+
+column_identifier
+  : identifier ('.' identifier)?
+    ->identifier identifier?
   ;
 
 value
@@ -260,6 +275,7 @@ SET : ('S'|'s')('E'|'e')('T'|'t');
 INTO: ('I'|'i')('N'|'n')('T'|'t')('O'|'o');
 VALUES: ('V'|'v')('A'|'a')('L'|'l')('U'|'u')('E'|'e')('S'|'s');
 TABLE: ('T'|'t')('A'|'a')('B'|'b')('L'|'l')('E'|'e');
+AS: ('A'|'a')('S'|'s');
 
 /* general tokens */
 fragment

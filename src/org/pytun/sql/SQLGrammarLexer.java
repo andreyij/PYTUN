@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g 2012-07-24 14:47:02
+// $ANTLR 3.4 D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g 2012-07-28 14:02:41
 
 package org.pytun.sql;
 
@@ -11,60 +11,62 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class SQLGrammarLexer extends Lexer {
     public static final int EOF=-1;
-    public static final int T__57=57;
+    public static final int T__58=58;
+    public static final int T__59=59;
     public static final int ALTER=4;
     public static final int AND=5;
-    public static final int CHAR=6;
-    public static final int COLUMN_DEF_LIST=7;
-    public static final int CREATE=8;
-    public static final int CREATE_STMT=9;
-    public static final int DATE=10;
-    public static final int DELETE=11;
-    public static final int DELETE_STMT=12;
-    public static final int DIGIT=13;
-    public static final int DIV=14;
-    public static final int DROP=15;
-    public static final int DROP_STMT=16;
-    public static final int EQ=17;
-    public static final int EXPR_LIST=18;
-    public static final int FLOAT=19;
-    public static final int FROM=20;
-    public static final int GE=21;
-    public static final int GT=22;
-    public static final int IDENTIFIER=23;
-    public static final int INSERT=24;
-    public static final int INSERT_STMT=25;
-    public static final int INT=26;
-    public static final int INTO=27;
-    public static final int LE=28;
-    public static final int LETTER=29;
-    public static final int LPAREN=30;
-    public static final int LT=31;
-    public static final int MINUS=32;
-    public static final int MOD=33;
-    public static final int MUL=34;
-    public static final int NE=35;
-    public static final int NEWLINE=36;
-    public static final int OR=37;
-    public static final int PLUS=38;
-    public static final int REAL_LIT=39;
-    public static final int RPAREN=40;
-    public static final int SELECT=41;
-    public static final int SELECT_STMT=42;
-    public static final int SEMI=43;
-    public static final int SET=44;
-    public static final int STRING_LIT=45;
-    public static final int TABLE=46;
-    public static final int TABLE_LIST=47;
-    public static final int TIME=48;
-    public static final int TIMESTAMP=49;
-    public static final int UPDATE=50;
-    public static final int UPDATE_ASSIGNMENTS=51;
-    public static final int UPDATE_STMT=52;
-    public static final int VALUES=53;
-    public static final int VARCHAR=54;
-    public static final int WHERE=55;
-    public static final int WHITESPACE=56;
+    public static final int AS=6;
+    public static final int CHAR=7;
+    public static final int COLUMN_DEF_LIST=8;
+    public static final int CREATE=9;
+    public static final int CREATE_STMT=10;
+    public static final int DATE=11;
+    public static final int DELETE=12;
+    public static final int DELETE_STMT=13;
+    public static final int DIGIT=14;
+    public static final int DIV=15;
+    public static final int DROP=16;
+    public static final int DROP_STMT=17;
+    public static final int EQ=18;
+    public static final int EXPR_LIST=19;
+    public static final int FLOAT=20;
+    public static final int FROM=21;
+    public static final int GE=22;
+    public static final int GT=23;
+    public static final int IDENTIFIER=24;
+    public static final int INSERT=25;
+    public static final int INSERT_STMT=26;
+    public static final int INT=27;
+    public static final int INTO=28;
+    public static final int LE=29;
+    public static final int LETTER=30;
+    public static final int LPAREN=31;
+    public static final int LT=32;
+    public static final int MINUS=33;
+    public static final int MOD=34;
+    public static final int MUL=35;
+    public static final int NE=36;
+    public static final int NEWLINE=37;
+    public static final int OR=38;
+    public static final int PLUS=39;
+    public static final int REAL_LIT=40;
+    public static final int RPAREN=41;
+    public static final int SELECT=42;
+    public static final int SELECT_STMT=43;
+    public static final int SEMI=44;
+    public static final int SET=45;
+    public static final int STRING_LIT=46;
+    public static final int TABLE=47;
+    public static final int TABLE_LIST=48;
+    public static final int TIME=49;
+    public static final int TIMESTAMP=50;
+    public static final int UPDATE=51;
+    public static final int UPDATE_ASSIGNMENTS=52;
+    public static final int UPDATE_STMT=53;
+    public static final int VALUES=54;
+    public static final int VARCHAR=55;
+    public static final int WHERE=56;
+    public static final int WHITESPACE=57;
 
     // delegates
     // delegators
@@ -79,15 +81,15 @@ public class SQLGrammarLexer extends Lexer {
     public SQLGrammarLexer(CharStream input, RecognizerSharedState state) {
         super(input,state);
     }
-    public String getGrammarFileName() { return "D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g"; }
+    public String getGrammarFileName() { return "D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g"; }
 
     // $ANTLR start "DIV"
     public final void mDIV() throws RecognitionException {
         try {
             int _type = DIV;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:11:5: ( '/' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:11:7: '/'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:11:5: ( '/' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:11:7: '/'
             {
             match('/'); 
 
@@ -107,8 +109,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = EQ;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:12:4: ( '=' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:12:6: '='
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:12:4: ( '=' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:12:6: '='
             {
             match('='); 
 
@@ -128,8 +130,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = GE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:13:4: ( '>=' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:13:6: '>='
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:13:4: ( '>=' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:13:6: '>='
             {
             match(">="); 
 
@@ -151,8 +153,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = GT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:14:4: ( '>' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:14:6: '>'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:14:4: ( '>' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:14:6: '>'
             {
             match('>'); 
 
@@ -172,8 +174,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = LE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:15:4: ( '<=' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:15:6: '<='
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:15:4: ( '<=' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:15:6: '<='
             {
             match("<="); 
 
@@ -195,8 +197,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = LPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:16:8: ( '(' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:16:10: '('
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:16:8: ( '(' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:16:10: '('
             {
             match('('); 
 
@@ -216,8 +218,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = LT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:17:4: ( '<' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:17:6: '<'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:17:4: ( '<' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:17:6: '<'
             {
             match('<'); 
 
@@ -237,8 +239,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = MINUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:18:7: ( '-' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:18:9: '-'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:18:7: ( '-' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:18:9: '-'
             {
             match('-'); 
 
@@ -258,8 +260,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = MOD;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:19:5: ( '%' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:19:7: '%'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:19:5: ( '%' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:19:7: '%'
             {
             match('%'); 
 
@@ -279,8 +281,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = MUL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:20:5: ( '*' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:20:7: '*'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:20:5: ( '*' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:20:7: '*'
             {
             match('*'); 
 
@@ -300,8 +302,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = NE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:21:4: ( '!=' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:21:6: '!='
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:21:4: ( '!=' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:21:6: '!='
             {
             match("!="); 
 
@@ -323,8 +325,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = PLUS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:22:6: ( '+' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:22:8: '+'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:22:6: ( '+' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:22:8: '+'
             {
             match('+'); 
 
@@ -344,8 +346,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = RPAREN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:23:8: ( ')' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:23:10: ')'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:23:8: ( ')' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:23:10: ')'
             {
             match(')'); 
 
@@ -365,8 +367,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = SEMI;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:24:6: ( ';' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:24:8: ';'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:24:6: ( ';' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:24:8: ';'
             {
             match(';'); 
 
@@ -381,13 +383,13 @@ public class SQLGrammarLexer extends Lexer {
     }
     // $ANTLR end "SEMI"
 
-    // $ANTLR start "T__57"
-    public final void mT__57() throws RecognitionException {
+    // $ANTLR start "T__58"
+    public final void mT__58() throws RecognitionException {
         try {
-            int _type = T__57;
+            int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:25:7: ( ',' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:25:9: ','
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:25:7: ( ',' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:25:9: ','
             {
             match(','); 
 
@@ -400,15 +402,36 @@ public class SQLGrammarLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "T__57"
+    // $ANTLR end "T__58"
+
+    // $ANTLR start "T__59"
+    public final void mT__59() throws RecognitionException {
+        try {
+            int _type = T__59;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:26:7: ( '.' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:26:9: '.'
+            {
+            match('.'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__59"
 
     // $ANTLR start "AND"
     public final void mAND() throws RecognitionException {
         try {
             int _type = AND;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:235:5: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:235:7: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:250:5: ( ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:250:7: ( 'A' | 'a' ) ( 'N' | 'n' ) ( 'D' | 'd' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -456,8 +479,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = OR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:236:4: ( ( 'O' | 'o' ) ( 'R' | 'r' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:236:6: ( 'O' | 'o' ) ( 'R' | 'r' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:251:4: ( ( 'O' | 'o' ) ( 'R' | 'r' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:251:6: ( 'O' | 'o' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='O'||input.LA(1)=='o' ) {
                 input.consume();
@@ -495,8 +518,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = DATE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:239:6: ( ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:239:8: ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:254:6: ( ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:254:8: ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -554,8 +577,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = TIME;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:240:6: ( ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:240:8: ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:255:6: ( ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:255:8: ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -613,8 +636,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = TIMESTAMP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:241:11: ( ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'P' | 'p' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:241:13: ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'P' | 'p' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:256:11: ( ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'P' | 'p' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:256:13: ( 'T' | 't' ) ( 'I' | 'i' ) ( 'M' | 'm' ) ( 'E' | 'e' ) ( 'S' | 's' ) ( 'T' | 't' ) ( 'A' | 'a' ) ( 'M' | 'm' ) ( 'P' | 'p' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -722,8 +745,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:242:5: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:242:7: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:257:5: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:257:7: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -771,8 +794,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = FLOAT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:243:7: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'A' | 'a' ) ( 'T' | 't' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:243:9: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'A' | 'a' ) ( 'T' | 't' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:258:7: ( ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'A' | 'a' ) ( 'T' | 't' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:258:9: ( 'F' | 'f' ) ( 'L' | 'l' ) ( 'O' | 'o' ) ( 'A' | 'a' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -840,8 +863,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = VARCHAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:244:9: ( ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'R' | 'r' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:244:11: ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'R' | 'r' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:259:9: ( ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'R' | 'r' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:259:11: ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'R' | 'r' ) ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='V'||input.LA(1)=='v' ) {
                 input.consume();
@@ -929,8 +952,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = CHAR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:245:6: ( ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'R' | 'r' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:245:8: ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'R' | 'r' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:260:6: ( ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'R' | 'r' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:260:8: ( 'C' | 'c' ) ( 'H' | 'h' ) ( 'A' | 'a' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -988,8 +1011,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = SELECT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:248:8: ( ( 'S' | 's' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:248:10: ( 'S' | 's' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:263:8: ( ( 'S' | 's' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:263:10: ( 'S' | 's' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'C' | 'c' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -1067,8 +1090,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = UPDATE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:249:8: ( ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:249:10: ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:264:8: ( ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:264:10: ( 'U' | 'u' ) ( 'P' | 'p' ) ( 'D' | 'd' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='U'||input.LA(1)=='u' ) {
                 input.consume();
@@ -1146,8 +1169,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = DELETE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:250:8: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:250:10: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'E' | 'e' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:265:8: ( ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:265:10: ( 'D' | 'd' ) ( 'E' | 'e' ) ( 'L' | 'l' ) ( 'E' | 'e' ) ( 'T' | 't' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -1225,8 +1248,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = INSERT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:251:8: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:251:10: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:266:8: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:266:10: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'S' | 's' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -1304,8 +1327,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = CREATE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:252:8: ( ( 'C' | 'c' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:252:9: ( 'C' | 'c' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:267:8: ( ( 'C' | 'c' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:267:9: ( 'C' | 'c' ) ( 'R' | 'r' ) ( 'E' | 'e' ) ( 'A' | 'a' ) ( 'T' | 't' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='C'||input.LA(1)=='c' ) {
                 input.consume();
@@ -1383,8 +1406,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = DROP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:253:6: ( ( 'D' | 'd' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:253:7: ( 'D' | 'd' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:268:6: ( ( 'D' | 'd' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:268:7: ( 'D' | 'd' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'P' | 'p' )
             {
             if ( input.LA(1)=='D'||input.LA(1)=='d' ) {
                 input.consume();
@@ -1442,8 +1465,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = ALTER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:254:7: ( ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:254:8: ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:269:7: ( ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:269:8: ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'T' | 't' ) ( 'E' | 'e' ) ( 'R' | 'r' )
             {
             if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
                 input.consume();
@@ -1511,8 +1534,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = FROM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:257:6: ( ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:257:8: ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:272:6: ( ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:272:8: ( 'F' | 'f' ) ( 'R' | 'r' ) ( 'O' | 'o' ) ( 'M' | 'm' )
             {
             if ( input.LA(1)=='F'||input.LA(1)=='f' ) {
                 input.consume();
@@ -1570,8 +1593,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = WHERE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:258:7: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:258:9: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:273:7: ( ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:273:9: ( 'W' | 'w' ) ( 'H' | 'h' ) ( 'E' | 'e' ) ( 'R' | 'r' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='W'||input.LA(1)=='w' ) {
                 input.consume();
@@ -1639,8 +1662,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = SET;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:259:5: ( ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:259:7: ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:274:5: ( ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:274:7: ( 'S' | 's' ) ( 'E' | 'e' ) ( 'T' | 't' )
             {
             if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
                 input.consume();
@@ -1688,8 +1711,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = INTO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:260:5: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'O' | 'o' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:260:7: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'O' | 'o' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:275:5: ( ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'O' | 'o' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:275:7: ( 'I' | 'i' ) ( 'N' | 'n' ) ( 'T' | 't' ) ( 'O' | 'o' )
             {
             if ( input.LA(1)=='I'||input.LA(1)=='i' ) {
                 input.consume();
@@ -1747,8 +1770,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = VALUES;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:261:7: ( ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:261:9: ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ( 'S' | 's' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:276:7: ( ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ( 'S' | 's' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:276:9: ( 'V' | 'v' ) ( 'A' | 'a' ) ( 'L' | 'l' ) ( 'U' | 'u' ) ( 'E' | 'e' ) ( 'S' | 's' )
             {
             if ( input.LA(1)=='V'||input.LA(1)=='v' ) {
                 input.consume();
@@ -1826,8 +1849,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = TABLE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:262:6: ( ( 'T' | 't' ) ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:262:8: ( 'T' | 't' ) ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'L' | 'l' ) ( 'E' | 'e' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:277:6: ( ( 'T' | 't' ) ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'L' | 'l' ) ( 'E' | 'e' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:277:8: ( 'T' | 't' ) ( 'A' | 'a' ) ( 'B' | 'b' ) ( 'L' | 'l' ) ( 'E' | 'e' )
             {
             if ( input.LA(1)=='T'||input.LA(1)=='t' ) {
                 input.consume();
@@ -1890,11 +1913,50 @@ public class SQLGrammarLexer extends Lexer {
     }
     // $ANTLR end "TABLE"
 
+    // $ANTLR start "AS"
+    public final void mAS() throws RecognitionException {
+        try {
+            int _type = AS;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:278:3: ( ( 'A' | 'a' ) ( 'S' | 's' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:278:5: ( 'A' | 'a' ) ( 'S' | 's' )
+            {
+            if ( input.LA(1)=='A'||input.LA(1)=='a' ) {
+                input.consume();
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;
+            }
+
+
+            if ( input.LA(1)=='S'||input.LA(1)=='s' ) {
+                input.consume();
+            }
+            else {
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;
+            }
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "AS"
+
     // $ANTLR start "LETTER"
     public final void mLETTER() throws RecognitionException {
         try {
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:267:8: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:283:8: ( ( 'a' .. 'z' | 'A' .. 'Z' ) )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -1919,8 +1981,8 @@ public class SQLGrammarLexer extends Lexer {
     // $ANTLR start "DIGIT"
     public final void mDIGIT() throws RecognitionException {
         try {
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:270:7: ( '0' .. '9' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:286:7: ( '0' .. '9' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                 input.consume();
@@ -1947,12 +2009,12 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = STRING_LIT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:271:12: ( '\\'' (~ '\\'' )* '\\'' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:271:14: '\\'' (~ '\\'' )* '\\''
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:287:12: ( '\\'' (~ '\\'' )* '\\'' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:287:14: '\\'' (~ '\\'' )* '\\''
             {
             match('\''); 
 
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:271:19: (~ '\\'' )*
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:287:19: (~ '\\'' )*
             loop1:
             do {
                 int alt1=2;
@@ -1965,7 +2027,7 @@ public class SQLGrammarLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:
+            	    // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:
             	    {
             	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
@@ -2004,10 +2066,10 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = REAL_LIT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:273:10: ( ( DIGIT )+ ( '.' ( DIGIT )+ )? )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:273:12: ( DIGIT )+ ( '.' ( DIGIT )+ )?
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:289:10: ( ( DIGIT )+ ( '.' ( DIGIT )+ )? )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:289:12: ( DIGIT )+ ( '.' ( DIGIT )+ )?
             {
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:273:12: ( DIGIT )+
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:289:12: ( DIGIT )+
             int cnt2=0;
             loop2:
             do {
@@ -2021,7 +2083,7 @@ public class SQLGrammarLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:
+            	    // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
             	        input.consume();
@@ -2046,7 +2108,7 @@ public class SQLGrammarLexer extends Lexer {
             } while (true);
 
 
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:273:21: ( '.' ( DIGIT )+ )?
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:289:21: ( '.' ( DIGIT )+ )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -2055,11 +2117,11 @@ public class SQLGrammarLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:273:22: '.' ( DIGIT )+
+                    // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:289:22: '.' ( DIGIT )+
                     {
                     match('.'); 
 
-                    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:273:26: ( DIGIT )+
+                    // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:289:26: ( DIGIT )+
                     int cnt3=0;
                     loop3:
                     do {
@@ -2073,7 +2135,7 @@ public class SQLGrammarLexer extends Lexer {
 
                         switch (alt3) {
                     	case 1 :
-                    	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:
+                    	    // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:
                     	    {
                     	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
                     	        input.consume();
@@ -2120,8 +2182,8 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = IDENTIFIER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:275:12: ( ( LETTER ) ( LETTER | DIGIT | '_' )* )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:275:14: ( LETTER ) ( LETTER | DIGIT | '_' )*
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:291:12: ( ( LETTER ) ( LETTER | DIGIT | '_' )* )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:291:14: ( LETTER ) ( LETTER | DIGIT | '_' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -2133,7 +2195,7 @@ public class SQLGrammarLexer extends Lexer {
             }
 
 
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:275:23: ( LETTER | DIGIT | '_' )*
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:291:23: ( LETTER | DIGIT | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -2146,7 +2208,7 @@ public class SQLGrammarLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:
+            	    // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:
             	    {
             	    if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
             	        input.consume();
@@ -2183,10 +2245,10 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = NEWLINE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:278:3: ( ( '\\r' )? '\\n' )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:278:5: ( '\\r' )? '\\n'
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:294:3: ( ( '\\r' )? '\\n' )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:294:5: ( '\\r' )? '\\n'
             {
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:278:5: ( '\\r' )?
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:294:5: ( '\\r' )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -2195,7 +2257,7 @@ public class SQLGrammarLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:278:5: '\\r'
+                    // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:294:5: '\\r'
                     {
                     match('\r'); 
 
@@ -2225,10 +2287,10 @@ public class SQLGrammarLexer extends Lexer {
         try {
             int _type = WHITESPACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:282:3: ( ( ' ' | '\\t' )+ )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:282:5: ( ' ' | '\\t' )+
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:298:3: ( ( ' ' | '\\t' )+ )
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:298:5: ( ' ' | '\\t' )+
             {
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:282:5: ( ' ' | '\\t' )+
+            // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:298:5: ( ' ' | '\\t' )+
             int cnt7=0;
             loop7:
             do {
@@ -2242,7 +2304,7 @@ public class SQLGrammarLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:
+            	    // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:
             	    {
             	    if ( input.LA(1)=='\t'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -2281,12 +2343,12 @@ public class SQLGrammarLexer extends Lexer {
     // $ANTLR end "WHITESPACE"
 
     public void mTokens() throws RecognitionException {
-        // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:8: ( DIV | EQ | GE | GT | LE | LPAREN | LT | MINUS | MOD | MUL | NE | PLUS | RPAREN | SEMI | T__57 | AND | OR | DATE | TIME | TIMESTAMP | INT | FLOAT | VARCHAR | CHAR | SELECT | UPDATE | DELETE | INSERT | CREATE | DROP | ALTER | FROM | WHERE | SET | INTO | VALUES | TABLE | STRING_LIT | REAL_LIT | IDENTIFIER | NEWLINE | WHITESPACE )
-        int alt8=42;
+        // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:8: ( DIV | EQ | GE | GT | LE | LPAREN | LT | MINUS | MOD | MUL | NE | PLUS | RPAREN | SEMI | T__58 | T__59 | AND | OR | DATE | TIME | TIMESTAMP | INT | FLOAT | VARCHAR | CHAR | SELECT | UPDATE | DELETE | INSERT | CREATE | DROP | ALTER | FROM | WHERE | SET | INTO | VALUES | TABLE | AS | STRING_LIT | REAL_LIT | IDENTIFIER | NEWLINE | WHITESPACE )
+        int alt8=44;
         alt8 = dfa8.predict(input);
         switch (alt8) {
             case 1 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:10: DIV
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:10: DIV
                 {
                 mDIV(); 
 
@@ -2294,7 +2356,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 2 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:14: EQ
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:14: EQ
                 {
                 mEQ(); 
 
@@ -2302,7 +2364,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 3 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:17: GE
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:17: GE
                 {
                 mGE(); 
 
@@ -2310,7 +2372,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 4 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:20: GT
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:20: GT
                 {
                 mGT(); 
 
@@ -2318,7 +2380,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 5 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:23: LE
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:23: LE
                 {
                 mLE(); 
 
@@ -2326,7 +2388,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 6 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:26: LPAREN
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:26: LPAREN
                 {
                 mLPAREN(); 
 
@@ -2334,7 +2396,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 7 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:33: LT
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:33: LT
                 {
                 mLT(); 
 
@@ -2342,7 +2404,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 8 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:36: MINUS
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:36: MINUS
                 {
                 mMINUS(); 
 
@@ -2350,7 +2412,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 9 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:42: MOD
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:42: MOD
                 {
                 mMOD(); 
 
@@ -2358,7 +2420,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 10 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:46: MUL
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:46: MUL
                 {
                 mMUL(); 
 
@@ -2366,7 +2428,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 11 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:50: NE
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:50: NE
                 {
                 mNE(); 
 
@@ -2374,7 +2436,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 12 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:53: PLUS
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:53: PLUS
                 {
                 mPLUS(); 
 
@@ -2382,7 +2444,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 13 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:58: RPAREN
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:58: RPAREN
                 {
                 mRPAREN(); 
 
@@ -2390,7 +2452,7 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 14 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:65: SEMI
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:65: SEMI
                 {
                 mSEMI(); 
 
@@ -2398,223 +2460,239 @@ public class SQLGrammarLexer extends Lexer {
                 }
                 break;
             case 15 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:70: T__57
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:70: T__58
                 {
-                mT__57(); 
+                mT__58(); 
 
 
                 }
                 break;
             case 16 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:76: AND
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:76: T__59
+                {
+                mT__59(); 
+
+
+                }
+                break;
+            case 17 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:82: AND
                 {
                 mAND(); 
 
 
                 }
                 break;
-            case 17 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:80: OR
+            case 18 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:86: OR
                 {
                 mOR(); 
 
 
                 }
                 break;
-            case 18 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:83: DATE
+            case 19 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:89: DATE
                 {
                 mDATE(); 
 
 
                 }
                 break;
-            case 19 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:88: TIME
+            case 20 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:94: TIME
                 {
                 mTIME(); 
 
 
                 }
                 break;
-            case 20 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:93: TIMESTAMP
+            case 21 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:99: TIMESTAMP
                 {
                 mTIMESTAMP(); 
 
 
                 }
                 break;
-            case 21 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:103: INT
+            case 22 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:109: INT
                 {
                 mINT(); 
 
 
                 }
                 break;
-            case 22 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:107: FLOAT
+            case 23 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:113: FLOAT
                 {
                 mFLOAT(); 
 
 
                 }
                 break;
-            case 23 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:113: VARCHAR
+            case 24 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:119: VARCHAR
                 {
                 mVARCHAR(); 
 
 
                 }
                 break;
-            case 24 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:121: CHAR
+            case 25 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:127: CHAR
                 {
                 mCHAR(); 
 
 
                 }
                 break;
-            case 25 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:126: SELECT
+            case 26 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:132: SELECT
                 {
                 mSELECT(); 
 
 
                 }
                 break;
-            case 26 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:133: UPDATE
+            case 27 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:139: UPDATE
                 {
                 mUPDATE(); 
 
 
                 }
                 break;
-            case 27 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:140: DELETE
+            case 28 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:146: DELETE
                 {
                 mDELETE(); 
 
 
                 }
                 break;
-            case 28 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:147: INSERT
+            case 29 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:153: INSERT
                 {
                 mINSERT(); 
 
 
                 }
                 break;
-            case 29 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:154: CREATE
+            case 30 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:160: CREATE
                 {
                 mCREATE(); 
 
 
                 }
                 break;
-            case 30 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:161: DROP
+            case 31 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:167: DROP
                 {
                 mDROP(); 
 
 
                 }
                 break;
-            case 31 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:166: ALTER
+            case 32 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:172: ALTER
                 {
                 mALTER(); 
 
 
                 }
                 break;
-            case 32 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:172: FROM
+            case 33 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:178: FROM
                 {
                 mFROM(); 
 
 
                 }
                 break;
-            case 33 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:177: WHERE
+            case 34 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:183: WHERE
                 {
                 mWHERE(); 
 
 
                 }
                 break;
-            case 34 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:183: SET
+            case 35 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:189: SET
                 {
                 mSET(); 
 
 
                 }
                 break;
-            case 35 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:187: INTO
+            case 36 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:193: INTO
                 {
                 mINTO(); 
 
 
                 }
                 break;
-            case 36 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:192: VALUES
+            case 37 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:198: VALUES
                 {
                 mVALUES(); 
 
 
                 }
                 break;
-            case 37 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:199: TABLE
+            case 38 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:205: TABLE
                 {
                 mTABLE(); 
 
 
                 }
                 break;
-            case 38 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:205: STRING_LIT
+            case 39 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:211: AS
+                {
+                mAS(); 
+
+
+                }
+                break;
+            case 40 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:214: STRING_LIT
                 {
                 mSTRING_LIT(); 
 
 
                 }
                 break;
-            case 39 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:216: REAL_LIT
+            case 41 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:225: REAL_LIT
                 {
                 mREAL_LIT(); 
 
 
                 }
                 break;
-            case 40 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:225: IDENTIFIER
+            case 42 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:234: IDENTIFIER
                 {
                 mIDENTIFIER(); 
 
 
                 }
                 break;
-            case 41 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:236: NEWLINE
+            case 43 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:245: NEWLINE
                 {
                 mNEWLINE(); 
 
 
                 }
                 break;
-            case 42 :
-                // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:1:244: WHITESPACE
+            case 44 :
+                // D:\\workspace\\MiniDB\\src\\org\\pytun\\sql\\SQLGrammar.g:1:253: WHITESPACE
                 {
                 mWHITESPACE(); 
 
@@ -2629,20 +2707,20 @@ public class SQLGrammarLexer extends Lexer {
 
     protected DFA8 dfa8 = new DFA8(this);
     static final String DFA8_eotS =
-        "\3\uffff\1\37\1\41\11\uffff\13\33\11\uffff\2\33\1\65\16\33\1\107"+
-        "\1\33\1\uffff\5\33\1\117\10\33\1\130\2\33\1\uffff\1\33\1\134\1\33"+
-        "\1\136\1\140\1\33\1\142\1\uffff\2\33\1\145\2\33\1\150\2\33\1\uffff"+
-        "\2\33\1\155\1\uffff\1\33\1\uffff\1\33\1\uffff\1\160\1\uffff\1\33"+
-        "\1\162\1\uffff\2\33\1\uffff\3\33\1\170\1\uffff\1\171\1\33\1\uffff"+
-        "\1\173\1\uffff\1\33\1\175\1\176\1\177\1\u0080\2\uffff\1\33\1\uffff"+
-        "\1\u0082\4\uffff\1\33\1\uffff\1\u0084\1\uffff";
+        "\3\uffff\1\40\1\42\12\uffff\13\34\11\uffff\2\34\1\67\1\70\16\34"+
+        "\1\112\1\34\2\uffff\5\34\1\122\10\34\1\133\2\34\1\uffff\1\34\1\137"+
+        "\1\34\1\141\1\143\1\34\1\145\1\uffff\2\34\1\150\2\34\1\153\2\34"+
+        "\1\uffff\2\34\1\160\1\uffff\1\34\1\uffff\1\34\1\uffff\1\163\1\uffff"+
+        "\1\34\1\165\1\uffff\2\34\1\uffff\3\34\1\173\1\uffff\1\174\1\34\1"+
+        "\uffff\1\176\1\uffff\1\34\1\u0080\1\u0081\1\u0082\1\u0083\2\uffff"+
+        "\1\34\1\uffff\1\u0085\4\uffff\1\34\1\uffff\1\u0087\1\uffff";
     static final String DFA8_eofS =
-        "\u0085\uffff";
+        "\u0088\uffff";
     static final String DFA8_minS =
-        "\1\11\2\uffff\2\75\11\uffff\1\114\1\122\2\101\1\116\1\114\1\101"+
-        "\1\110\1\105\1\120\1\110\11\uffff\1\104\1\124\1\60\1\124\1\114\1"+
+        "\1\11\2\uffff\2\75\12\uffff\1\114\1\122\2\101\1\116\1\114\1\101"+
+        "\1\110\1\105\1\120\1\110\11\uffff\1\104\1\124\2\60\1\124\1\114\1"+
         "\117\1\115\1\102\1\123\2\117\1\114\1\101\1\105\1\114\1\104\1\105"+
-        "\1\60\1\105\1\uffff\2\105\1\120\1\105\1\114\1\60\1\105\1\101\1\115"+
+        "\1\60\1\105\2\uffff\2\105\1\120\1\105\1\114\1\60\1\105\1\101\1\115"+
         "\1\103\1\125\1\122\1\101\1\105\1\60\1\101\1\122\1\uffff\1\122\1"+
         "\60\1\124\2\60\1\105\1\60\1\uffff\1\122\1\124\1\60\1\110\1\105\1"+
         "\60\1\124\1\103\1\uffff\1\124\1\105\1\60\1\uffff\1\105\1\uffff\1"+
@@ -2651,10 +2729,10 @@ public class SQLGrammarLexer extends Lexer {
         "\1\122\4\60\2\uffff\1\115\1\uffff\1\60\4\uffff\1\120\1\uffff\1\60"+
         "\1\uffff";
     static final String DFA8_maxS =
-        "\1\172\2\uffff\2\75\11\uffff\1\156\2\162\1\151\1\156\1\162\1\141"+
-        "\1\162\1\145\1\160\1\150\11\uffff\1\144\1\164\1\172\1\164\1\154"+
+        "\1\172\2\uffff\2\75\12\uffff\1\163\2\162\1\151\1\156\1\162\1\141"+
+        "\1\162\1\145\1\160\1\150\11\uffff\1\144\1\164\2\172\1\164\1\154"+
         "\1\157\1\155\1\142\1\164\2\157\1\162\1\141\1\145\1\164\1\144\1\145"+
-        "\1\172\1\145\1\uffff\2\145\1\160\1\145\1\154\1\172\1\145\1\141\1"+
+        "\1\172\1\145\2\uffff\2\145\1\160\1\145\1\154\1\172\1\145\1\141\1"+
         "\155\1\143\1\165\1\162\1\141\1\145\1\172\1\141\1\162\1\uffff\1\162"+
         "\1\172\1\164\2\172\1\145\1\172\1\uffff\1\162\1\164\1\172\1\150\1"+
         "\145\1\172\1\164\1\143\1\uffff\1\164\1\145\1\172\1\uffff\1\145\1"+
@@ -2664,154 +2742,158 @@ public class SQLGrammarLexer extends Lexer {
         "\uffff\1\172\1\uffff";
     static final String DFA8_acceptS =
         "\1\uffff\1\1\1\2\2\uffff\1\6\1\10\1\11\1\12\1\13\1\14\1\15\1\16"+
-        "\1\17\13\uffff\1\46\1\47\1\50\1\51\1\52\1\3\1\4\1\5\1\7\23\uffff"+
-        "\1\21\21\uffff\1\20\7\uffff\1\25\10\uffff\1\42\3\uffff\1\22\1\uffff"+
-        "\1\36\1\uffff\1\23\1\uffff\1\43\2\uffff\1\40\2\uffff\1\30\4\uffff"+
-        "\1\37\2\uffff\1\45\1\uffff\1\26\5\uffff\1\41\1\33\1\uffff\1\34\1"+
-        "\uffff\1\44\1\35\1\31\1\32\1\uffff\1\27\1\uffff\1\24";
+        "\1\17\1\20\13\uffff\1\50\1\51\1\52\1\53\1\54\1\3\1\4\1\5\1\7\24"+
+        "\uffff\1\47\1\22\21\uffff\1\21\7\uffff\1\26\10\uffff\1\43\3\uffff"+
+        "\1\23\1\uffff\1\37\1\uffff\1\24\1\uffff\1\44\2\uffff\1\41\2\uffff"+
+        "\1\31\4\uffff\1\40\2\uffff\1\46\1\uffff\1\27\5\uffff\1\42\1\34\1"+
+        "\uffff\1\35\1\uffff\1\45\1\36\1\32\1\33\1\uffff\1\30\1\uffff\1\25";
     static final String DFA8_specialS =
-        "\u0085\uffff}>";
+        "\u0088\uffff}>";
     static final String[] DFA8_transitionS = {
-            "\1\35\1\34\2\uffff\1\34\22\uffff\1\35\1\11\3\uffff\1\7\1\uffff"+
-            "\1\31\1\5\1\13\1\10\1\12\1\15\1\6\1\uffff\1\1\12\32\1\uffff"+
-            "\1\14\1\4\1\2\1\3\2\uffff\1\16\1\33\1\25\1\20\1\33\1\23\2\33"+
-            "\1\22\5\33\1\17\3\33\1\26\1\21\1\27\1\24\1\30\3\33\6\uffff\1"+
-            "\16\1\33\1\25\1\20\1\33\1\23\2\33\1\22\5\33\1\17\3\33\1\26\1"+
-            "\21\1\27\1\24\1\30\3\33",
+            "\1\36\1\35\2\uffff\1\35\22\uffff\1\36\1\11\3\uffff\1\7\1\uffff"+
+            "\1\32\1\5\1\13\1\10\1\12\1\15\1\6\1\16\1\1\12\33\1\uffff\1\14"+
+            "\1\4\1\2\1\3\2\uffff\1\17\1\34\1\26\1\21\1\34\1\24\2\34\1\23"+
+            "\5\34\1\20\3\34\1\27\1\22\1\30\1\25\1\31\3\34\6\uffff\1\17\1"+
+            "\34\1\26\1\21\1\34\1\24\2\34\1\23\5\34\1\20\3\34\1\27\1\22\1"+
+            "\30\1\25\1\31\3\34",
             "",
             "",
-            "\1\36",
-            "\1\40",
-            "",
-            "",
-            "",
+            "\1\37",
+            "\1\41",
             "",
             "",
             "",
             "",
             "",
             "",
-            "\1\43\1\uffff\1\42\35\uffff\1\43\1\uffff\1\42",
-            "\1\44\37\uffff\1\44",
-            "\1\45\3\uffff\1\46\14\uffff\1\47\16\uffff\1\45\3\uffff\1\46"+
-            "\14\uffff\1\47",
-            "\1\51\7\uffff\1\50\27\uffff\1\51\7\uffff\1\50",
-            "\1\52\37\uffff\1\52",
-            "\1\53\5\uffff\1\54\31\uffff\1\53\5\uffff\1\54",
-            "\1\55\37\uffff\1\55",
-            "\1\56\11\uffff\1\57\25\uffff\1\56\11\uffff\1\57",
-            "\1\60\37\uffff\1\60",
-            "\1\61\37\uffff\1\61",
+            "",
+            "",
+            "",
+            "",
+            "\1\44\1\uffff\1\43\4\uffff\1\45\30\uffff\1\44\1\uffff\1\43"+
+            "\4\uffff\1\45",
+            "\1\46\37\uffff\1\46",
+            "\1\47\3\uffff\1\50\14\uffff\1\51\16\uffff\1\47\3\uffff\1\50"+
+            "\14\uffff\1\51",
+            "\1\53\7\uffff\1\52\27\uffff\1\53\7\uffff\1\52",
+            "\1\54\37\uffff\1\54",
+            "\1\55\5\uffff\1\56\31\uffff\1\55\5\uffff\1\56",
+            "\1\57\37\uffff\1\57",
+            "\1\60\11\uffff\1\61\25\uffff\1\60\11\uffff\1\61",
             "\1\62\37\uffff\1\62",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\63\37\uffff\1\63",
             "\1\64\37\uffff\1\64",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\65\37\uffff\1\65",
             "\1\66\37\uffff\1\66",
-            "\1\67\37\uffff\1\67",
-            "\1\70\37\uffff\1\70",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "\1\71\37\uffff\1\71",
             "\1\72\37\uffff\1\72",
-            "\1\74\1\73\36\uffff\1\74\1\73",
+            "\1\73\37\uffff\1\73",
+            "\1\74\37\uffff\1\74",
             "\1\75\37\uffff\1\75",
-            "\1\76\37\uffff\1\76",
-            "\1\100\5\uffff\1\77\31\uffff\1\100\5\uffff\1\77",
+            "\1\77\1\76\36\uffff\1\77\1\76",
+            "\1\100\37\uffff\1\100",
             "\1\101\37\uffff\1\101",
-            "\1\102\37\uffff\1\102",
-            "\1\103\7\uffff\1\104\27\uffff\1\103\7\uffff\1\104",
+            "\1\103\5\uffff\1\102\31\uffff\1\103\5\uffff\1\102",
+            "\1\104\37\uffff\1\104",
             "\1\105\37\uffff\1\105",
-            "\1\106\37\uffff\1\106",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\1\106\7\uffff\1\107\27\uffff\1\106\7\uffff\1\107",
             "\1\110\37\uffff\1\110",
-            "",
             "\1\111\37\uffff\1\111",
-            "\1\112\37\uffff\1\112",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "\1\113\37\uffff\1\113",
+            "",
+            "",
             "\1\114\37\uffff\1\114",
             "\1\115\37\uffff\1\115",
-            "\12\33\7\uffff\16\33\1\116\13\33\4\uffff\1\33\1\uffff\16\33"+
-            "\1\116\13\33",
+            "\1\116\37\uffff\1\116",
+            "\1\117\37\uffff\1\117",
             "\1\120\37\uffff\1\120",
-            "\1\121\37\uffff\1\121",
-            "\1\122\37\uffff\1\122",
+            "\12\34\7\uffff\16\34\1\121\13\34\4\uffff\1\34\1\uffff\16\34"+
+            "\1\121\13\34",
             "\1\123\37\uffff\1\123",
             "\1\124\37\uffff\1\124",
             "\1\125\37\uffff\1\125",
             "\1\126\37\uffff\1\126",
             "\1\127\37\uffff\1\127",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\1\130\37\uffff\1\130",
             "\1\131\37\uffff\1\131",
             "\1\132\37\uffff\1\132",
-            "",
-            "\1\133\37\uffff\1\133",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\1\134\37\uffff\1\134",
             "\1\135\37\uffff\1\135",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
-            "\12\33\7\uffff\22\33\1\137\7\33\4\uffff\1\33\1\uffff\22\33"+
-            "\1\137\7\33",
-            "\1\141\37\uffff\1\141",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
             "",
-            "\1\143\37\uffff\1\143",
+            "\1\136\37\uffff\1\136",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\1\140\37\uffff\1\140",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\12\34\7\uffff\22\34\1\142\7\34\4\uffff\1\34\1\uffff\22\34"+
+            "\1\142\7\34",
             "\1\144\37\uffff\1\144",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "",
             "\1\146\37\uffff\1\146",
             "\1\147\37\uffff\1\147",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "\1\151\37\uffff\1\151",
             "\1\152\37\uffff\1\152",
-            "",
-            "\1\153\37\uffff\1\153",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "\1\154\37\uffff\1\154",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\1\155\37\uffff\1\155",
             "",
             "\1\156\37\uffff\1\156",
-            "",
             "\1\157\37\uffff\1\157",
-            "",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "",
             "\1\161\37\uffff\1\161",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
             "",
-            "\1\163\37\uffff\1\163",
+            "\1\162\37\uffff\1\162",
+            "",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "",
             "\1\164\37\uffff\1\164",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "",
-            "\1\165\37\uffff\1\165",
             "\1\166\37\uffff\1\166",
             "\1\167\37\uffff\1\167",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
             "",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\1\170\37\uffff\1\170",
+            "\1\171\37\uffff\1\171",
             "\1\172\37\uffff\1\172",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\1\175\37\uffff\1\175",
             "",
-            "\1\174\37\uffff\1\174",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "",
-            "",
-            "\1\u0081\37\uffff\1\u0081",
-            "",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
-            "",
+            "\1\177\37\uffff\1\177",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "",
             "",
+            "\1\u0084\37\uffff\1\u0084",
             "",
-            "\1\u0083\37\uffff\1\u0083",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             "",
-            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "",
+            "",
+            "",
+            "\1\u0086\37\uffff\1\u0086",
+            "",
+            "\12\34\7\uffff\32\34\4\uffff\1\34\1\uffff\32\34",
             ""
     };
 
@@ -2845,7 +2927,7 @@ public class SQLGrammarLexer extends Lexer {
             this.transition = DFA8_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( DIV | EQ | GE | GT | LE | LPAREN | LT | MINUS | MOD | MUL | NE | PLUS | RPAREN | SEMI | T__57 | AND | OR | DATE | TIME | TIMESTAMP | INT | FLOAT | VARCHAR | CHAR | SELECT | UPDATE | DELETE | INSERT | CREATE | DROP | ALTER | FROM | WHERE | SET | INTO | VALUES | TABLE | STRING_LIT | REAL_LIT | IDENTIFIER | NEWLINE | WHITESPACE );";
+            return "1:1: Tokens : ( DIV | EQ | GE | GT | LE | LPAREN | LT | MINUS | MOD | MUL | NE | PLUS | RPAREN | SEMI | T__58 | T__59 | AND | OR | DATE | TIME | TIMESTAMP | INT | FLOAT | VARCHAR | CHAR | SELECT | UPDATE | DELETE | INSERT | CREATE | DROP | ALTER | FROM | WHERE | SET | INTO | VALUES | TABLE | AS | STRING_LIT | REAL_LIT | IDENTIFIER | NEWLINE | WHITESPACE );";
         }
     }
  

@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.antlr.runtime.tree.CommonTree;
-import org.pytun.database.Database;
 import org.pytun.sql.visitors.Visitor;
-import org.pytun.storage.catalog.Column;
-import org.pytun.storage.catalog.Table;
 
 public class CreateQuery extends Query {
 	private Identifier tableName;
