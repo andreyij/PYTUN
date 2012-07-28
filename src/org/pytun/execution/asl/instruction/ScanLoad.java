@@ -5,9 +5,8 @@ import org.pytun.execution.ExecutionEnv;
 public class ScanLoad extends Instruction {
 
 	@Override
-	public boolean execute(ExecutionEnv env) {
+	public void execute(ExecutionEnv env) throws Exception {
 		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override

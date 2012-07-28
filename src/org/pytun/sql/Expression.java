@@ -1,6 +1,10 @@
 package org.pytun.sql;
 
+import java.lang.reflect.Method;
+
 import org.antlr.runtime.tree.CommonTree;
+import org.pytun.sql.visitors.Visitor;
+import org.pytun.common.ColumnType;
 
 public class Expression extends Node {
 	protected Node left;
@@ -32,4 +36,38 @@ public class Expression extends Node {
 		this.right = right;
 	}
 
+	@Override
+	protected void setupAST() {
+		if (left != null) {
+			left.setParent(this);
+			left.setStatement(this.getStatement());
+			left.setupAST();
+		}
+		if (right != null) {
+			right.setParent(this);
+			right.setStatement(this.getStatement());
+			right.setupAST();
+		}
+	}
+
+	@Override
+	public Node accept(Visitor v) throws Exception {
+		left = left.accept(v);
+		right = right.accept(v);
+		return v.Visit(this);
+	}
+
+	public ColumnType typesCompatible() {
+		return ColumnType.TYPE_NONE;
+	}
+
+	public Value performOperation() throws Exception {
+		if (this instanceof ArithmeticExpression && left instanceof Value
+				&& right instanceof Value) {
+			Method method = this.getClass().getDeclaredMethod(
+					"performOperation", left.getClass(), right.getClass());
+			return (Value) method.invoke(this, left, right);
+		}
+		return null;
+	}
 }

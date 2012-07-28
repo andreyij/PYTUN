@@ -33,11 +33,14 @@ tokens {
   UPDATE_STMT;
   DELETE_STMT;
   INSERT_STMT;
+  CREATE_STMT;
+  DROP_STMT;
   
   UPDATE_ASSIGNMENTS;
   
   TABLE_LIST;
   EXPR_LIST;
+  COLUMN_DEF_LIST;
 }
 
 @parser::header {
@@ -66,9 +69,9 @@ sql_statement
 
 select_statement
   :
-  SELECT expression_list FROM identifier_list (where_clause)?
+  SELECT expression_list FROM table_spec_list (where_clause)?
     ->
-      ^(SELECT_STMT expression_list identifier_list where_clause?)
+      ^(SELECT_STMT expression_list table_spec_list where_clause?)
   ;
 
 update_statement
@@ -93,17 +96,40 @@ delete_statement
 
 create_statement
   :
-  CREATE
+  CREATE TABLE identifier LPAREN table_columns_def RPAREN
+    ->
+    ^(CREATE_STMT identifier table_columns_def)
   ;
 
 drop_statement
   :
-  DROP
+  DROP TABLE identifier
+    ->
+    ^(DROP_STMT identifier)
   ;
 
 alter_statement
   :
   ALTER
+  ;
+
+table_columns_def
+  : table_column_def (',' table_column_def)*
+    -> ^(COLUMN_DEF_LIST table_column_def+)
+  ;
+ 
+table_column_def
+  : identifier type_specifier
+  ;
+
+type_specifier
+  : INT
+  | FLOAT
+  | CHAR LPAREN number_value RPAREN
+  | VARCHAR LPAREN number_value RPAREN
+  | DATE
+  | TIME
+  | TIMESTAMP
   ;
 
 expression_list
@@ -113,9 +139,19 @@ expression_list
       ^(EXPR_LIST expr+)
   ;
 
+table_spec_list
+  : table_spec (','! table_spec)*
+  ;
+
+table_spec
+  : identifier ((AS?) identifier)?
+    -> identifier (identifier)?
+  ;
+
 identifier_list
   :
-  identifier (','! identifier)*;
+  identifier (','! identifier)*
+  ;
 
 where_clause
   :
@@ -151,8 +187,13 @@ simpleExpression
 
 term
   :
-  identifier
+  column_identifier
   | value
+  ;
+
+column_identifier
+  : identifier ('.' identifier)?
+    ->identifier identifier?
   ;
 
 value
@@ -233,6 +274,9 @@ WHERE : ('W'|'w')('H'|'h')('E'|'e')('R'|'r')('E'|'e');
 SET : ('S'|'s')('E'|'e')('T'|'t');
 INTO: ('I'|'i')('N'|'n')('T'|'t')('O'|'o');
 VALUES: ('V'|'v')('A'|'a')('L'|'l')('U'|'u')('E'|'e')('S'|'s');
+TABLE: ('T'|'t')('A'|'a')('B'|'b')('L'|'l')('E'|'e');
+AS: ('A'|'a')('S'|'s');
+
 /* general tokens */
 fragment
 LETTER : ('a'..'z' | 'A'..'Z') ;

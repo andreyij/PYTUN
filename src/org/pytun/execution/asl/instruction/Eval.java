@@ -9,32 +9,29 @@ public class Eval extends Instruction {
 
 	private ValueId returnValue;
 	private Arithmetic arithmetic;
-	
+
 	public Eval(ValueId rv, Arithmetic ar) {
 		returnValue = rv;
 		arithmetic = ar;
 	}
-	
+
 	@Override
-	public boolean execute(ExecutionEnv env) {
-		
+	public void execute(ExecutionEnv env) throws Exception {
+
 		ArithNode node = arithmetic.getArithmeticNode();
 		if (node == null) {
-			return false;
+			throw new Exception("Null arithmetic node!");
 		}
-		
-		if (!node.evaluate(env)) {
-			return false;
-		}
-		
+
+		node.evaluate(env);
+
 		returnValue.setValue(node.getValue());
-		
-		return false;
 	}
 
 	@Override
 	public String toString() {
-		return "EVAL (" + returnValue.toString() + " = " + arithmetic.toString() + ")";
+		return "EVAL (" + returnValue.toString() + " = "
+				+ arithmetic.toString() + ")";
 	}
 
 	public ValueId getReturnValue() {

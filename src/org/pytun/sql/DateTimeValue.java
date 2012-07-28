@@ -6,7 +6,7 @@ import org.antlr.runtime.tree.CommonTree;
 
 public class DateTimeValue extends Value {
 	private Date value;
-	
+
 	public DateTimeValue(CommonTree t) {
 		super(t);
 		// TODO Auto-generated constructor stub
@@ -18,6 +18,12 @@ public class DateTimeValue extends Value {
 
 	public void setValue(Date value) {
 		this.value = value;
+	}
+
+	@Override
+	public void print(int indent) {
+		printTabs(indent);
+		System.out.println(value);
 	}
 
 }

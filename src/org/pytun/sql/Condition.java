@@ -1,6 +1,7 @@
 package org.pytun.sql;
 
 import org.antlr.runtime.tree.CommonTree;
+import org.pytun.sql.visitors.Visitor;
 
 public class Condition extends Node {
 	protected Node left;
@@ -25,6 +26,24 @@ public class Condition extends Node {
 
 	public void setRight(Node right) {
 		this.right = right;
+	}
+
+	@Override
+	protected void setupAST() {
+		left.setParent(this);
+		right.setParent(this);
+		left.setStatement(getStatement());
+		right.setStatement(getStatement());
+		left.setupAST();
+		right.setupAST();
+	}
+
+
+	@Override
+	public Node accept(Visitor v) throws Exception {
+		left = left.accept(v);
+		right = right.accept(v);
+		return v.Visit(this);
 	}
 
 }
