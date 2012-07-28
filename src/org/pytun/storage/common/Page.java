@@ -61,6 +61,50 @@ public class Page {
 			   bitSet.getSize(); /* bit set size */
 	}
 	
+	public void deleteRecord (int slotID)
+	{
+		if (bitSet.isBitSetAt(slotID) == false)
+		{
+			System.err.println ("Delete failed: Slot is empty!");
+			return;
+		}
+		
+		bitSet.unsetBitAt(slotID);
+		isDirty = true;
+		
+		Record deletedRec = records.elementAt(slotID);
+		/* clear record information */
+		deletedRec.clearInfo();
+	}
+	
+	public void insertRecord (Record rec)
+	{
+		if (bitSet.getNoSetBits() == bitSet.getSize())
+		{
+			System.err.println ("Page already full! insertion should not have been attempted here!");
+			return;
+		}
+		
+		if (rec.getRID() != null)
+		{
+			for (int i = 0; i < nrSlots; i++)
+			{
+				if (bitSet.isBitSetAt(i) == false)
+				{
+					bitSet.setBitAt(i);
+					isDirty = true;
+					records.elementAt(i).copyRecordInfo(rec);
+					break;
+				}
+			}
+		}
+		else
+		{
+			System.err.println ("Invalid new record! RecordID must not be already set!");
+			return;
+		}
+	}
+	
 	public void writeRecordAt (Record rec, int index) throws Exception
 	{
 		if (index >= nrSlots)
@@ -119,5 +163,11 @@ public class Page {
 	public void setDirty ()
 	{
 		isDirty = true;
+	}
+	
+	/* return the size in number of free slots */
+	public int getFreeSpace ()
+	{
+		return bitSet.getSize() - bitSet.getNoSetBits();  
 	}
 }

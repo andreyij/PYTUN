@@ -6,11 +6,13 @@ public class BufferManager
 {
 	private PagePool pool;
 	private FileAccess fileAccess;
+	private DiskManager diskManager;
 	
 	public BufferManager ()
 	{
 		pool = new PagePool();
-		fileAccess = new FileAccess();
+		diskManager = new DiskManager();
+		fileAccess = new FileAccess(diskManager);
 	}
 	
 	public void flushPage (Page page)

@@ -1,130 +1,86 @@
 package org.pytun.storage.io;
 
-import java.io.BufferedWriter;
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.RandomAccess;
 
 import org.pytun.storage.common.Constants;
 import org.pytun.storage.common.Page;
+import org.pytun.storage.common.PageInfo;
 
 public class FileAccess 
 {
-	public static final int FILE_MAX_NR_FILES = 256;
-	public static final int FILE_DEFAULT_SIZE = 0;
+
+	private DiskManager diskManager;
 	
-	private String[] 	filePaths;
-	private int 	 	firstFileID; /* first available file id */
-	
-	/* load this list of file from some file at startup */
-	public FileAccess ()
+	public FileAccess (DiskManager dm)
 	{
-		this.filePaths = new String[FILE_MAX_NR_FILES];
-		firstFileID = 0;
-		
-		String[] fp = updateListOfFiles();
-		
-		if (fp != null)
-		{
-			for (int i = 0; i < fp.length; i++)
-			{
-				this.filePaths[i] = fp[i];
-			}
-		}
-		
-		firstFileID = this.filePaths.length;
-		for (int i = this.filePaths.length; i < FILE_MAX_NR_FILES; i++)
-		{
-			this.filePaths[i] = null;
-		}
+		diskManager = dm;
 	}
 	
-	/* TODO: load this list of file from some file at startup */
-	
-	private String[] updateListOfFiles ()
+	public PageInfo getPageInfo (int fileID, int offset) throws Exception
 	{
+		if (fileID >= DiskManager.DISK_MGR_MAX_NR_FILES)
+		{
+			System.err.println("Invalid file id " + fileID);
+			return  null;
+		}
+			
+		String file = diskManager.filePaths[fileID];
+		if (file == null)
+		{
+			System.err.println ("Invalid file");
+			return null;
+		}
+		
+		if (offset % Constants.STORAGE_PAGE_SIZE != 0)
+		{
+			System.err.println ("Invalid offset");
+			return null;
+		}
+		
+		try
+		{
+			RandomAccessFile raf = new RandomAccessFile(new File(file), "r");
+
+			if (offset > raf.length())
+			{
+				System.err.println ("Invalid offset, beyond file size");
+				return null;
+			}
+			
+			byte[] buffer = new byte[PageInfo.PAGEINFO_SIZE];
+			
+			raf.seek(offset);
+			raf.read(buffer);
+			
+			ByteArrayInputStream byteStream = new ByteArrayInputStream(buffer);
+			DataInputStream din = new DataInputStream(byteStream);
+			
+			int pageID = din.readInt();
+			int nrSlots = din.readInt();
+			
+			/* read slot information - of variable length, depending on the number of records */
+			buffer = new byte[(nrSlots + 1) / 8];
+			raf.read(buffer);
+			
+			byteStream = new ByteArrayInputStream(buffer);
+			din = new DataInputStream(byteStream);
+			
+			PageInfo pInfo = new PageInfo(pageID);
+			pInfo.readFromBuffer(din, nrSlots);
+			
+			return pInfo;	
+		}
+		catch (IOException e) {e.printStackTrace();}
+		
 		return null;
+		
 	}
 	
-	protected void createFile (String path)
-	{
-		try 
-		{
-			BufferedWriter out = new BufferedWriter(new FileWriter (path));
-			
-			if (FILE_DEFAULT_SIZE > 0)
-			{
-				char[] initBuffer = new char[FILE_DEFAULT_SIZE];
-				
-				for (int i = 0; i < FILE_DEFAULT_SIZE; i++)
-				{
-					initBuffer[i] = 0;
-				}
-				
-				out.write(initBuffer);
-			}
-			out.close();
-			
-			if (firstFileID == FILE_MAX_NR_FILES)
-			{
-				System.err.println ("Max files exist");
-				return;
-			}
-			
-			if (filePaths[firstFileID] != null)
-			{
-				System.err.println ("Invalid first availabe file id");
-				return;
-			}
-			
-			filePaths[firstFileID] = path;
-			for (int i = firstFileID; i < FILE_MAX_NR_FILES; i++)
-			{
-				if (filePaths[i] == null)
-				{
-					firstFileID = i;
-					return;
-				}
-			}
-			firstFileID = FILE_MAX_NR_FILES;
-		} 
-		catch (IOException e) { e.printStackTrace(); }
-	}
-	
-	protected void destroyFile (String path)
-	{
-		boolean found = false;
-		for (int i = 0; i < FILE_MAX_NR_FILES; i++)
-		{
-			if (filePaths[i].equals(path))
-			{
-				found = true;
-				filePaths[i] = null;
-				if (i < firstFileID)
-				{
-					firstFileID = i;
-				}
-			}
-		}
-		
-		if (found == false)
-		{
-			System.err.println ("File not found");
-			return;
-		}
-		
-		File f = new File (path);
-		if (f.delete() == false)
-		{
-			System.err.println ("Error deleting file " + path);
-		}
-		
-	}
 	
 	private int getFileID (int pageID)
 	{
@@ -138,13 +94,15 @@ public class FileAccess
 	
 	protected void writePage (Page page)
 	{
-		if (getFileID(page.pageID) >= FILE_MAX_NR_FILES)
+		int fileID = getFileID(page.pageID);
+		
+		if (fileID >= DiskManager.DISK_MGR_MAX_NR_FILES)
 		{
-			System.err.println("Invalid file id " + getFileID (page.pageID));
+			System.err.println("Invalid file id " + fileID);
 			return ;
 		}
 			
-		String file = filePaths[getFileID(page.pageID)];
+		String file = diskManager.filePaths[fileID];
 		if (file == null)
 		{
 			System.err.println ("Invalid pageID");
@@ -154,7 +112,7 @@ public class FileAccess
 		try 
 		{
 			RandomAccessFile raf = new RandomAccessFile(new File(file), "w");
-			int pageIndex = getPageOffset(page.pageID);
+			int pageIndex = diskManager.getPageOffset(fileID, getPageOffset(page.pageID));
 			
 			byte[] buffer = new byte[Constants.STORAGE_PAGE_SIZE];
 			page.writeToBuffer(buffer);
@@ -180,14 +138,15 @@ public class FileAccess
 	
 	protected Page readPage (int pageID) throws Exception
 	{
-
-		if (getFileID(pageID) >= FILE_MAX_NR_FILES)
+		int fileID = getFileID (pageID);
+		
+		if (fileID >= DiskManager.DISK_MGR_MAX_NR_FILES)
 		{
-			System.err.println("Invalid file id " + getFileID (pageID));
+			System.err.println("Invalid file id " + getFileID (fileID));
 			return  null;
 		}
 			
-		String file = filePaths[getFileID(pageID)];
+		String file = diskManager.filePaths[fileID];
 		if (file == null)
 		{
 			System.err.println ("Invalid pageID");
@@ -197,8 +156,7 @@ public class FileAccess
 		try
 		{
 			RandomAccessFile raf = new RandomAccessFile(new File(file), "r");
-			int pageIndex = getPageOffset(pageID);
-			int pageOffset = pageIndex * Constants.STORAGE_PAGE_SIZE; 
+			int pageOffset = diskManager.getPageOffset(fileID, getPageOffset(pageID)); 
 
 			if (pageOffset > raf.length())
 			{

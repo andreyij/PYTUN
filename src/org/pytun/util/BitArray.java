@@ -19,6 +19,19 @@ public class BitArray {
 		}
 	}
 	
+	/* get number of set bits */
+	public int getNoSetBits ()
+	{
+		int nr = 0;
+		for (int i = 0; i < nBits; i++)
+		{
+			if (isBitSetAt(i))
+			{
+				nr++;
+			}
+		}
+		return nr;
+	}
 	public int getSize ()
 	{
 		return Constants.STORAGE_INT_SIZE + byteArray.length;

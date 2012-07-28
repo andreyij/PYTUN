@@ -38,6 +38,7 @@ public class Record {
 		buffer.read(recordData);
 	}
 	
+	/* this constructor should be used for empty slots */
 	public Record (int pageID, int slotID)
 	{
 		this.rid = new RecordID (pageID, slotID);
@@ -46,6 +47,39 @@ public class Record {
 		recordData = null;
 	}
 	
+	public void copyRecordInfo (Record rec)
+	{
+		if (rec.getRID() != null)
+		{
+			System.err.println ("Invalid source record! RecordID must not be already set!");
+			return;
+		}
+		
+		if (this.nFields != -1)
+		{
+			System.err.println("Destination Record already set");
+			return;
+		}
+		
+		this.nFields = rec.nFields;
+		this.fieldOffsets = new Vector<Integer>();
+		for (int i = 0; i < this.nFields; i++)
+		{
+			fieldOffsets.add (rec.fieldOffsets.elementAt(i));
+		}
+		this.recordData = new byte[rec.recordData.length];
+		for (int i = 0; i < rec.recordData.length; i++)
+		{
+			this.recordData[i] = rec.recordData[i];
+		}
+	}
+	
+	public void clearInfo ()
+	{
+		this.nFields = -1;
+		this.fieldOffsets = null;
+		this.recordData = null;
+	}
 	
 	public void setSlotID (int slotID)
 	{
