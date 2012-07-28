@@ -80,7 +80,6 @@ public class SqlConsole {
 			// read command
 			System.out.print(">> ");
 			String q = cmd.readCommand();
-			System.out.println (q);
 			// parse command
 			if (q.startsWith("?")) {
 				// internal command
