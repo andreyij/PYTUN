@@ -1,7 +1,6 @@
 package org.pytun.console;
 
 import java.util.Random;
-import java.util.Scanner;
 
 import org.pytun.database.Database;
 import org.pytun.sql.SqlCompiler;
@@ -63,8 +62,7 @@ public class SqlConsole {
 	// pain starts here ...
 	public static void main(String[] args) {
 
-		Scanner in = new Scanner(System.in);
-
+		CommandBuilder cmd = new CommandBuilder();
 		// print hello message
 		printWelcome();
 
@@ -81,19 +79,19 @@ public class SqlConsole {
 
 			// read command
 			System.out.print(">> ");
-			String line = in.nextLine();
-
+			String q = cmd.readCommand();
+			System.out.println (q);
 			// parse command
-			if (line.startsWith("?")) {
+			if (q.startsWith("?")) {
 				// internal command
-				InternalCommand ic = new InternalCommand(line);
+				InternalCommand ic = new InternalCommand(q);
 				ic.execute();
 			} else {
-				try{
+				try {
 					SqlCompiler compiler = new SqlCompiler();
-					compiler.compile(line);
-				} catch (Exception e){
-					System.out.println("Error: "+e.getMessage());
+					compiler.compile(q);
+				} catch (Exception e) {
+					System.out.println("Error:" + e.getMessage());
 				}
 			}
 
