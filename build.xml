@@ -19,7 +19,6 @@
 		</fileset>
 		<pathelement location="${src}" />
 	</path>
-
 	<target name="init" description="environment setup">
 		<mkdir dir="${build}" />
 		<mkdir dir="${dist}" />
@@ -85,5 +84,88 @@
 		<javac srcdir="${src}" destdir="${build}">
 			<classpath refid="compile.classpath" />
 		</javac>
+	</target>
+
+	<target name="jar.pytun.execution" description="Package execution module" depends="compile">
+		<jar destfile="${dist}/pytun_execution.jar" basedir="${build}">
+			<exclude name="**/common/**" />
+			<exclude name="**/console/**" />
+			<exclude name="**/database/**" />
+			<exclude name="**/planner/**" />
+			<exclude name="**/sql/**" />
+			<exclude name="**/storage/**" />
+			<exclude name="**/test/**" />
+			<exclude name="**/util/**" />
+		</jar>
+	</target>
+
+	<target name="jar.pytun.sql" description="Package sql module" depends="compile">
+		<jar destfile="${dist}/pytun_sql.jar" basedir="${build}">
+			<exclude name="**/common/**" />
+			<exclude name="**/console/**" />
+			<exclude name="**/database/**" />
+			<exclude name="**/execution/**" />
+			<exclude name="**/planner/**" />
+			<exclude name="**/storage/**" />
+			<exclude name="**/test/**" />
+			<exclude name="**/util/**" />
+		</jar>
+	</target>
+
+	<target name="jar.pytun.storage" description="Package storage module" depends="compile">
+		<jar destfile="${dist}/pytun_storage.jar" basedir="${build}">
+			<exclude name="**/common/**" />
+			<exclude name="**/console/**" />
+			<exclude name="**/database/**" />
+			<exclude name="**/execution/**" />
+			<exclude name="**/planner/**" />
+			<exclude name="**/sql/**" />
+			<exclude name="**/test/**" />
+			<exclude name="**/util/**" />
+		</jar>
+	</target>
+
+	<target name="jar.pytun.common" description="Package common module" depends="compile">
+		<jar destfile="${dist}/pytun_common.jar" basedir="${build}">
+			<exclude name="**/console/**" />
+			<exclude name="**/execution/**" />
+			<exclude name="**/planner/**" />
+			<exclude name="**/sql/**" />
+			<exclude name="**/storage/**" />
+			<exclude name="**/test/**" />
+		</jar>
+	</target>
+
+	<target name="jar.pytun.console" description="Package console module" depends="compile">
+		<jar destfile="${dist}/pytun_console.jar" basedir="${build}">
+			<exclude name="**/common/**" />
+			<exclude name="**/database/**" />
+			<exclude name="**/execution/**" />
+			<exclude name="**/planner/**" />
+			<exclude name="**/sql/**" />
+			<exclude name="**/storage/**" />
+			<exclude name="**/test/**" />
+			<exclude name="**/util/**" />
+			<manifest>
+				<attribute name="Main-Class" value="org.pytun.console.SqlConsole" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="jar.pytun.planner" description="Package planner module" depends="compile">
+		<jar destfile="${dist}/pytun_planner.jar" basedir="${build}">
+			<exclude name="**/common/**" />
+			<exclude name="**/console/**" />
+			<exclude name="**/database/**" />
+			<exclude name="**/execution/**" />
+			<exclude name="**/sql/**" />
+			<exclude name="**/storage/**" />
+			<exclude name="**/test/**" />
+			<exclude name="**/util/**" />
+		</jar>
+	</target>
+
+	<target name="dist" description="Package pytun" depends="jar.pytun.execution, jar.pytun.sql, jar.pytun.storage, jar.pytun.common, jar.pytun.console, jar.pytun.planner">
+		<copy tofile="dist\antlr-3.4-complete.jar" file="lib\antlr-3.4-complete.jar"/>
 	</target>
 </project>

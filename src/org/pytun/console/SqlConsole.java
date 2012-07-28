@@ -93,7 +93,7 @@ public class SqlConsole {
 					SqlCompiler compiler = new SqlCompiler();
 					compiler.compile(line);
 				} catch (Exception e){
-					e.printStackTrace();
+					System.out.println("Error: "+e.getMessage());
 				}
 			}
 

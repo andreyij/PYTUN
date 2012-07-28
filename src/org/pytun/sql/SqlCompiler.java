@@ -13,20 +13,16 @@ public class SqlCompiler {
 		SQLGrammarLexer lexer = new SQLGrammarLexer(in);
 		CommonTokenStream tokens = new CommonTokenStream(lexer);
 		SQLGrammarParser parser = new SQLGrammarParser(tokens);
-		try {
-			SQLGrammarParser.query_return ret = parser.query();
-			CommonTree tree = (CommonTree) ret.getTree();
-			if (tree == null) {
-				throw new Exception("Internal: Tree is null!");
-			}
-			SQLTree st = new SQLTree(new CommonTreeNodeStream(tree));
-			q = st.query().n;
-			System.out.println("Tree is: " + q.getClass());
-			q.compile();
-			q.print(0);
-		} catch (Exception e) {
-			e.printStackTrace();
+		SQLGrammarParser.query_return ret = parser.query();
+		CommonTree tree = (CommonTree) ret.getTree();
+		if (tree == null) {
+			throw new Exception("Internal: Tree is null!");
 		}
+		SQLTree st = new SQLTree(new CommonTreeNodeStream(tree));
+		q = st.query().n;
+		System.out.println("Tree is: " + q.getClass());
+		q.compile();
+		q.print(0);
 
 		return q;
 	}
