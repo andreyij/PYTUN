@@ -6,29 +6,29 @@ import org.pytun.storage.catalog.Column;
 import org.pytun.storage.catalog.Table;
 
 public class Identifier extends Node {
-	private String name;
-
 	public enum IdentifierType {
 		None, Table, Column
 	};
 
+	protected String name;
+
 	/*
 	 * Type of this identifier (column or table)
 	 */
-	private IdentifierType iType;
+	protected IdentifierType iType;
 
 	/*
 	 * the table this identifier belongs to
 	 */
-	private Table table;
+	protected Table table;
 
 	/*
 	 * the column this identifier maps to
 	 */
-	private Column column;
+	protected Column column;
 
-	private String pseudonym;
-	private String tableAlias;
+	protected String pseudonym;
+	protected String tableAlias;
 
 	public Identifier(CommonTree t) {
 		super(t);
@@ -41,10 +41,12 @@ public class Identifier extends Node {
 		printTabs(indent);
 		System.out.print(name);
 		if (iType == IdentifierType.Table) {
-			System.out.println(" (table "+table.getName()+")");
+			System.out.println(" (table " + table.getName() + ")");
 		} else {
-			System.out.println(" (column) ");
+			System.out.print(" (column) ");
 			if (this.column != null) {
+				System.out.println(" (table " + column.getTable().getName()
+						+ ") ");
 				this.getType().print(indent + 1);
 			}
 		}
@@ -73,11 +75,11 @@ public class Identifier extends Node {
 	public Column getColumn() {
 		return column;
 	}
-	
+
 	@Override
 	public Node accept(Visitor v) throws Exception {
 		return v.Visit(this);
-		
+
 	}
 
 	public Table getTable() {
