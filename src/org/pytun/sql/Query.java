@@ -14,7 +14,10 @@ public class Query extends Node {
 	public void resolveIdentifier(Identifier i) throws Exception {
 		context.resovleIdentifier(i);
 	}
-
+	
+	public List<Node> expandStarIdentifier(StarIdentifier si) throws Exception {
+		return context.expandStarIdentifier(si);
+	}
 	public void initContext() throws Exception {
 		context = new QueryContext();
 		context.buildContext(getTableContext());

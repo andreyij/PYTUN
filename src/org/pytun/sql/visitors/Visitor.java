@@ -15,6 +15,7 @@ import org.pytun.sql.Plus;
 import org.pytun.sql.Predicate;
 import org.pytun.sql.RealValue;
 import org.pytun.sql.SelectQuery;
+import org.pytun.sql.StarIdentifier;
 import org.pytun.sql.StringValue;
 import org.pytun.sql.TimeStampValue;
 import org.pytun.sql.TimeValue;
@@ -77,6 +78,10 @@ public class Visitor {
 
 	public Node Visit(Identifier n) throws Exception {
 		return n;
+	}
+
+	public Node Visit(StarIdentifier i) throws Exception {
+		return i;
 	}
 
 	/* values */

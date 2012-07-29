@@ -124,9 +124,23 @@ table_spec_list returns [List<Node> list]
   : (t=table_spec {$list.add($t.n);})+
   ;
 
-table_spec returns [Node n]
+/*table_spec returns [Node n]
   : t=identifier{$n = $t.n;}
     (p=identifier{((Identifier)$n).setPseudonym(((Identifier)$p.n).getName());})?
+  ; */
+
+table_spec returns [Node n]
+  : ^(i1=identifier i2=identifier)
+    {
+      Identifier i = (Identifier)$i1.n;
+      String pseudonym = ((Identifier)$i2.n).getName();
+      i.setPseudonym(pseudonym);
+      $n = i; 
+    }
+  | id=identifier
+    {
+      $n = $id.n;
+    }
   ;
 
 identifier_list returns [List<Node> list]
@@ -205,8 +219,17 @@ predicate returns [Predicate n]
 expr returns [Node n]
 @init{
 $n = null;
+Node i = null;
 }
-  : ^(PLUS l=expr r=expr) {Plus obj = new Plus($start, $l.n, $r.n); $n = (Node) obj;}
+  : ^(STAR_TERM (identifier{i = $identifier.n;})?)
+    {
+      StarIdentifier si = new StarIdentifier($start);
+      if (i != null) {
+        si.setTableAlias(((Identifier)i).getName());
+      }
+      $n = si;
+    }
+  | ^(PLUS l=expr r=expr) {Plus obj = new Plus($start, $l.n, $r.n); $n = (Node) obj;}
   | ^(MINUS l=expr r=expr){Minus obj = new Minus($start, $l.n, $r.n); $n = (Node) obj;}
   | ^(MUL l=expr r=expr){Multiply obj = new Multiply($start, $l.n, $r.n); $n = (Node) obj;}
   | ^(DIV l=expr r=expr){Divide obj = new Divide($start, $l.n, $r.n); $n = (Node) obj;}
@@ -220,13 +243,16 @@ term returns [Node n]
   ;
 
 column_identifier returns [Node n]
-  : i1=identifier {$n = $i1.n;}
-    (i2=identifier
-      {$n=$i2.n;
-      Identifier i = (Identifier)$n;
+  : ^(i1=identifier i2=identifier)
+    {
+      Identifier i = (Identifier)$i2.n;
       i.setTableAlias(((Identifier)$i1.n).getName());
-      }
-     )?
+      $n = i;
+    }
+  | id=identifier
+    {
+      $n = $id.n;
+    }
   ;
 
 value returns [Value n]
@@ -273,8 +299,7 @@ identifier returns [Identifier n]
 @init{
   $n = new Identifier ($start);
 }
-  :
-  IDENTIFIER
+  : IDENTIFIER
 	  {
 	    $n.setName($IDENTIFIER.text);
 	  }

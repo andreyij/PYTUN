@@ -40,6 +40,7 @@ tokens {
   
   TABLE_LIST;
   EXPR_LIST;
+  STAR_TERM;
   COLUMN_DEF_LIST;
 }
 
@@ -140,12 +141,14 @@ expression_list
   ;
 
 table_spec_list
-  : table_spec (','! table_spec)*
+  : table_spec (',' table_spec)*
+    -> table_spec+
   ;
 
 table_spec
-  : identifier ((AS?) identifier)?
-    -> identifier (identifier)?
+  : identifier AS? identifier
+    -> ^(identifier identifier)
+  | identifier
   ;
 
 identifier_list
@@ -176,8 +179,9 @@ predicate
   ;
 
 expr
-  :
-  simpleExpression ((PLUS^ | MINUS^) simpleExpression)*
+  : (identifier '.')? '*'
+    -> ^(STAR_TERM identifier?)
+  | simpleExpression ((PLUS^ | MINUS^) simpleExpression)*
   ;
 
 simpleExpression
@@ -186,14 +190,14 @@ simpleExpression
   ;
 
 term
-  :
-  column_identifier
+  : column_identifier
   | value
   ;
 
-column_identifier
-  : identifier ('.' identifier)?
-    ->identifier identifier?
+column_identifier  
+  : identifier '.' identifier
+    -> ^(identifier identifier)
+  | identifier
   ;
 
 value
