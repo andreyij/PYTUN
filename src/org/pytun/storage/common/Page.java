@@ -160,6 +160,10 @@ public class Page {
 		return isDirty;
 	}
 	
+	public void setNotDirty ()
+	{
+		isDirty = false;
+	}
 	public void setDirty ()
 	{
 		isDirty = true;

@@ -14,7 +14,6 @@ public class PageInfo {
 	public int pageID;
 	public int freeSpace;
 	
-	
 	public PageInfo (int pageID)
 	{
 		this.pageID = pageID;
@@ -27,5 +26,12 @@ public class PageInfo {
 		BitArray bitSet = BitArray.readFromBuffer (din, nrSlots);
 		this.freeSpace = nrSlots - bitSet.getNoSetBits();
 		
+	}
+	
+	public void updateFreeSpace (boolean insert )
+	{
+		/* check if the update is performed due to an insert or a delete */
+		int n = (insert ? 1 : -1);
+		this.freeSpace = this.freeSpace + n;
 	}
 }

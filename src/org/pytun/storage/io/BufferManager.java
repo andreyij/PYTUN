@@ -18,6 +18,7 @@ public class BufferManager
 	public void flushPage (Page page)
 	{
 		fileAccess.writePage(page);
+		page.setNotDirty();
 	}
 	
 	public void deletePage (int pageID)

@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 
 import org.pytun.storage.common.Constants;
 import org.pytun.storage.common.Page;
@@ -20,6 +21,61 @@ public class FileAccess
 	{
 		diskManager = dm;
 	}
+	
+	public ArrayList<PageInfo> getAllPagesInfo (int fileID) throws Exception
+	{
+		if (fileID >= DiskManager.DISK_MGR_MAX_NR_FILES)
+		{
+			System.err.println("Invalid file id " + fileID);
+			return  null;
+		}
+		
+		String file = diskManager.filePaths[fileID];
+		if (file == null)
+		{
+			System.err.println ("Invalid file");
+			return null;
+		}
+		
+		ArrayList<PageInfo> pagesInfo = new ArrayList<PageInfo>();
+		int offset = 0;
+		
+		try
+		{
+			RandomAccessFile raf = new RandomAccessFile(new File(file), "r");
+			while (offset < raf.length())
+			{
+				byte[] buffer = new byte[PageInfo.PAGEINFO_SIZE];
+				
+				raf.seek(offset);
+				raf.read(buffer);
+				
+				ByteArrayInputStream byteStream = new ByteArrayInputStream(buffer);
+				DataInputStream din = new DataInputStream(byteStream);
+				
+				int pageID = din.readInt();
+				int nrSlots = din.readInt();
+				
+				/* read slot information - of variable length, depending on the number of records */
+				buffer = new byte[(nrSlots + 1) / 8];
+				raf.read(buffer);
+				
+				byteStream = new ByteArrayInputStream(buffer);
+				din = new DataInputStream(byteStream);
+				
+				PageInfo pInfo = new PageInfo(pageID);
+				pInfo.readFromBuffer(din, nrSlots);
+			
+				pagesInfo.add(pInfo);
+				
+				offset = offset + Constants.STORAGE_PAGE_SIZE;
+			}
+		}
+		catch (IOException e) {e.printStackTrace();}
+		
+		return pagesInfo;
+	}
+	
 	
 	public PageInfo getPageInfo (int fileID, int offset) throws Exception
 	{
