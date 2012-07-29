@@ -85,7 +85,12 @@ public class SqlConsole {
 			if (q.startsWith("?")) {
 				// internal command
 				InternalCommand ic = new InternalCommand(q);
-				ic.execute();
+				try {
+					ic.execute();
+				} catch (Exception e) {
+					e.printStackTrace();
+					System.out.println(e.getMessage());
+				}
 			} else {
 				try {
 					Statement statement = new Statement(q);

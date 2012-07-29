@@ -22,7 +22,7 @@ public class InternalCommand {
 		}
 	}
 
-	public void execute() {
+	public void execute() throws Exception {
 
 		// ugly if chain
 		String cmd = tokens[0];
@@ -118,7 +118,7 @@ public class InternalCommand {
 		}
 	}
 
-	private void showSchema() {
+	private void showSchema() throws Exception {
 		// table info
 		if (tokens.length < 2) {
 			System.out.println("Please specify table!");
@@ -132,8 +132,8 @@ public class InternalCommand {
 		}
 
 		System.out.println("Table '" + t.getName() + "' columns:");
-		for (int i = 0; i < t.getColumnCount(); i++) {
-			Column c = t.getColumn(i);
+		for (int i = 0; i < t.getDescriptor().getColumnCount(); i++) {
+			Column c = t.getDescriptor().getColumn(i);
 			System.out.println("  "
 					+ String.format("%-12s", c.getName())
 					+ " "
