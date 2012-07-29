@@ -64,7 +64,7 @@ public class QueryContext {
 		Column c = null;
 		for (QueryTable t : tables) {
 			if (t.alias.equals(tableName)) {
-				c = t.table.getColumn(i.getName());
+				c = t.table.getDescriptor().getColumn(i.getName());
 				if (c == null) {
 					throw new Exception("Column " + i.getName()
 							+ " does not belong to table " + t.table.getName()
@@ -101,7 +101,7 @@ public class QueryContext {
 		for (QueryTable t : tables) {
 			if (t.alias.equals(tableName)) {
 				/* get all columns and return them as a list */
-				List<Column> columns = t.table.getColumns();
+				List<Column> columns = t.table.getDescriptor().getColumns();
 				identifiers = new ArrayList<Node>();
 				for (Column c : columns) {
 					Identifier i = new Identifier(si.getNode());
