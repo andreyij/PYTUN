@@ -2,8 +2,6 @@ package org.pytun.storage.value;
 
 public class DbInteger extends DbValue {
 	
-	
-	
 	public DbInteger(int v) {
 		setValue(v);
 	}
@@ -19,5 +17,10 @@ public class DbInteger extends DbValue {
 	@Override
 	public String getType() {
 		return "INTEGER";
+	}
+
+	@Override
+	public String toString() {
+		return Integer.toString(i);
 	}
 }

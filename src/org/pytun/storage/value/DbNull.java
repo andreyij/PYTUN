@@ -9,5 +9,10 @@ public class DbNull extends DbValue {
 	public String getType() {
 		return "DBNULL";
 	}
+
+	@Override
+	public String toString() {
+		return "NULL";
+	}
 	
 }

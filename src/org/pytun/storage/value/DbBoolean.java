@@ -18,4 +18,9 @@ public class DbBoolean extends DbValue {
 	public String getType() {
 		return "BOOLEAN";
 	}
+
+	@Override
+	public String toString() {
+		return (b ? "TRUE" : "FALSE");
+	}
 }

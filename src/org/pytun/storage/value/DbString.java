@@ -18,5 +18,10 @@ public class DbString extends DbValue {
 	public String getType() {
 		return "STRING";
 	}
+
+	@Override
+	public String toString() {
+		return s;
+	}
 	
 }

@@ -18,5 +18,10 @@ public class DbDouble extends DbValue {
 	public String getType() {
 		return "DOUBLE";
 	}
+
+	@Override
+	public String toString() {
+		return Double.toString(d);
+	}
 	
 }

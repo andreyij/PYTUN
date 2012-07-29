@@ -14,4 +14,5 @@ public abstract class DbValue {
 	protected Timestamp ts;
 	
 	public abstract String getType();
+	public abstract String toString();
 }
