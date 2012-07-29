@@ -1,11 +1,11 @@
 package org.pytun.execution.asl.arithmetic;
 
 import org.pytun.execution.ExecutionEnv;
-import org.pytun.sql.Value;
+import org.pytun.storage.value.DbValue;
 
 public class ArithConst extends ArithNode {
 
-	public ArithConst(Value val) {
+	public ArithConst(DbValue val) {
 		value = val;
 	}
 
@@ -15,12 +15,13 @@ public class ArithConst extends ArithNode {
 	}
 
 	@Override
-	public void evaluate(ExecutionEnv env) throws Exception {
+	public DbValue evaluate(ExecutionEnv env) throws Exception {
 
 		if (value == null) {
 			throw new Exception("Exec error: null value in ArithConst node!");
 		}
-		// nothing to do
+
+		return value;
 	}
 
 }

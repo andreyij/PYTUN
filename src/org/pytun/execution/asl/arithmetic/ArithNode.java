@@ -1,20 +1,20 @@
 package org.pytun.execution.asl.arithmetic;
 
 import org.pytun.execution.ExecutionEnv;
-import org.pytun.sql.Value;
+import org.pytun.storage.value.DbValue;
 
 public abstract class ArithNode {
 
-	protected Value value;
+	protected DbValue value;
 
 	protected ArithNode left;
 	protected ArithNode right;
-
-	public abstract void evaluate(ExecutionEnv env) throws Exception;
+	
+	public abstract DbValue evaluate(ExecutionEnv env) throws Exception;
 
 	public abstract String toString();
-
-	public Value getValue() {
+	
+	public DbValue getValue() {
 		// TODO: return clone value
 		return value;
 	}

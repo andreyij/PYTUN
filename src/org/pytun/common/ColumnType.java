@@ -7,6 +7,7 @@ public enum ColumnType {
 	STRING,
 	DATE,
 	TIME,
+	DATETIME,
 	TIMESTAMP,
 	BOOLEAN
 }

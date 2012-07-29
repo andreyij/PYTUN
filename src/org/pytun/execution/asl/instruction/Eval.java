@@ -23,9 +23,7 @@ public class Eval extends Instruction {
 			throw new Exception("Null arithmetic node!");
 		}
 
-		node.evaluate(env);
-
-		returnValue.setValue(node.getValue());
+		returnValue.setValue(node.evaluate(env));
 	}
 
 	@Override

@@ -1,10 +1,10 @@
 package org.pytun.execution.asl.parameter;
 
-import org.pytun.sql.Value;
+import org.pytun.storage.value.DbValue;
 
 public class ValueId extends Parameter {
 	
-	private Value value;
+	private DbValue value;
 	
 	public ValueId(String name) {
 		// TODO
@@ -17,11 +17,11 @@ public class ValueId extends Parameter {
 		return name;
 	}
 
-	public Value getValue() {
+	public DbValue getValue() {
 		return value;
 	}
 
-	public void setValue(Value value) {
+	public void setValue(DbValue value) {
 		this.value = value;
 	}
 }

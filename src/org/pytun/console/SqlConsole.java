@@ -70,6 +70,7 @@ public class SqlConsole {
 		try {
 			Database.initCatalog("demodb");
 		} catch (Exception e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 			return;
 		}
