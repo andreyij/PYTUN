@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g 2012-07-29 15:44:25
+// $ANTLR 3.4 D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g 2012-07-29 17:51:47
 
 package org.pytun.sql;
 
@@ -467,7 +467,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: expression_list, table_spec_list, where_clause
+            // elements: table_spec_list, where_clause, expression_list
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -616,7 +616,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: where_clause, assignment_list, identifier
+            // elements: where_clause, identifier, assignment_list
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -781,7 +781,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: expression_list, identifier_list, identifier
+            // elements: identifier, expression_list, identifier_list
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -850,7 +850,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "delete_statement"
-    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:92:1: delete_statement : DELETE FROM identifier ( where_clause )? -> ^( DELETE_STMT identifier ( where_clause )? ) ;
+    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:92:1: delete_statement : DELETE FROM identifier where_clause -> ^( DELETE_STMT identifier ( where_clause )? ) ;
     public final SQLGrammarParser.delete_statement_return delete_statement() throws RecognitionException {
         SQLGrammarParser.delete_statement_return retval = new SQLGrammarParser.delete_statement_return();
         retval.start = input.LT(1);
@@ -872,8 +872,8 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_where_clause=new RewriteRuleSubtreeStream(adaptor,"rule where_clause");
         RewriteRuleSubtreeStream stream_identifier=new RewriteRuleSubtreeStream(adaptor,"rule identifier");
         try {
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:93:3: ( DELETE FROM identifier ( where_clause )? -> ^( DELETE_STMT identifier ( where_clause )? ) )
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:94:3: DELETE FROM identifier ( where_clause )?
+            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:93:3: ( DELETE FROM identifier where_clause -> ^( DELETE_STMT identifier ( where_clause )? ) )
+            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:94:3: DELETE FROM identifier where_clause
             {
             DELETE30=(Token)match(input,DELETE,FOLLOW_DELETE_in_delete_statement559); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_DELETE.add(DELETE30);
@@ -890,29 +890,12 @@ public TreeAdaptor getTreeAdaptor() {
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_identifier.add(identifier32.getTree());
 
-            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:94:26: ( where_clause )?
-            int alt4=2;
-            int LA4_0 = input.LA(1);
+            pushFollow(FOLLOW_where_clause_in_delete_statement565);
+            where_clause33=where_clause();
 
-            if ( (LA4_0==WHERE) ) {
-                alt4=1;
-            }
-            switch (alt4) {
-                case 1 :
-                    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:94:26: where_clause
-                    {
-                    pushFollow(FOLLOW_where_clause_in_delete_statement565);
-                    where_clause33=where_clause();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-                    if ( state.backtracking==0 ) stream_where_clause.add(where_clause33.getTree());
-
-                    }
-                    break;
-
-            }
-
+            state._fsp--;
+            if (state.failed) return retval;
+            if ( state.backtracking==0 ) stream_where_clause.add(where_clause33.getTree());
 
             // AST REWRITE
             // elements: where_clause, identifier
@@ -1018,33 +1001,33 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:99:3: ( CREATE TABLE identifier LPAREN table_columns_def RPAREN -> ^( CREATE_STMT identifier table_columns_def ) )
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:100:3: CREATE TABLE identifier LPAREN table_columns_def RPAREN
             {
-            CREATE34=(Token)match(input,CREATE,FOLLOW_CREATE_in_create_statement596); if (state.failed) return retval; 
+            CREATE34=(Token)match(input,CREATE,FOLLOW_CREATE_in_create_statement595); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_CREATE.add(CREATE34);
 
 
-            TABLE35=(Token)match(input,TABLE,FOLLOW_TABLE_in_create_statement598); if (state.failed) return retval; 
+            TABLE35=(Token)match(input,TABLE,FOLLOW_TABLE_in_create_statement597); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_TABLE.add(TABLE35);
 
 
-            pushFollow(FOLLOW_identifier_in_create_statement600);
+            pushFollow(FOLLOW_identifier_in_create_statement599);
             identifier36=identifier();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_identifier.add(identifier36.getTree());
 
-            LPAREN37=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_create_statement602); if (state.failed) return retval; 
+            LPAREN37=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_create_statement601); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_LPAREN.add(LPAREN37);
 
 
-            pushFollow(FOLLOW_table_columns_def_in_create_statement604);
+            pushFollow(FOLLOW_table_columns_def_in_create_statement603);
             table_columns_def38=table_columns_def();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_table_columns_def.add(table_columns_def38.getTree());
 
-            RPAREN39=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_create_statement606); if (state.failed) return retval; 
+            RPAREN39=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_create_statement605); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_RPAREN.add(RPAREN39);
 
 
@@ -1138,15 +1121,15 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:106:3: ( DROP TABLE identifier -> ^( DROP_STMT identifier ) )
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:107:3: DROP TABLE identifier
             {
-            DROP40=(Token)match(input,DROP,FOLLOW_DROP_in_drop_statement639); if (state.failed) return retval; 
+            DROP40=(Token)match(input,DROP,FOLLOW_DROP_in_drop_statement638); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_DROP.add(DROP40);
 
 
-            TABLE41=(Token)match(input,TABLE,FOLLOW_TABLE_in_drop_statement641); if (state.failed) return retval; 
+            TABLE41=(Token)match(input,TABLE,FOLLOW_TABLE_in_drop_statement640); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_TABLE.add(TABLE41);
 
 
-            pushFollow(FOLLOW_identifier_in_drop_statement643);
+            pushFollow(FOLLOW_identifier_in_drop_statement642);
             identifier42=identifier();
 
             state._fsp--;
@@ -1238,7 +1221,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            ALTER43=(Token)match(input,ALTER,FOLLOW_ALTER_in_alter_statement674); if (state.failed) return retval;
+            ALTER43=(Token)match(input,ALTER,FOLLOW_ALTER_in_alter_statement673); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             ALTER43_tree = 
             (CommonTree)adaptor.create(ALTER43)
@@ -1300,7 +1283,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:118:3: ( table_column_def ( ',' table_column_def )* -> ^( COLUMN_DEF_LIST ( table_column_def )+ ) )
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:118:5: table_column_def ( ',' table_column_def )*
             {
-            pushFollow(FOLLOW_table_column_def_in_table_columns_def687);
+            pushFollow(FOLLOW_table_column_def_in_table_columns_def686);
             table_column_def44=table_column_def();
 
             state._fsp--;
@@ -1308,25 +1291,25 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_table_column_def.add(table_column_def44.getTree());
 
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:118:22: ( ',' table_column_def )*
-            loop5:
+            loop4:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt4=2;
+                int LA4_0 = input.LA(1);
 
-                if ( (LA5_0==59) ) {
-                    alt5=1;
+                if ( (LA4_0==59) ) {
+                    alt4=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt4) {
             	case 1 :
             	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:118:23: ',' table_column_def
             	    {
-            	    char_literal45=(Token)match(input,59,FOLLOW_59_in_table_columns_def690); if (state.failed) return retval; 
+            	    char_literal45=(Token)match(input,59,FOLLOW_59_in_table_columns_def689); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_59.add(char_literal45);
 
 
-            	    pushFollow(FOLLOW_table_column_def_in_table_columns_def692);
+            	    pushFollow(FOLLOW_table_column_def_in_table_columns_def691);
             	    table_column_def46=table_column_def();
 
             	    state._fsp--;
@@ -1337,7 +1320,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop5;
+            	    break loop4;
                 }
             } while (true);
 
@@ -1436,14 +1419,14 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_identifier_in_table_column_def721);
+            pushFollow(FOLLOW_identifier_in_table_column_def720);
             identifier47=identifier();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) adaptor.addChild(root_0, identifier47.getTree());
 
-            pushFollow(FOLLOW_type_specifier_in_table_column_def723);
+            pushFollow(FOLLOW_type_specifier_in_table_column_def722);
             type_specifier48=type_specifier();
 
             state._fsp--;
@@ -1521,60 +1504,60 @@ public TreeAdaptor getTreeAdaptor() {
 
         try {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:127:3: ( INT | FLOAT | CHAR LPAREN number_value RPAREN | VARCHAR LPAREN number_value RPAREN | DATE | TIME | TIMESTAMP )
-            int alt6=7;
+            int alt5=7;
             switch ( input.LA(1) ) {
             case INT:
                 {
-                alt6=1;
+                alt5=1;
                 }
                 break;
             case FLOAT:
                 {
-                alt6=2;
+                alt5=2;
                 }
                 break;
             case CHAR:
                 {
-                alt6=3;
+                alt5=3;
                 }
                 break;
             case VARCHAR:
                 {
-                alt6=4;
+                alt5=4;
                 }
                 break;
             case DATE:
                 {
-                alt6=5;
+                alt5=5;
                 }
                 break;
             case TIME:
                 {
-                alt6=6;
+                alt5=6;
                 }
                 break;
             case TIMESTAMP:
                 {
-                alt6=7;
+                alt5=7;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
+                    new NoViableAltException("", 5, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt6) {
+            switch (alt5) {
                 case 1 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:127:5: INT
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    INT49=(Token)match(input,INT,FOLLOW_INT_in_type_specifier736); if (state.failed) return retval;
+                    INT49=(Token)match(input,INT,FOLLOW_INT_in_type_specifier735); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     INT49_tree = 
                     (CommonTree)adaptor.create(INT49)
@@ -1590,7 +1573,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    FLOAT50=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_type_specifier742); if (state.failed) return retval;
+                    FLOAT50=(Token)match(input,FLOAT,FOLLOW_FLOAT_in_type_specifier741); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     FLOAT50_tree = 
                     (CommonTree)adaptor.create(FLOAT50)
@@ -1606,7 +1589,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    CHAR51=(Token)match(input,CHAR,FOLLOW_CHAR_in_type_specifier748); if (state.failed) return retval;
+                    CHAR51=(Token)match(input,CHAR,FOLLOW_CHAR_in_type_specifier747); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     CHAR51_tree = 
                     (CommonTree)adaptor.create(CHAR51)
@@ -1614,7 +1597,7 @@ public TreeAdaptor getTreeAdaptor() {
                     adaptor.addChild(root_0, CHAR51_tree);
                     }
 
-                    LPAREN52=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_type_specifier750); if (state.failed) return retval;
+                    LPAREN52=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_type_specifier749); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     LPAREN52_tree = 
                     (CommonTree)adaptor.create(LPAREN52)
@@ -1622,14 +1605,14 @@ public TreeAdaptor getTreeAdaptor() {
                     adaptor.addChild(root_0, LPAREN52_tree);
                     }
 
-                    pushFollow(FOLLOW_number_value_in_type_specifier752);
+                    pushFollow(FOLLOW_number_value_in_type_specifier751);
                     number_value53=number_value();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, number_value53.getTree());
 
-                    RPAREN54=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_type_specifier754); if (state.failed) return retval;
+                    RPAREN54=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_type_specifier753); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     RPAREN54_tree = 
                     (CommonTree)adaptor.create(RPAREN54)
@@ -1645,7 +1628,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    VARCHAR55=(Token)match(input,VARCHAR,FOLLOW_VARCHAR_in_type_specifier760); if (state.failed) return retval;
+                    VARCHAR55=(Token)match(input,VARCHAR,FOLLOW_VARCHAR_in_type_specifier759); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     VARCHAR55_tree = 
                     (CommonTree)adaptor.create(VARCHAR55)
@@ -1653,7 +1636,7 @@ public TreeAdaptor getTreeAdaptor() {
                     adaptor.addChild(root_0, VARCHAR55_tree);
                     }
 
-                    LPAREN56=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_type_specifier762); if (state.failed) return retval;
+                    LPAREN56=(Token)match(input,LPAREN,FOLLOW_LPAREN_in_type_specifier761); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     LPAREN56_tree = 
                     (CommonTree)adaptor.create(LPAREN56)
@@ -1661,14 +1644,14 @@ public TreeAdaptor getTreeAdaptor() {
                     adaptor.addChild(root_0, LPAREN56_tree);
                     }
 
-                    pushFollow(FOLLOW_number_value_in_type_specifier764);
+                    pushFollow(FOLLOW_number_value_in_type_specifier763);
                     number_value57=number_value();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, number_value57.getTree());
 
-                    RPAREN58=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_type_specifier766); if (state.failed) return retval;
+                    RPAREN58=(Token)match(input,RPAREN,FOLLOW_RPAREN_in_type_specifier765); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     RPAREN58_tree = 
                     (CommonTree)adaptor.create(RPAREN58)
@@ -1684,7 +1667,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    DATE59=(Token)match(input,DATE,FOLLOW_DATE_in_type_specifier772); if (state.failed) return retval;
+                    DATE59=(Token)match(input,DATE,FOLLOW_DATE_in_type_specifier771); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     DATE59_tree = 
                     (CommonTree)adaptor.create(DATE59)
@@ -1700,7 +1683,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    TIME60=(Token)match(input,TIME,FOLLOW_TIME_in_type_specifier778); if (state.failed) return retval;
+                    TIME60=(Token)match(input,TIME,FOLLOW_TIME_in_type_specifier777); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     TIME60_tree = 
                     (CommonTree)adaptor.create(TIME60)
@@ -1716,7 +1699,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    TIMESTAMP61=(Token)match(input,TIMESTAMP,FOLLOW_TIMESTAMP_in_type_specifier784); if (state.failed) return retval;
+                    TIMESTAMP61=(Token)match(input,TIMESTAMP,FOLLOW_TIMESTAMP_in_type_specifier783); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     TIMESTAMP61_tree = 
                     (CommonTree)adaptor.create(TIMESTAMP61)
@@ -1780,7 +1763,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:137:3: ( expr ( ',' expr )* -> ^( EXPR_LIST ( expr )+ ) )
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:138:3: expr ( ',' expr )*
             {
-            pushFollow(FOLLOW_expr_in_expression_list799);
+            pushFollow(FOLLOW_expr_in_expression_list798);
             expr62=expr();
 
             state._fsp--;
@@ -1788,25 +1771,25 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_expr.add(expr62.getTree());
 
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:138:8: ( ',' expr )*
-            loop7:
+            loop6:
             do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( (LA7_0==59) ) {
-                    alt7=1;
+                if ( (LA6_0==59) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt7) {
+                switch (alt6) {
             	case 1 :
             	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:138:9: ',' expr
             	    {
-            	    char_literal63=(Token)match(input,59,FOLLOW_59_in_expression_list802); if (state.failed) return retval; 
+            	    char_literal63=(Token)match(input,59,FOLLOW_59_in_expression_list801); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_59.add(char_literal63);
 
 
-            	    pushFollow(FOLLOW_expr_in_expression_list804);
+            	    pushFollow(FOLLOW_expr_in_expression_list803);
             	    expr64=expr();
 
             	    state._fsp--;
@@ -1817,7 +1800,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop7;
+            	    break loop6;
                 }
             } while (true);
 
@@ -1916,7 +1899,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:144:3: ( table_spec ( ',' table_spec )* -> ( table_spec )+ )
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:144:5: table_spec ( ',' table_spec )*
             {
-            pushFollow(FOLLOW_table_spec_in_table_spec_list838);
+            pushFollow(FOLLOW_table_spec_in_table_spec_list837);
             table_spec65=table_spec();
 
             state._fsp--;
@@ -1924,25 +1907,25 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_table_spec.add(table_spec65.getTree());
 
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:144:16: ( ',' table_spec )*
-            loop8:
+            loop7:
             do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-                if ( (LA8_0==59) ) {
-                    alt8=1;
+                if ( (LA7_0==59) ) {
+                    alt7=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt7) {
             	case 1 :
             	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:144:17: ',' table_spec
             	    {
-            	    char_literal66=(Token)match(input,59,FOLLOW_59_in_table_spec_list841); if (state.failed) return retval; 
+            	    char_literal66=(Token)match(input,59,FOLLOW_59_in_table_spec_list840); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_59.add(char_literal66);
 
 
-            	    pushFollow(FOLLOW_table_spec_in_table_spec_list843);
+            	    pushFollow(FOLLOW_table_spec_in_table_spec_list842);
             	    table_spec67=table_spec();
 
             	    state._fsp--;
@@ -1953,7 +1936,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop7;
                 }
             } while (true);
 
@@ -2042,22 +2025,22 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_identifier=new RewriteRuleSubtreeStream(adaptor,"rule identifier");
         try {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:149:3: ( identifier ( AS )? identifier -> ^( identifier identifier ) | identifier )
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            if ( (LA10_0==IDENTIFIER) ) {
-                int LA10_1 = input.LA(2);
+            if ( (LA9_0==IDENTIFIER) ) {
+                int LA9_1 = input.LA(2);
 
-                if ( (LA10_1==AS||LA10_1==IDENTIFIER) ) {
-                    alt10=1;
+                if ( (LA9_1==AS||LA9_1==IDENTIFIER) ) {
+                    alt9=1;
                 }
-                else if ( (LA10_1==EOF||LA10_1==SEMI||LA10_1==WHERE||LA10_1==59) ) {
-                    alt10=2;
+                else if ( (LA9_1==EOF||LA9_1==SEMI||LA9_1==WHERE||LA9_1==59) ) {
+                    alt9=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 10, 1, input);
+                        new NoViableAltException("", 9, 1, input);
 
                     throw nvae;
 
@@ -2066,16 +2049,16 @@ public TreeAdaptor getTreeAdaptor() {
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 10, 0, input);
+                    new NoViableAltException("", 9, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt10) {
+            switch (alt9) {
                 case 1 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:149:5: identifier ( AS )? identifier
                     {
-                    pushFollow(FOLLOW_identifier_in_table_spec867);
+                    pushFollow(FOLLOW_identifier_in_table_spec866);
                     identifier68=identifier();
 
                     state._fsp--;
@@ -2083,17 +2066,17 @@ public TreeAdaptor getTreeAdaptor() {
                     if ( state.backtracking==0 ) stream_identifier.add(identifier68.getTree());
 
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:149:16: ( AS )?
-                    int alt9=2;
-                    int LA9_0 = input.LA(1);
+                    int alt8=2;
+                    int LA8_0 = input.LA(1);
 
-                    if ( (LA9_0==AS) ) {
-                        alt9=1;
+                    if ( (LA8_0==AS) ) {
+                        alt8=1;
                     }
-                    switch (alt9) {
+                    switch (alt8) {
                         case 1 :
                             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:149:16: AS
                             {
-                            AS69=(Token)match(input,AS,FOLLOW_AS_in_table_spec869); if (state.failed) return retval; 
+                            AS69=(Token)match(input,AS,FOLLOW_AS_in_table_spec868); if (state.failed) return retval; 
                             if ( state.backtracking==0 ) stream_AS.add(AS69);
 
 
@@ -2103,7 +2086,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    pushFollow(FOLLOW_identifier_in_table_spec872);
+                    pushFollow(FOLLOW_identifier_in_table_spec871);
                     identifier70=identifier();
 
                     state._fsp--;
@@ -2149,7 +2132,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_identifier_in_table_spec890);
+                    pushFollow(FOLLOW_identifier_in_table_spec889);
                     identifier71=identifier();
 
                     state._fsp--;
@@ -2214,7 +2197,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_identifier_in_identifier_list905);
+            pushFollow(FOLLOW_identifier_in_identifier_list904);
             identifier72=identifier();
 
             state._fsp--;
@@ -2222,23 +2205,23 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) adaptor.addChild(root_0, identifier72.getTree());
 
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:156:14: ( ',' ! identifier )*
-            loop11:
+            loop10:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt10=2;
+                int LA10_0 = input.LA(1);
 
-                if ( (LA11_0==59) ) {
-                    alt11=1;
+                if ( (LA10_0==59) ) {
+                    alt10=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt10) {
             	case 1 :
             	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:156:15: ',' ! identifier
             	    {
-            	    char_literal73=(Token)match(input,59,FOLLOW_59_in_identifier_list908); if (state.failed) return retval;
+            	    char_literal73=(Token)match(input,59,FOLLOW_59_in_identifier_list907); if (state.failed) return retval;
 
-            	    pushFollow(FOLLOW_identifier_in_identifier_list911);
+            	    pushFollow(FOLLOW_identifier_in_identifier_list910);
             	    identifier74=identifier();
 
             	    state._fsp--;
@@ -2249,7 +2232,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop11;
+            	    break loop10;
                 }
             } while (true);
 
@@ -2306,11 +2289,11 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:160:3: ( WHERE disjunction -> ^( WHERE disjunction ) )
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:161:3: WHERE disjunction
             {
-            WHERE75=(Token)match(input,WHERE,FOLLOW_WHERE_in_where_clause928); if (state.failed) return retval; 
+            WHERE75=(Token)match(input,WHERE,FOLLOW_WHERE_in_where_clause927); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_WHERE.add(WHERE75);
 
 
-            pushFollow(FOLLOW_disjunction_in_where_clause930);
+            pushFollow(FOLLOW_disjunction_in_where_clause929);
             disjunction76=disjunction();
 
             state._fsp--;
@@ -2318,7 +2301,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_disjunction.add(disjunction76.getTree());
 
             // AST REWRITE
-            // elements: disjunction, WHERE
+            // elements: WHERE, disjunction
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2406,7 +2389,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_conjunction_in_disjunction963);
+            pushFollow(FOLLOW_conjunction_in_disjunction962);
             conjunction77=conjunction();
 
             state._fsp--;
@@ -2414,27 +2397,27 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) adaptor.addChild(root_0, conjunction77.getTree());
 
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:168:15: ( OR ^ disjunction )*
-            loop12:
+            loop11:
             do {
-                int alt12=2;
-                int LA12_0 = input.LA(1);
+                int alt11=2;
+                int LA11_0 = input.LA(1);
 
-                if ( (LA12_0==OR) ) {
-                    int LA12_3 = input.LA(2);
+                if ( (LA11_0==OR) ) {
+                    int LA11_3 = input.LA(2);
 
-                    if ( (synpred22_SQLGrammar()) ) {
-                        alt12=1;
+                    if ( (synpred21_SQLGrammar()) ) {
+                        alt11=1;
                     }
 
 
                 }
 
 
-                switch (alt12) {
+                switch (alt11) {
             	case 1 :
             	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:168:16: OR ^ disjunction
             	    {
-            	    OR78=(Token)match(input,OR,FOLLOW_OR_in_disjunction966); if (state.failed) return retval;
+            	    OR78=(Token)match(input,OR,FOLLOW_OR_in_disjunction965); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
             	    OR78_tree = 
             	    (CommonTree)adaptor.create(OR78)
@@ -2442,7 +2425,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    root_0 = (CommonTree)adaptor.becomeRoot(OR78_tree, root_0);
             	    }
 
-            	    pushFollow(FOLLOW_disjunction_in_disjunction969);
+            	    pushFollow(FOLLOW_disjunction_in_disjunction968);
             	    disjunction79=disjunction();
 
             	    state._fsp--;
@@ -2453,7 +2436,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop12;
+            	    break loop11;
                 }
             } while (true);
 
@@ -2514,7 +2497,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_predicate_in_conjunction986);
+            pushFollow(FOLLOW_predicate_in_conjunction985);
             predicate80=predicate();
 
             state._fsp--;
@@ -2522,27 +2505,27 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) adaptor.addChild(root_0, predicate80.getTree());
 
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:173:13: ( AND ^ conjunction )*
-            loop13:
+            loop12:
             do {
-                int alt13=2;
-                int LA13_0 = input.LA(1);
+                int alt12=2;
+                int LA12_0 = input.LA(1);
 
-                if ( (LA13_0==AND) ) {
-                    int LA13_4 = input.LA(2);
+                if ( (LA12_0==AND) ) {
+                    int LA12_4 = input.LA(2);
 
-                    if ( (synpred23_SQLGrammar()) ) {
-                        alt13=1;
+                    if ( (synpred22_SQLGrammar()) ) {
+                        alt12=1;
                     }
 
 
                 }
 
 
-                switch (alt13) {
+                switch (alt12) {
             	case 1 :
             	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:173:14: AND ^ conjunction
             	    {
-            	    AND81=(Token)match(input,AND,FOLLOW_AND_in_conjunction989); if (state.failed) return retval;
+            	    AND81=(Token)match(input,AND,FOLLOW_AND_in_conjunction988); if (state.failed) return retval;
             	    if ( state.backtracking==0 ) {
             	    AND81_tree = 
             	    (CommonTree)adaptor.create(AND81)
@@ -2550,7 +2533,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    root_0 = (CommonTree)adaptor.becomeRoot(AND81_tree, root_0);
             	    }
 
-            	    pushFollow(FOLLOW_conjunction_in_conjunction992);
+            	    pushFollow(FOLLOW_conjunction_in_conjunction991);
             	    conjunction82=conjunction();
 
             	    state._fsp--;
@@ -2561,7 +2544,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop13;
+            	    break loop12;
                 }
             } while (true);
 
@@ -2632,7 +2615,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expr_in_predicate1009);
+            pushFollow(FOLLOW_expr_in_predicate1008);
             expr83=expr();
 
             state._fsp--;
@@ -2640,52 +2623,52 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) adaptor.addChild(root_0, expr83.getTree());
 
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:178:8: ( EQ ^| LT ^| GT ^| GE ^| LE ^| NE ^)
-            int alt14=6;
+            int alt13=6;
             switch ( input.LA(1) ) {
             case EQ:
                 {
-                alt14=1;
+                alt13=1;
                 }
                 break;
             case LT:
                 {
-                alt14=2;
+                alt13=2;
                 }
                 break;
             case GT:
                 {
-                alt14=3;
+                alt13=3;
                 }
                 break;
             case GE:
                 {
-                alt14=4;
+                alt13=4;
                 }
                 break;
             case LE:
                 {
-                alt14=5;
+                alt13=5;
                 }
                 break;
             case NE:
                 {
-                alt14=6;
+                alt13=6;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 13, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt14) {
+            switch (alt13) {
                 case 1 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:178:9: EQ ^
                     {
-                    EQ84=(Token)match(input,EQ,FOLLOW_EQ_in_predicate1012); if (state.failed) return retval;
+                    EQ84=(Token)match(input,EQ,FOLLOW_EQ_in_predicate1011); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     EQ84_tree = 
                     (CommonTree)adaptor.create(EQ84)
@@ -2698,7 +2681,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 2 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:178:15: LT ^
                     {
-                    LT85=(Token)match(input,LT,FOLLOW_LT_in_predicate1017); if (state.failed) return retval;
+                    LT85=(Token)match(input,LT,FOLLOW_LT_in_predicate1016); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     LT85_tree = 
                     (CommonTree)adaptor.create(LT85)
@@ -2711,7 +2694,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 3 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:178:21: GT ^
                     {
-                    GT86=(Token)match(input,GT,FOLLOW_GT_in_predicate1022); if (state.failed) return retval;
+                    GT86=(Token)match(input,GT,FOLLOW_GT_in_predicate1021); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     GT86_tree = 
                     (CommonTree)adaptor.create(GT86)
@@ -2724,7 +2707,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 4 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:178:27: GE ^
                     {
-                    GE87=(Token)match(input,GE,FOLLOW_GE_in_predicate1027); if (state.failed) return retval;
+                    GE87=(Token)match(input,GE,FOLLOW_GE_in_predicate1026); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     GE87_tree = 
                     (CommonTree)adaptor.create(GE87)
@@ -2737,7 +2720,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 5 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:178:33: LE ^
                     {
-                    LE88=(Token)match(input,LE,FOLLOW_LE_in_predicate1032); if (state.failed) return retval;
+                    LE88=(Token)match(input,LE,FOLLOW_LE_in_predicate1031); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     LE88_tree = 
                     (CommonTree)adaptor.create(LE88)
@@ -2750,7 +2733,7 @@ public TreeAdaptor getTreeAdaptor() {
                 case 6 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:178:39: NE ^
                     {
-                    NE89=(Token)match(input,NE,FOLLOW_NE_in_predicate1037); if (state.failed) return retval;
+                    NE89=(Token)match(input,NE,FOLLOW_NE_in_predicate1036); if (state.failed) return retval;
                     if ( state.backtracking==0 ) {
                     NE89_tree = 
                     (CommonTree)adaptor.create(NE89)
@@ -2764,7 +2747,7 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_expr_in_predicate1042);
+            pushFollow(FOLLOW_expr_in_predicate1041);
             expr90=expr();
 
             state._fsp--;
@@ -2832,37 +2815,37 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_identifier=new RewriteRuleSubtreeStream(adaptor,"rule identifier");
         try {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:182:3: ( ( identifier '.' )? '*' -> ^( STAR_TERM ( identifier )? ) | simpleExpression ( ( PLUS ^| MINUS ^) simpleExpression )* )
-            int alt18=2;
+            int alt17=2;
             switch ( input.LA(1) ) {
             case IDENTIFIER:
                 {
-                int LA18_1 = input.LA(2);
+                int LA17_1 = input.LA(2);
 
-                if ( (LA18_1==60) ) {
-                    int LA18_8 = input.LA(3);
+                if ( (LA17_1==60) ) {
+                    int LA17_8 = input.LA(3);
 
-                    if ( (synpred30_SQLGrammar()) ) {
-                        alt18=1;
+                    if ( (synpred29_SQLGrammar()) ) {
+                        alt17=1;
                     }
                     else if ( (true) ) {
-                        alt18=2;
+                        alt17=2;
                     }
                     else {
                         if (state.backtracking>0) {state.failed=true; return retval;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 18, 8, input);
+                            new NoViableAltException("", 17, 8, input);
 
                         throw nvae;
 
                     }
                 }
-                else if ( (LA18_1==EOF||LA18_1==AND||LA18_1==DIV||LA18_1==EQ||(LA18_1 >= FROM && LA18_1 <= GT)||LA18_1==LE||(LA18_1 >= LT && LA18_1 <= NE)||(LA18_1 >= OR && LA18_1 <= PLUS)||LA18_1==RPAREN||LA18_1==SEMI||LA18_1==WHERE||LA18_1==59) ) {
-                    alt18=2;
+                else if ( (LA17_1==EOF||LA17_1==AND||LA17_1==DIV||LA17_1==EQ||(LA17_1 >= FROM && LA17_1 <= GT)||LA17_1==LE||(LA17_1 >= LT && LA17_1 <= NE)||(LA17_1 >= OR && LA17_1 <= PLUS)||LA17_1==RPAREN||LA17_1==SEMI||LA17_1==WHERE||LA17_1==59) ) {
+                    alt17=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 18, 1, input);
+                        new NoViableAltException("", 17, 1, input);
 
                     throw nvae;
 
@@ -2871,7 +2854,7 @@ public TreeAdaptor getTreeAdaptor() {
                 break;
             case MUL:
                 {
-                alt18=1;
+                alt17=1;
                 }
                 break;
             case DATE:
@@ -2880,41 +2863,41 @@ public TreeAdaptor getTreeAdaptor() {
             case TIME:
             case TIMESTAMP:
                 {
-                alt18=2;
+                alt17=2;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 17, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt18) {
+            switch (alt17) {
                 case 1 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:182:5: ( identifier '.' )? '*'
                     {
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:182:5: ( identifier '.' )?
-                    int alt15=2;
-                    int LA15_0 = input.LA(1);
+                    int alt14=2;
+                    int LA14_0 = input.LA(1);
 
-                    if ( (LA15_0==IDENTIFIER) ) {
-                        alt15=1;
+                    if ( (LA14_0==IDENTIFIER) ) {
+                        alt14=1;
                     }
-                    switch (alt15) {
+                    switch (alt14) {
                         case 1 :
                             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:182:6: identifier '.'
                             {
-                            pushFollow(FOLLOW_identifier_in_expr1056);
+                            pushFollow(FOLLOW_identifier_in_expr1055);
                             identifier91=identifier();
 
                             state._fsp--;
                             if (state.failed) return retval;
                             if ( state.backtracking==0 ) stream_identifier.add(identifier91.getTree());
 
-                            char_literal92=(Token)match(input,60,FOLLOW_60_in_expr1058); if (state.failed) return retval; 
+                            char_literal92=(Token)match(input,60,FOLLOW_60_in_expr1057); if (state.failed) return retval; 
                             if ( state.backtracking==0 ) stream_60.add(char_literal92);
 
 
@@ -2924,7 +2907,7 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    char_literal93=(Token)match(input,MUL,FOLLOW_MUL_in_expr1062); if (state.failed) return retval; 
+                    char_literal93=(Token)match(input,MUL,FOLLOW_MUL_in_expr1061); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_MUL.add(char_literal93);
 
 
@@ -2974,7 +2957,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_simpleExpression_in_expr1081);
+                    pushFollow(FOLLOW_simpleExpression_in_expr1080);
                     simpleExpression94=simpleExpression();
 
                     state._fsp--;
@@ -2982,43 +2965,43 @@ public TreeAdaptor getTreeAdaptor() {
                     if ( state.backtracking==0 ) adaptor.addChild(root_0, simpleExpression94.getTree());
 
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:184:22: ( ( PLUS ^| MINUS ^) simpleExpression )*
-                    loop17:
+                    loop16:
                     do {
-                        int alt17=2;
-                        int LA17_0 = input.LA(1);
+                        int alt16=2;
+                        int LA16_0 = input.LA(1);
 
-                        if ( (LA17_0==MINUS||LA17_0==PLUS) ) {
-                            alt17=1;
+                        if ( (LA16_0==MINUS||LA16_0==PLUS) ) {
+                            alt16=1;
                         }
 
 
-                        switch (alt17) {
+                        switch (alt16) {
                     	case 1 :
                     	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:184:23: ( PLUS ^| MINUS ^) simpleExpression
                     	    {
                     	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:184:23: ( PLUS ^| MINUS ^)
-                    	    int alt16=2;
-                    	    int LA16_0 = input.LA(1);
+                    	    int alt15=2;
+                    	    int LA15_0 = input.LA(1);
 
-                    	    if ( (LA16_0==PLUS) ) {
-                    	        alt16=1;
+                    	    if ( (LA15_0==PLUS) ) {
+                    	        alt15=1;
                     	    }
-                    	    else if ( (LA16_0==MINUS) ) {
-                    	        alt16=2;
+                    	    else if ( (LA15_0==MINUS) ) {
+                    	        alt15=2;
                     	    }
                     	    else {
                     	        if (state.backtracking>0) {state.failed=true; return retval;}
                     	        NoViableAltException nvae =
-                    	            new NoViableAltException("", 16, 0, input);
+                    	            new NoViableAltException("", 15, 0, input);
 
                     	        throw nvae;
 
                     	    }
-                    	    switch (alt16) {
+                    	    switch (alt15) {
                     	        case 1 :
                     	            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:184:24: PLUS ^
                     	            {
-                    	            PLUS95=(Token)match(input,PLUS,FOLLOW_PLUS_in_expr1085); if (state.failed) return retval;
+                    	            PLUS95=(Token)match(input,PLUS,FOLLOW_PLUS_in_expr1084); if (state.failed) return retval;
                     	            if ( state.backtracking==0 ) {
                     	            PLUS95_tree = 
                     	            (CommonTree)adaptor.create(PLUS95)
@@ -3031,7 +3014,7 @@ public TreeAdaptor getTreeAdaptor() {
                     	        case 2 :
                     	            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:184:32: MINUS ^
                     	            {
-                    	            MINUS96=(Token)match(input,MINUS,FOLLOW_MINUS_in_expr1090); if (state.failed) return retval;
+                    	            MINUS96=(Token)match(input,MINUS,FOLLOW_MINUS_in_expr1089); if (state.failed) return retval;
                     	            if ( state.backtracking==0 ) {
                     	            MINUS96_tree = 
                     	            (CommonTree)adaptor.create(MINUS96)
@@ -3045,7 +3028,7 @@ public TreeAdaptor getTreeAdaptor() {
                     	    }
 
 
-                    	    pushFollow(FOLLOW_simpleExpression_in_expr1094);
+                    	    pushFollow(FOLLOW_simpleExpression_in_expr1093);
                     	    simpleExpression97=simpleExpression();
 
                     	    state._fsp--;
@@ -3056,7 +3039,7 @@ public TreeAdaptor getTreeAdaptor() {
                     	    break;
 
                     	default :
-                    	    break loop17;
+                    	    break loop16;
                         }
                     } while (true);
 
@@ -3123,7 +3106,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            pushFollow(FOLLOW_term_in_simpleExpression1111);
+            pushFollow(FOLLOW_term_in_simpleExpression1110);
             term98=term();
 
             state._fsp--;
@@ -3131,52 +3114,52 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) adaptor.addChild(root_0, term98.getTree());
 
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:189:8: ( ( MUL ^| DIV ^| MOD ^) term )*
-            loop20:
+            loop19:
             do {
-                int alt20=2;
-                int LA20_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( (LA20_0==DIV||(LA20_0 >= MOD && LA20_0 <= MUL)) ) {
-                    alt20=1;
+                if ( (LA19_0==DIV||(LA19_0 >= MOD && LA19_0 <= MUL)) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt20) {
+                switch (alt19) {
             	case 1 :
             	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:189:9: ( MUL ^| DIV ^| MOD ^) term
             	    {
             	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:189:9: ( MUL ^| DIV ^| MOD ^)
-            	    int alt19=3;
+            	    int alt18=3;
             	    switch ( input.LA(1) ) {
             	    case MUL:
             	        {
-            	        alt19=1;
+            	        alt18=1;
             	        }
             	        break;
             	    case DIV:
             	        {
-            	        alt19=2;
+            	        alt18=2;
             	        }
             	        break;
             	    case MOD:
             	        {
-            	        alt19=3;
+            	        alt18=3;
             	        }
             	        break;
             	    default:
             	        if (state.backtracking>0) {state.failed=true; return retval;}
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 19, 0, input);
+            	            new NoViableAltException("", 18, 0, input);
 
             	        throw nvae;
 
             	    }
 
-            	    switch (alt19) {
+            	    switch (alt18) {
             	        case 1 :
             	            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:189:10: MUL ^
             	            {
-            	            MUL99=(Token)match(input,MUL,FOLLOW_MUL_in_simpleExpression1115); if (state.failed) return retval;
+            	            MUL99=(Token)match(input,MUL,FOLLOW_MUL_in_simpleExpression1114); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
             	            MUL99_tree = 
             	            (CommonTree)adaptor.create(MUL99)
@@ -3189,7 +3172,7 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 2 :
             	            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:189:17: DIV ^
             	            {
-            	            DIV100=(Token)match(input,DIV,FOLLOW_DIV_in_simpleExpression1120); if (state.failed) return retval;
+            	            DIV100=(Token)match(input,DIV,FOLLOW_DIV_in_simpleExpression1119); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
             	            DIV100_tree = 
             	            (CommonTree)adaptor.create(DIV100)
@@ -3202,7 +3185,7 @@ public TreeAdaptor getTreeAdaptor() {
             	        case 3 :
             	            // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:189:24: MOD ^
             	            {
-            	            MOD101=(Token)match(input,MOD,FOLLOW_MOD_in_simpleExpression1125); if (state.failed) return retval;
+            	            MOD101=(Token)match(input,MOD,FOLLOW_MOD_in_simpleExpression1124); if (state.failed) return retval;
             	            if ( state.backtracking==0 ) {
             	            MOD101_tree = 
             	            (CommonTree)adaptor.create(MOD101)
@@ -3216,7 +3199,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
 
 
-            	    pushFollow(FOLLOW_term_in_simpleExpression1129);
+            	    pushFollow(FOLLOW_term_in_simpleExpression1128);
             	    term102=term();
 
             	    state._fsp--;
@@ -3227,7 +3210,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop20;
+            	    break loop19;
                 }
             } while (true);
 
@@ -3281,31 +3264,31 @@ public TreeAdaptor getTreeAdaptor() {
 
         try {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:193:3: ( column_identifier | value )
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA21_0==IDENTIFIER) ) {
-                alt21=1;
+            if ( (LA20_0==IDENTIFIER) ) {
+                alt20=1;
             }
-            else if ( (LA21_0==DATE||LA21_0==REAL_LIT||LA21_0==STRING_LIT||(LA21_0 >= TIME && LA21_0 <= TIMESTAMP)) ) {
-                alt21=2;
+            else if ( (LA20_0==DATE||LA20_0==REAL_LIT||LA20_0==STRING_LIT||(LA20_0 >= TIME && LA20_0 <= TIMESTAMP)) ) {
+                alt20=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 20, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt21) {
+            switch (alt20) {
                 case 1 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:193:5: column_identifier
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_column_identifier_in_term1144);
+                    pushFollow(FOLLOW_column_identifier_in_term1143);
                     column_identifier103=column_identifier();
 
                     state._fsp--;
@@ -3320,7 +3303,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_value_in_term1150);
+                    pushFollow(FOLLOW_value_in_term1149);
                     value104=value();
 
                     state._fsp--;
@@ -3383,22 +3366,22 @@ public TreeAdaptor getTreeAdaptor() {
         RewriteRuleSubtreeStream stream_identifier=new RewriteRuleSubtreeStream(adaptor,"rule identifier");
         try {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:198:3: ( identifier '.' identifier -> ^( identifier identifier ) | identifier )
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( (LA22_0==IDENTIFIER) ) {
-                int LA22_1 = input.LA(2);
+            if ( (LA21_0==IDENTIFIER) ) {
+                int LA21_1 = input.LA(2);
 
-                if ( (LA22_1==60) ) {
-                    alt22=1;
+                if ( (LA21_1==60) ) {
+                    alt21=1;
                 }
-                else if ( (LA22_1==EOF||LA22_1==AND||LA22_1==DIV||LA22_1==EQ||(LA22_1 >= FROM && LA22_1 <= GT)||LA22_1==LE||(LA22_1 >= LT && LA22_1 <= NE)||(LA22_1 >= OR && LA22_1 <= PLUS)||LA22_1==RPAREN||LA22_1==SEMI||LA22_1==WHERE||LA22_1==59) ) {
-                    alt22=2;
+                else if ( (LA21_1==EOF||LA21_1==AND||LA21_1==DIV||LA21_1==EQ||(LA21_1 >= FROM && LA21_1 <= GT)||LA21_1==LE||(LA21_1 >= LT && LA21_1 <= NE)||(LA21_1 >= OR && LA21_1 <= PLUS)||LA21_1==RPAREN||LA21_1==SEMI||LA21_1==WHERE||LA21_1==59) ) {
+                    alt21=2;
                 }
                 else {
                     if (state.backtracking>0) {state.failed=true; return retval;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 22, 1, input);
+                        new NoViableAltException("", 21, 1, input);
 
                     throw nvae;
 
@@ -3407,27 +3390,27 @@ public TreeAdaptor getTreeAdaptor() {
             else {
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 22, 0, input);
+                    new NoViableAltException("", 21, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt22) {
+            switch (alt21) {
                 case 1 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:198:5: identifier '.' identifier
                     {
-                    pushFollow(FOLLOW_identifier_in_column_identifier1165);
+                    pushFollow(FOLLOW_identifier_in_column_identifier1164);
                     identifier105=identifier();
 
                     state._fsp--;
                     if (state.failed) return retval;
                     if ( state.backtracking==0 ) stream_identifier.add(identifier105.getTree());
 
-                    char_literal106=(Token)match(input,60,FOLLOW_60_in_column_identifier1167); if (state.failed) return retval; 
+                    char_literal106=(Token)match(input,60,FOLLOW_60_in_column_identifier1166); if (state.failed) return retval; 
                     if ( state.backtracking==0 ) stream_60.add(char_literal106);
 
 
-                    pushFollow(FOLLOW_identifier_in_column_identifier1169);
+                    pushFollow(FOLLOW_identifier_in_column_identifier1168);
                     identifier107=identifier();
 
                     state._fsp--;
@@ -3473,7 +3456,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_identifier_in_column_identifier1187);
+                    pushFollow(FOLLOW_identifier_in_column_identifier1186);
                     identifier108=identifier();
 
                     state._fsp--;
@@ -3537,50 +3520,50 @@ public TreeAdaptor getTreeAdaptor() {
 
         try {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:204:3: ( number_value | string_value | date_value | time_value | timestamp_value )
-            int alt23=5;
+            int alt22=5;
             switch ( input.LA(1) ) {
             case REAL_LIT:
                 {
-                alt23=1;
+                alt22=1;
                 }
                 break;
             case STRING_LIT:
                 {
-                alt23=2;
+                alt22=2;
                 }
                 break;
             case DATE:
                 {
-                alt23=3;
+                alt22=3;
                 }
                 break;
             case TIME:
                 {
-                alt23=4;
+                alt22=4;
                 }
                 break;
             case TIMESTAMP:
                 {
-                alt23=5;
+                alt22=5;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return retval;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt23) {
+            switch (alt22) {
                 case 1 :
                     // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:205:3: number_value
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_number_value_in_value1202);
+                    pushFollow(FOLLOW_number_value_in_value1201);
                     number_value109=number_value();
 
                     state._fsp--;
@@ -3595,7 +3578,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_string_value_in_value1208);
+                    pushFollow(FOLLOW_string_value_in_value1207);
                     string_value110=string_value();
 
                     state._fsp--;
@@ -3610,7 +3593,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_date_value_in_value1214);
+                    pushFollow(FOLLOW_date_value_in_value1213);
                     date_value111=date_value();
 
                     state._fsp--;
@@ -3625,7 +3608,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_time_value_in_value1220);
+                    pushFollow(FOLLOW_time_value_in_value1219);
                     time_value112=time_value();
 
                     state._fsp--;
@@ -3640,7 +3623,7 @@ public TreeAdaptor getTreeAdaptor() {
                     root_0 = (CommonTree)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_timestamp_value_in_value1226);
+                    pushFollow(FOLLOW_timestamp_value_in_value1225);
                     timestamp_value113=timestamp_value();
 
                     state._fsp--;
@@ -3701,7 +3684,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            REAL_LIT114=(Token)match(input,REAL_LIT,FOLLOW_REAL_LIT_in_number_value1242); if (state.failed) return retval;
+            REAL_LIT114=(Token)match(input,REAL_LIT,FOLLOW_REAL_LIT_in_number_value1241); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             REAL_LIT114_tree = 
             (CommonTree)adaptor.create(REAL_LIT114)
@@ -3761,7 +3744,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            STRING_LIT115=(Token)match(input,STRING_LIT,FOLLOW_STRING_LIT_in_string_value1257); if (state.failed) return retval;
+            STRING_LIT115=(Token)match(input,STRING_LIT,FOLLOW_STRING_LIT_in_string_value1256); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             STRING_LIT115_tree = 
             (CommonTree)adaptor.create(STRING_LIT115)
@@ -3823,7 +3806,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            DATE116=(Token)match(input,DATE,FOLLOW_DATE_in_date_value1272); if (state.failed) return retval;
+            DATE116=(Token)match(input,DATE,FOLLOW_DATE_in_date_value1271); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             DATE116_tree = 
             (CommonTree)adaptor.create(DATE116)
@@ -3831,7 +3814,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, DATE116_tree);
             }
 
-            pushFollow(FOLLOW_string_value_in_date_value1274);
+            pushFollow(FOLLOW_string_value_in_date_value1273);
             string_value117=string_value();
 
             state._fsp--;
@@ -3892,7 +3875,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            TIME118=(Token)match(input,TIME,FOLLOW_TIME_in_time_value1289); if (state.failed) return retval;
+            TIME118=(Token)match(input,TIME,FOLLOW_TIME_in_time_value1288); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             TIME118_tree = 
             (CommonTree)adaptor.create(TIME118)
@@ -3900,7 +3883,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, TIME118_tree);
             }
 
-            pushFollow(FOLLOW_string_value_in_time_value1291);
+            pushFollow(FOLLOW_string_value_in_time_value1290);
             string_value119=string_value();
 
             state._fsp--;
@@ -3961,7 +3944,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            TIMESTAMP120=(Token)match(input,TIMESTAMP,FOLLOW_TIMESTAMP_in_timestamp_value1306); if (state.failed) return retval;
+            TIMESTAMP120=(Token)match(input,TIMESTAMP,FOLLOW_TIMESTAMP_in_timestamp_value1305); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             TIMESTAMP120_tree = 
             (CommonTree)adaptor.create(TIMESTAMP120)
@@ -3969,7 +3952,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, TIMESTAMP120_tree);
             }
 
-            pushFollow(FOLLOW_string_value_in_timestamp_value1308);
+            pushFollow(FOLLOW_string_value_in_timestamp_value1307);
             string_value121=string_value();
 
             state._fsp--;
@@ -4028,7 +4011,7 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (CommonTree)adaptor.nil();
 
 
-            IDENTIFIER122=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_identifier1323); if (state.failed) return retval;
+            IDENTIFIER122=(Token)match(input,IDENTIFIER,FOLLOW_IDENTIFIER_in_identifier1322); if (state.failed) return retval;
             if ( state.backtracking==0 ) {
             IDENTIFIER122_tree = 
             (CommonTree)adaptor.create(IDENTIFIER122)
@@ -4090,7 +4073,7 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:244:3: ( assignment ( ',' assignment )* -> ^( UPDATE_ASSIGNMENTS ( assignment )+ ) )
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:244:5: assignment ( ',' assignment )*
             {
-            pushFollow(FOLLOW_assignment_in_assignment_list1336);
+            pushFollow(FOLLOW_assignment_in_assignment_list1335);
             assignment123=assignment();
 
             state._fsp--;
@@ -4098,25 +4081,25 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_assignment.add(assignment123.getTree());
 
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:244:16: ( ',' assignment )*
-            loop24:
+            loop23:
             do {
-                int alt24=2;
-                int LA24_0 = input.LA(1);
+                int alt23=2;
+                int LA23_0 = input.LA(1);
 
-                if ( (LA24_0==59) ) {
-                    alt24=1;
+                if ( (LA23_0==59) ) {
+                    alt23=1;
                 }
 
 
-                switch (alt24) {
+                switch (alt23) {
             	case 1 :
             	    // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:244:17: ',' assignment
             	    {
-            	    char_literal124=(Token)match(input,59,FOLLOW_59_in_assignment_list1339); if (state.failed) return retval; 
+            	    char_literal124=(Token)match(input,59,FOLLOW_59_in_assignment_list1338); if (state.failed) return retval; 
             	    if ( state.backtracking==0 ) stream_59.add(char_literal124);
 
 
-            	    pushFollow(FOLLOW_assignment_in_assignment_list1341);
+            	    pushFollow(FOLLOW_assignment_in_assignment_list1340);
             	    assignment125=assignment();
 
             	    state._fsp--;
@@ -4127,7 +4110,7 @@ public TreeAdaptor getTreeAdaptor() {
             	    break;
 
             	default :
-            	    break loop24;
+            	    break loop23;
                 }
             } while (true);
 
@@ -4227,18 +4210,18 @@ public TreeAdaptor getTreeAdaptor() {
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:248:3: ( identifier EQ expr -> ^( EQ identifier expr ) )
             // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:248:5: identifier EQ expr
             {
-            pushFollow(FOLLOW_identifier_in_assignment1365);
+            pushFollow(FOLLOW_identifier_in_assignment1364);
             identifier126=identifier();
 
             state._fsp--;
             if (state.failed) return retval;
             if ( state.backtracking==0 ) stream_identifier.add(identifier126.getTree());
 
-            EQ127=(Token)match(input,EQ,FOLLOW_EQ_in_assignment1367); if (state.failed) return retval; 
+            EQ127=(Token)match(input,EQ,FOLLOW_EQ_in_assignment1366); if (state.failed) return retval; 
             if ( state.backtracking==0 ) stream_EQ.add(EQ127);
 
 
-            pushFollow(FOLLOW_expr_in_assignment1369);
+            pushFollow(FOLLOW_expr_in_assignment1368);
             expr128=expr();
 
             state._fsp--;
@@ -4246,7 +4229,7 @@ public TreeAdaptor getTreeAdaptor() {
             if ( state.backtracking==0 ) stream_expr.add(expr128.getTree());
 
             // AST REWRITE
-            // elements: expr, EQ, identifier
+            // elements: identifier, expr, EQ
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4305,15 +4288,33 @@ public TreeAdaptor getTreeAdaptor() {
     }
     // $ANTLR end "assignment"
 
-    // $ANTLR start synpred22_SQLGrammar
-    public final void synpred22_SQLGrammar_fragment() throws RecognitionException {
+    // $ANTLR start synpred21_SQLGrammar
+    public final void synpred21_SQLGrammar_fragment() throws RecognitionException {
         // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:168:16: ( OR disjunction )
         // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:168:16: OR disjunction
         {
-        match(input,OR,FOLLOW_OR_in_synpred22_SQLGrammar966); if (state.failed) return ;
+        match(input,OR,FOLLOW_OR_in_synpred21_SQLGrammar965); if (state.failed) return ;
 
-        pushFollow(FOLLOW_disjunction_in_synpred22_SQLGrammar969);
+        pushFollow(FOLLOW_disjunction_in_synpred21_SQLGrammar968);
         disjunction();
+
+        state._fsp--;
+        if (state.failed) return ;
+
+        }
+
+    }
+    // $ANTLR end synpred21_SQLGrammar
+
+    // $ANTLR start synpred22_SQLGrammar
+    public final void synpred22_SQLGrammar_fragment() throws RecognitionException {
+        // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:173:14: ( AND conjunction )
+        // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:173:14: AND conjunction
+        {
+        match(input,AND,FOLLOW_AND_in_synpred22_SQLGrammar988); if (state.failed) return ;
+
+        pushFollow(FOLLOW_conjunction_in_synpred22_SQLGrammar991);
+        conjunction();
 
         state._fsp--;
         if (state.failed) return ;
@@ -4323,47 +4324,29 @@ public TreeAdaptor getTreeAdaptor() {
     }
     // $ANTLR end synpred22_SQLGrammar
 
-    // $ANTLR start synpred23_SQLGrammar
-    public final void synpred23_SQLGrammar_fragment() throws RecognitionException {
-        // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:173:14: ( AND conjunction )
-        // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:173:14: AND conjunction
-        {
-        match(input,AND,FOLLOW_AND_in_synpred23_SQLGrammar989); if (state.failed) return ;
-
-        pushFollow(FOLLOW_conjunction_in_synpred23_SQLGrammar992);
-        conjunction();
-
-        state._fsp--;
-        if (state.failed) return ;
-
-        }
-
-    }
-    // $ANTLR end synpred23_SQLGrammar
-
-    // $ANTLR start synpred30_SQLGrammar
-    public final void synpred30_SQLGrammar_fragment() throws RecognitionException {
+    // $ANTLR start synpred29_SQLGrammar
+    public final void synpred29_SQLGrammar_fragment() throws RecognitionException {
         // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:182:5: ( ( identifier '.' )? '*' )
         // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:182:5: ( identifier '.' )? '*'
         {
         // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:182:5: ( identifier '.' )?
-        int alt26=2;
-        int LA26_0 = input.LA(1);
+        int alt25=2;
+        int LA25_0 = input.LA(1);
 
-        if ( (LA26_0==IDENTIFIER) ) {
-            alt26=1;
+        if ( (LA25_0==IDENTIFIER) ) {
+            alt25=1;
         }
-        switch (alt26) {
+        switch (alt25) {
             case 1 :
                 // D:\\workspace\\pytun\\src\\org\\pytun\\sql\\SQLGrammar.g:182:6: identifier '.'
                 {
-                pushFollow(FOLLOW_identifier_in_synpred30_SQLGrammar1056);
+                pushFollow(FOLLOW_identifier_in_synpred29_SQLGrammar1055);
                 identifier();
 
                 state._fsp--;
                 if (state.failed) return ;
 
-                match(input,60,FOLLOW_60_in_synpred30_SQLGrammar1058); if (state.failed) return ;
+                match(input,60,FOLLOW_60_in_synpred29_SQLGrammar1057); if (state.failed) return ;
 
                 }
                 break;
@@ -4371,34 +4354,20 @@ public TreeAdaptor getTreeAdaptor() {
         }
 
 
-        match(input,MUL,FOLLOW_MUL_in_synpred30_SQLGrammar1062); if (state.failed) return ;
+        match(input,MUL,FOLLOW_MUL_in_synpred29_SQLGrammar1061); if (state.failed) return ;
 
         }
 
     }
-    // $ANTLR end synpred30_SQLGrammar
+    // $ANTLR end synpred29_SQLGrammar
 
     // Delegated rules
 
-    public final boolean synpred30_SQLGrammar() {
+    public final boolean synpred29_SQLGrammar() {
         state.backtracking++;
         int start = input.mark();
         try {
-            synpred30_SQLGrammar_fragment(); // can never throw exception
-        } catch (RecognitionException re) {
-            System.err.println("impossible: "+re);
-        }
-        boolean success = !state.failed;
-        input.rewind(start);
-        state.backtracking--;
-        state.failed=false;
-        return success;
-    }
-    public final boolean synpred23_SQLGrammar() {
-        state.backtracking++;
-        int start = input.mark();
-        try {
-            synpred23_SQLGrammar_fragment(); // can never throw exception
+            synpred29_SQLGrammar_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -4413,6 +4382,20 @@ public TreeAdaptor getTreeAdaptor() {
         int start = input.mark();
         try {
             synpred22_SQLGrammar_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
+    public final boolean synpred21_SQLGrammar() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred21_SQLGrammar_fragment(); // can never throw exception
         } catch (RecognitionException re) {
             System.err.println("impossible: "+re);
         }
@@ -4457,109 +4440,109 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_RPAREN_in_insert_statement524 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_DELETE_in_delete_statement559 = new BitSet(new long[]{0x0000000000200000L});
     public static final BitSet FOLLOW_FROM_in_delete_statement561 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_identifier_in_delete_statement563 = new BitSet(new long[]{0x0200000000000002L});
+    public static final BitSet FOLLOW_identifier_in_delete_statement563 = new BitSet(new long[]{0x0200000000000000L});
     public static final BitSet FOLLOW_where_clause_in_delete_statement565 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CREATE_in_create_statement596 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_TABLE_in_create_statement598 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_identifier_in_create_statement600 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_LPAREN_in_create_statement602 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_table_columns_def_in_create_statement604 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_RPAREN_in_create_statement606 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DROP_in_drop_statement639 = new BitSet(new long[]{0x0001000000000000L});
-    public static final BitSet FOLLOW_TABLE_in_drop_statement641 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_identifier_in_drop_statement643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ALTER_in_alter_statement674 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_table_column_def_in_table_columns_def687 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_59_in_table_columns_def690 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_table_column_def_in_table_columns_def692 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_identifier_in_table_column_def721 = new BitSet(new long[]{0x010C000008100880L});
-    public static final BitSet FOLLOW_type_specifier_in_table_column_def723 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_type_specifier736 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FLOAT_in_type_specifier742 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CHAR_in_type_specifier748 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_LPAREN_in_type_specifier750 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_number_value_in_type_specifier752 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_RPAREN_in_type_specifier754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VARCHAR_in_type_specifier760 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_LPAREN_in_type_specifier762 = new BitSet(new long[]{0x0000010000000000L});
-    public static final BitSet FOLLOW_number_value_in_type_specifier764 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_RPAREN_in_type_specifier766 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_in_type_specifier772 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIME_in_type_specifier778 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIMESTAMP_in_type_specifier784 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expr_in_expression_list799 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_59_in_expression_list802 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_expr_in_expression_list804 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_table_spec_in_table_spec_list838 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_59_in_table_spec_list841 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_table_spec_in_table_spec_list843 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_identifier_in_table_spec867 = new BitSet(new long[]{0x0000000001000040L});
-    public static final BitSet FOLLOW_AS_in_table_spec869 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_identifier_in_table_spec872 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_table_spec890 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_identifier_list905 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_59_in_identifier_list908 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_identifier_in_identifier_list911 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_WHERE_in_where_clause928 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_disjunction_in_where_clause930 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_conjunction_in_disjunction963 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_OR_in_disjunction966 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_disjunction_in_disjunction969 = new BitSet(new long[]{0x0000004000000002L});
-    public static final BitSet FOLLOW_predicate_in_conjunction986 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_AND_in_conjunction989 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_conjunction_in_conjunction992 = new BitSet(new long[]{0x0000000000000022L});
-    public static final BitSet FOLLOW_expr_in_predicate1009 = new BitSet(new long[]{0x0000001120C40000L});
-    public static final BitSet FOLLOW_EQ_in_predicate1012 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_LT_in_predicate1017 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_GT_in_predicate1022 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_GE_in_predicate1027 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_LE_in_predicate1032 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_NE_in_predicate1037 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_expr_in_predicate1042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_expr1056 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_60_in_expr1058 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_MUL_in_expr1062 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_simpleExpression_in_expr1081 = new BitSet(new long[]{0x0000008200000002L});
-    public static final BitSet FOLLOW_PLUS_in_expr1085 = new BitSet(new long[]{0x000C810001000800L});
-    public static final BitSet FOLLOW_MINUS_in_expr1090 = new BitSet(new long[]{0x000C810001000800L});
-    public static final BitSet FOLLOW_simpleExpression_in_expr1094 = new BitSet(new long[]{0x0000008200000002L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1111 = new BitSet(new long[]{0x0000000C00008002L});
-    public static final BitSet FOLLOW_MUL_in_simpleExpression1115 = new BitSet(new long[]{0x000C810001000800L});
-    public static final BitSet FOLLOW_DIV_in_simpleExpression1120 = new BitSet(new long[]{0x000C810001000800L});
-    public static final BitSet FOLLOW_MOD_in_simpleExpression1125 = new BitSet(new long[]{0x000C810001000800L});
-    public static final BitSet FOLLOW_term_in_simpleExpression1129 = new BitSet(new long[]{0x0000000C00008002L});
-    public static final BitSet FOLLOW_column_identifier_in_term1144 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_value_in_term1150 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_column_identifier1165 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_60_in_column_identifier1167 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_identifier_in_column_identifier1169 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_column_identifier1187 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_number_value_in_value1202 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_string_value_in_value1208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_date_value_in_value1214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_time_value_in_value1220 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_timestamp_value_in_value1226 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_REAL_LIT_in_number_value1242 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_STRING_LIT_in_string_value1257 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DATE_in_date_value1272 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_string_value_in_date_value1274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIME_in_time_value1289 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_string_value_in_time_value1291 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TIMESTAMP_in_timestamp_value1306 = new BitSet(new long[]{0x0000800000000000L});
-    public static final BitSet FOLLOW_string_value_in_timestamp_value1308 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFIER_in_identifier1323 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assignment_in_assignment_list1336 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_59_in_assignment_list1339 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_assignment_in_assignment_list1341 = new BitSet(new long[]{0x0800000000000002L});
-    public static final BitSet FOLLOW_identifier_in_assignment1365 = new BitSet(new long[]{0x0000000000040000L});
-    public static final BitSet FOLLOW_EQ_in_assignment1367 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_expr_in_assignment1369 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_OR_in_synpred22_SQLGrammar966 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_disjunction_in_synpred22_SQLGrammar969 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_AND_in_synpred23_SQLGrammar989 = new BitSet(new long[]{0x000C810801000800L});
-    public static final BitSet FOLLOW_conjunction_in_synpred23_SQLGrammar992 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_identifier_in_synpred30_SQLGrammar1056 = new BitSet(new long[]{0x1000000000000000L});
-    public static final BitSet FOLLOW_60_in_synpred30_SQLGrammar1058 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_MUL_in_synpred30_SQLGrammar1062 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CREATE_in_create_statement595 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_TABLE_in_create_statement597 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_identifier_in_create_statement599 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_LPAREN_in_create_statement601 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_table_columns_def_in_create_statement603 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_RPAREN_in_create_statement605 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DROP_in_drop_statement638 = new BitSet(new long[]{0x0001000000000000L});
+    public static final BitSet FOLLOW_TABLE_in_drop_statement640 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_identifier_in_drop_statement642 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ALTER_in_alter_statement673 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_table_column_def_in_table_columns_def686 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_59_in_table_columns_def689 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_table_column_def_in_table_columns_def691 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_identifier_in_table_column_def720 = new BitSet(new long[]{0x010C000008100880L});
+    public static final BitSet FOLLOW_type_specifier_in_table_column_def722 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_type_specifier735 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FLOAT_in_type_specifier741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CHAR_in_type_specifier747 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_LPAREN_in_type_specifier749 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_number_value_in_type_specifier751 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_RPAREN_in_type_specifier753 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VARCHAR_in_type_specifier759 = new BitSet(new long[]{0x0000000080000000L});
+    public static final BitSet FOLLOW_LPAREN_in_type_specifier761 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_number_value_in_type_specifier763 = new BitSet(new long[]{0x0000020000000000L});
+    public static final BitSet FOLLOW_RPAREN_in_type_specifier765 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_in_type_specifier771 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIME_in_type_specifier777 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIMESTAMP_in_type_specifier783 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expr_in_expression_list798 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_59_in_expression_list801 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_expr_in_expression_list803 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_table_spec_in_table_spec_list837 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_59_in_table_spec_list840 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_table_spec_in_table_spec_list842 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_identifier_in_table_spec866 = new BitSet(new long[]{0x0000000001000040L});
+    public static final BitSet FOLLOW_AS_in_table_spec868 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_identifier_in_table_spec871 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_table_spec889 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_identifier_list904 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_59_in_identifier_list907 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_identifier_in_identifier_list910 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_WHERE_in_where_clause927 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_disjunction_in_where_clause929 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_conjunction_in_disjunction962 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_OR_in_disjunction965 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_disjunction_in_disjunction968 = new BitSet(new long[]{0x0000004000000002L});
+    public static final BitSet FOLLOW_predicate_in_conjunction985 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_AND_in_conjunction988 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_conjunction_in_conjunction991 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_expr_in_predicate1008 = new BitSet(new long[]{0x0000001120C40000L});
+    public static final BitSet FOLLOW_EQ_in_predicate1011 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_LT_in_predicate1016 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_GT_in_predicate1021 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_GE_in_predicate1026 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_LE_in_predicate1031 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_NE_in_predicate1036 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_expr_in_predicate1041 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_expr1055 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_60_in_expr1057 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_MUL_in_expr1061 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_simpleExpression_in_expr1080 = new BitSet(new long[]{0x0000008200000002L});
+    public static final BitSet FOLLOW_PLUS_in_expr1084 = new BitSet(new long[]{0x000C810001000800L});
+    public static final BitSet FOLLOW_MINUS_in_expr1089 = new BitSet(new long[]{0x000C810001000800L});
+    public static final BitSet FOLLOW_simpleExpression_in_expr1093 = new BitSet(new long[]{0x0000008200000002L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1110 = new BitSet(new long[]{0x0000000C00008002L});
+    public static final BitSet FOLLOW_MUL_in_simpleExpression1114 = new BitSet(new long[]{0x000C810001000800L});
+    public static final BitSet FOLLOW_DIV_in_simpleExpression1119 = new BitSet(new long[]{0x000C810001000800L});
+    public static final BitSet FOLLOW_MOD_in_simpleExpression1124 = new BitSet(new long[]{0x000C810001000800L});
+    public static final BitSet FOLLOW_term_in_simpleExpression1128 = new BitSet(new long[]{0x0000000C00008002L});
+    public static final BitSet FOLLOW_column_identifier_in_term1143 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_value_in_term1149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_column_identifier1164 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_60_in_column_identifier1166 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_identifier_in_column_identifier1168 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_column_identifier1186 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_number_value_in_value1201 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_string_value_in_value1207 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_date_value_in_value1213 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_time_value_in_value1219 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_timestamp_value_in_value1225 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_REAL_LIT_in_number_value1241 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_STRING_LIT_in_string_value1256 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DATE_in_date_value1271 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_string_value_in_date_value1273 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIME_in_time_value1288 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_string_value_in_time_value1290 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TIMESTAMP_in_timestamp_value1305 = new BitSet(new long[]{0x0000800000000000L});
+    public static final BitSet FOLLOW_string_value_in_timestamp_value1307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFIER_in_identifier1322 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assignment_in_assignment_list1335 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_59_in_assignment_list1338 = new BitSet(new long[]{0x0000000001000000L});
+    public static final BitSet FOLLOW_assignment_in_assignment_list1340 = new BitSet(new long[]{0x0800000000000002L});
+    public static final BitSet FOLLOW_identifier_in_assignment1364 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_EQ_in_assignment1366 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_expr_in_assignment1368 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_OR_in_synpred21_SQLGrammar965 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_disjunction_in_synpred21_SQLGrammar968 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_AND_in_synpred22_SQLGrammar988 = new BitSet(new long[]{0x000C810801000800L});
+    public static final BitSet FOLLOW_conjunction_in_synpred22_SQLGrammar991 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_identifier_in_synpred29_SQLGrammar1055 = new BitSet(new long[]{0x1000000000000000L});
+    public static final BitSet FOLLOW_60_in_synpred29_SQLGrammar1057 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_MUL_in_synpred29_SQLGrammar1061 = new BitSet(new long[]{0x0000000000000002L});
 
 }

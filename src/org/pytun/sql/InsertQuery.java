@@ -8,8 +8,7 @@ import org.pytun.sql.visitors.Visitor;
 
 public class InsertQuery extends Query {
 
-	private List<Node> columns;
-	private List<Node> values;
+	private List<Node> assignments;
 	private Identifier into;
 
 	public InsertQuery(CommonTree t) {
@@ -19,12 +18,7 @@ public class InsertQuery extends Query {
 
 	@Override
 	protected void setupAST() {
-		for (Node n : columns) {
-			n.setParent(this);
-			n.setStatement(this);
-			n.setupAST();
-		}
-		for (Node n : values) {
+		for (Node n : assignments) {
 			n.setParent(this);
 			n.setStatement(this);
 			n.setupAST();
@@ -42,33 +36,23 @@ public class InsertQuery extends Query {
 	}
 
 	public Node accept(Visitor v) throws Exception {
-		if (columns != null) {
-			int len = columns.size();
+		if (assignments != null) {
+			int len = assignments.size();
 			for (int i = 0; i < len; i++) {
-				columns.set(i, columns.get(i).accept(v));
+				assignments.set(i, assignments.get(i).accept(v));
 			}
 		}
-		for (int i = 0; i < values.size(); i++) {
-			values.set(i, values.get(i).accept(v));
-		}
+		into = (Identifier)into.accept(v);
 
 		return v.Visit(this);
 	}
 
-	public List<Node> getColumns() {
-		return columns;
+	public List<Node> getAssignments() {
+		return assignments;
 	}
 
-	public void setColumns(List<Node> columns) {
-		this.columns = columns;
-	}
-
-	public List<Node> getValues() {
-		return values;
-	}
-
-	public void setValues(List<Node> values) {
-		this.values = values;
+	public void setAssignments(List<Node> assignments) {
+		this.assignments = assignments;
 	}
 
 	public Identifier getInto() {
@@ -89,14 +73,8 @@ public class InsertQuery extends Query {
 		into.print(indent + 2);
 
 		printTabs(indent + 1);
-		System.out.println("COLUMNS");
-		for (Node n : columns) {
-			n.print(indent + 2);
-		}
-
-		printTabs(indent + 1);
-		System.out.println("VALUES");
-		for (Node n : values) {
+		System.out.println("INSERT_LIST");
+		for (Node n : assignments) {
 			n.print(indent + 2);
 		}
 	}

@@ -1,15 +1,15 @@
 package org.pytun.test;
 
 import org.antlr.runtime.tree.CommonTree;
-import org.pytun.database.Database;
-import org.pytun.sql.SqlCompiler;
+import org.pytun.common.Database;
+import org.pytun.common.Statement;
 
 public class Main {
 	public void printSQLTree(String SQLQuery) {
 		System.out.println("parsing: " + SQLQuery);
-		SqlCompiler compiler = new SqlCompiler();
+		Statement compiler = new Statement(SQLQuery);
 		try {
-			compiler.compile(SQLQuery);
+			compiler.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

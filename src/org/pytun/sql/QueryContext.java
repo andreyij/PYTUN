@@ -3,7 +3,7 @@ package org.pytun.sql;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.pytun.database.Database;
+import org.pytun.common.Database;
 import org.pytun.sql.Identifier.IdentifierType;
 import org.pytun.storage.catalog.Column;
 import org.pytun.storage.catalog.Table;

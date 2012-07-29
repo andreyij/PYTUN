@@ -1,8 +1,10 @@
 package org.pytun.execution;
 
+import org.pytun.execution.asl.Program;
+
 public class Executor {
 
-	public void Execute() throws Exception {
+	public void execute(Program p) throws Exception {
 
 	}
 }

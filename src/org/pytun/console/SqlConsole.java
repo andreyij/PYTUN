@@ -2,8 +2,8 @@ package org.pytun.console;
 
 import java.util.Random;
 
-import org.pytun.database.Database;
-import org.pytun.sql.SqlCompiler;
+import org.pytun.common.Database;
+import org.pytun.common.Statement;
 
 public class SqlConsole {
 
@@ -88,9 +88,10 @@ public class SqlConsole {
 				ic.execute();
 			} else {
 				try {
-					SqlCompiler compiler = new SqlCompiler();
-					compiler.compile(q);
+					Statement statement = new Statement(q);
+					statement.execute();
 				} catch (Exception e) {
+					e.printStackTrace();
 					System.out.println("Error:" + e.getMessage());
 				}
 			}

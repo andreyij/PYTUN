@@ -91,7 +91,7 @@ insert_statement
 
 delete_statement
   :
-  DELETE FROM identifier where_clause?
+  DELETE FROM identifier where_clause
     -> ^(DELETE_STMT identifier where_clause?)
   ;
 

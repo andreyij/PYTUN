@@ -3,9 +3,8 @@ package org.pytun.sql.visitors;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.pytun.database.Database;
+import org.pytun.common.Database;
 import org.pytun.sql.CreateQuery;
-import org.pytun.sql.Expression;
 import org.pytun.sql.Identifier;
 import org.pytun.sql.Node;
 import org.pytun.sql.Query;

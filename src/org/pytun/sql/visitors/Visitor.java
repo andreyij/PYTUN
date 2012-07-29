@@ -1,5 +1,6 @@
 package org.pytun.sql.visitors;
 
+import org.pytun.sql.Assignment;
 import org.pytun.sql.Condition;
 import org.pytun.sql.DateValue;
 import org.pytun.sql.Divide;
@@ -115,6 +116,10 @@ public class Visitor {
 	}
 
 	public Node Visit(Predicate n) throws Exception {
+		return n;
+	}
+	
+	public Node Visit(Assignment n) throws Exception {
 		return n;
 	}
 }

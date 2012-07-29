@@ -52,9 +52,7 @@ public class Node {
 	}
 
 	protected void resolveNames() throws Exception {
-		//accept (new NamingVisitor());
-		Visitor v = new NamingVisitor();
-		accept(v);
+		accept(new NamingVisitor());
 	}
 
 	public void compile() throws Exception {

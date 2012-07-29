@@ -5,6 +5,7 @@ import java.util.List;
 import org.pytun.sql.Predicate;
 
 import org.pytun.common.ColumnType;
+import org.pytun.sql.Assignment;
 import org.pytun.sql.ColumnSpecification;
 import org.pytun.sql.CreateQuery;
 import org.pytun.sql.DataType;
@@ -66,26 +67,15 @@ public class SemanticVisitor extends Visitor {
 	 */
 	@Override
 	public Node Visit(InsertQuery q) throws Exception {
-		List<Node> columns = q.getColumns();
-		List<Node> values = q.getValues();
-		if (columns == null || values == null) {
-			throw new Exception("Invalid insert statement");
-		}
-		int count = columns.size();
-		if (count != values.size()) {
-			throw new Exception(
-					"Columns count differs from values count (columns: "
-							+ count + ", values: " + values.size() + ")");
-		}
-
-		for (int i = 0; i < count; i++) {
-			/* We only accept identifiers in column specification section */
-			if (!(columns.get(i) instanceof Identifier))
+		List<Node> assignments = q.getAssignments();
+		for (Node n : assignments) {
+			Assignment a = (Assignment) n;
+			if (!(a.getColumn() instanceof Identifier)) {
 				throw new Exception("Invalid column specification: "
-						+ columns.get(i).getClass());
-
-			Identifier col = (Identifier) columns.get(i);
-			Node val = values.get(i);
+						+ a.getColumn().getClass());
+			}
+			Identifier col = (Identifier) a.getColumn();
+			Node val = a.getValue();
 			if (col.getType().getColumnType() != val.getType().getColumnType()) {
 				throw new Exception("Invalid value type for column "
 						+ col.getName() + ": Found "
@@ -134,4 +124,19 @@ public class SemanticVisitor extends Visitor {
 		}
 		return q;
 	}
+
+	@Override
+	public Node Visit(Assignment n) throws Exception {
+		Node column = n.getColumn();
+		Node value = n.getValue();
+		if (column.getType().getColumnType() != value.getType().getColumnType()){
+			throw new Exception("Invalid value type for column "
+					+ ((Identifier)column).getName() + ": Found "
+					+ DataType.typeAsText(value.getType().getColumnType())
+					+ " expected "
+					+ DataType.typeAsText(column.getType().getColumnType()));			
+		}
+		return super.Visit(n);
+	}
+	
 }

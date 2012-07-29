@@ -1,4 +1,4 @@
-package org.pytun.database;
+package org.pytun.common;
 
 import org.pytun.storage.catalog.Catalog;
 

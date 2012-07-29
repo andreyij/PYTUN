@@ -1,7 +1,7 @@
 package org.pytun.console;
 
 import org.pytun.common.ColumnType;
-import org.pytun.database.Database;
+import org.pytun.common.Database;
 import org.pytun.storage.catalog.Column;
 import org.pytun.storage.catalog.Table;
 

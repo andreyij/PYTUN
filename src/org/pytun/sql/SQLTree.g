@@ -51,34 +51,58 @@ select_statement returns [Query n]
   ;
 
 update_statement returns [Query n]
+@init{
+  UpdateQuery uq = new UpdateQuery($start);
+}
   : ^(UPDATE_STMT i=identifier al=assignment_list w=where_clause?)
   {
-    UpdateQuery uq = new UpdateQuery($start);
-    uq.setUpdateList($al.list);
+    uq.setAssignments($al.list);
     uq.setTable($i.n);
     uq.setWhere($w.n);
-    $n = (Query)uq;
+    $n = uq;
   }
   ;
 
 
 insert_statement returns [Query n]
 @init{
-	InsertQuery i = new InsertQuery($start);
+	InsertQuery iq = new InsertQuery($start);
 }
   :
     ^(INSERT_STMT identifier il=identifier_list vl=expression_list)
     {
-    	i.setInto($identifier.n);
-    	i.setColumns($il.list);
-    	i.setValues($vl.list);
-    	$n = i;
+    	iq.setInto($identifier.n);
+    	if ($il.list.size() != $vl.list.size()){
+    	   /* this is a semantic error but we're trowing it here because we want it to
+    	    * be easier to handle insert assignments
+    	    */
+    	   throw new org.antlr.runtime.RecognitionException();
+    	}
+    	List<Node> assignments = new ArrayList<Node>();
+    	for (int i = 0; i < $il.list.size(); i++){
+    	   Assignment a = new Assignment($start);
+    	   a.setColumn($il.list.get(i));
+    	   a.setValue($vl.list.get(i));
+    	   assignments.add(a);
+    	}
+    	iq.setAssignments(assignments);
+    	$n = iq;
     }
   ;
 
 delete_statement returns [Query n]
-  :
-  ^(DELETE_STMT identifier where_clause?)
+@init{
+  Node where = null;
+}
+  : ^(DELETE_STMT i=identifier (w=where_clause{where=$w.n;})?)
+	  {
+		   DeleteQuery dq = new DeleteQuery($start);
+		   dq.setFrom($i.n);
+		   if (where != null){
+          dq.setWhere(where);
+       }
+		   $n = dq;
+	  }
   ;
 
 create_statement returns [Query n]
@@ -306,11 +330,20 @@ identifier returns [Identifier n]
   ;
 
 assignment_list returns [List<Node> list]
+@init{
+  $list = new ArrayList<Node>();
+}
   :^(UPDATE_ASSIGNMENTS (assignment{$list.add($assignment.n);})+)
   ;
 
 assignment returns [Node n]
-  : ^(EQ identifier expr)
+  : ^(EQ i=identifier e=expr)
+    {
+      Assignment a = new Assignment($start);
+      a.setColumn($i.n);
+      a.setValue($e.n);
+      $n = a;
+    }
   ;
 
 table_columns_def returns [List<Node> list]
